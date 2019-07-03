@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://at.cnect.to/iotaa -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="../../common.js"></script>
+
+<title>IoTAA - The Business of IoT</title>
+
+<!-- PumpHouse v1.44.0-SNAPSHOT - vcs: tag=-, branch=HEAD (no branch), parent=9d33bed09a92cf5a78060dda4eb98aed212da586, commit=- -->
+
+<!--link rel="stylesheet" type="text/css" href="iotaa/sdk/ext/resources/css/ext-all.css" /-->
+<!--link rel="stylesheet" type="text/css" href="iotaa/resources/css/pumpco.css" /-->
+<!--link rel="shortcut icon" href="resources/images/favicon.ico" /-->
+    <!--script type="text/javascript" src="aos/sdk/the.js"></script-->
+    <!-- ExtJS library: base/adapter -->
+<style type="text/css" charset="UTF-8">#PanelLoading { background-color:#ccc; box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.74); text-align:center; display:none; }
+#PanelLoading > p { margin:0px; padding:5px 5px; font-size:12px; font-family: monospace; }
+#PanelLoading > h1 { display:none; background-color: #ccc; font-size:44px; font-weight:bold; margin:0px; padding:10px 0px; text-transform:uppercase; }
+#loaderbar { height: 2px; background-color: #0088cc; height: 2px; position: fixed; top: 0; }
+#logo { box-shadow:0px 0px 5px rgba(0,0,0,0.5); border-radius:25px; position: absolute; left: -48px; top: -48px; margin-left: 50%; margin-top: 50%; width: 96px; height: 96px; background-image:url(aos/resources/iotaa/favicon/favicon-96x96.png); background-repeat: no-repeat; background-position: center center; }</style><meta name="HandheldFriendly" content="true"><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" type="image/x-icon" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="57x57" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-180x180.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" sizes="750x1334" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_750.png"><link rel="apple-touch-icon" sizes="640x1136" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_640.png"><link rel="icon" type="image/png" sizes="192x192" href="https://at.cnect.to/aos/resources//iotaa/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://at.cnect.to/aos/resources//iotaa/favicon/ms-icon-144x144.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="theme-color" content="#ffffff">
+
+<!-- PumpCo config -->
+<script type="text/javascript">
+       siteId = "002753674d6a19be00000001";
+       var params = {"siteId":"002753674d6a19be00000001","siteName":"Iotaa.cnect_to_iotaa","siteTitle":"IoTAA - The Business of IoT","loginLogo":"/PumpHouse/uploads/iotaa/images/Iotaa-logo.png","sitePath":"iotaa/","pumpfacePath":"aos/","favicon":"resources/images/favicon.ico","bootstrapVersion":"0.02.00","contactDetails":"Your Support Contact"};
+</script>
+
+<!-- (Optional) manifest -->
+
+
+<link rel="stylesheet" type="text/css" href="./page1_files/phil-1.0.0.css"><link rel="stylesheet" type="text/css" href="./page1_files/animate.css"><link rel="stylesheet" type="text/css" href="./page1_files/core.css"><link rel="stylesheet" type="text/css" href="./page1_files/site.css"></head>
+<body class="os-background webapp os-large os-landscape" data-bind="body:$data" style="background-attachment:fixed;">
+<!-- Base Card - used as a fallback for all card rendering -->
+<script type="text/html" id="card-default">
+	<div class="span span1">
+		<p class="p width8 height2 text-clip">Base Card</p>
+	</div>
+</script>
+
+<!-- HEADER -->
+<!-- HEADER -->
+
+<!-- ko if:$root.header().oVisible -->
+	<!-- ko with:$root.header -->
+	<div data-bind="header:$data, css:$data.status, css:{&#39;concealed&#39;:$root.places().length&lt;1}" class="header" id="header" style="">
+
+			<!--
+				LEFT Panel
+			-->
+			<!-- <div class="span width3-nopad align-left" style="min-width:80px;"> -->
+			<!-- <div class="span left align-left" style="min-width:80px;"> -->
+			<div class="header-left">
+				<!-- Back Button -->
+				<div class="header-left-back">
+				<!-- ko with:$root.header -->
+					<!-- ko with:$data.breadcrumb -->
+						<!-- ko with:$data[$data.length-2] --><!-- /ko -->
+						<!-- ko if:$data.length<=1 -->
+							<button name="back" disabled="" class="btn btn-background">
+								<span class="ico-ios7 ico-back-inv"></span>
+							</button>
+						<!-- /ko-->
+					<!-- /ko -->
+				<!-- /ko -->
+				</div>
+
+				<!-- User Picture -->
+				<div class="header-left-you">
+					<button data-bind="style:{&#39;backgroundColor&#39;: true ? &#39;&#39; + $data.initialsColour() : &#39;#ffffff&#39; }" id="header-user" name="yourpicture" class="btn btn-background btn-yourpicture" tabindex="0" style="line-height:48px;">
+						<img data-bind="attr:{src:$data.icon}, css:{&#39;concealed&#39;:$data.initials()!==&#39;&#39;}" class="" style="width:40px; height:42px; margin:0;vertical-align:top;" src="./page1_files/admin.jpg">
+						<p data-bind="html:$data.initials, css:{&#39;concealed&#39;:$data.initials()==&#39;&#39;}" class="concealed font12"></p>
+					</button>
+				</div>
+
+				<!-- Place Icon -->
+				<div class="header-left-place">
+					<!-- ko if:$data.placeIcon --><!-- /ko -->
+				</div>
+			</div>
+
+			<!--
+				CENTRE Panel
+			-->
+			<!-- <div class="span width5-nopad"> -->
+			<div class="header-centre">
+				<div class="header-console">
+
+					<div data-bind="css:{&#39;expanded&#39;:$data.consoleExpanded()}" class="header-console-inner">
+						<div>
+							<!-- Place Message -->
+							<p data-bind="html:$data.placeMessage" class="header-console-placemessage font10"><strong>Home</strong></p>
+
+							<p class="font8">recently visited</p>
+							<div data-bind="foreach:$data.breadcrumbPlaces.array" class="flex-row flex-wrap">
+								<button data-bind="click:$parent.breadcrumbPlacesFn,text:$data.label" class="btn btn-link font8">Bristol Office Admin</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="header-shortcuts desktop">
+
+					<!-- Contacts -->
+					<div class="header-shortcuts-contacts">
+						<button name="contacts" class="btn btn-background btn-contacts">
+							<span class="ico-ios7 ico-contacts"></span>
+						</button>
+					</div>
+
+					<!-- Notifications -->
+					<div class="header-shortcuts-notifications">
+						<button name="notifications" class="btn btn-background btn-notifications">
+							<label data-bind="css:{&#39;concealed&#39;:$data.notifications.count()&lt;=0}, html:$data.notifications.count()" class="lbl lbl-ball is-small is-error concealed">0</label>
+							<span class="ico-ios7 ico-flags"></span>
+						</button>
+					</div>
+
+					<!-- Settings -->
+					<div class="header-shortcuts-settings">
+						<button name="settings" class="btn btn-background btn-settings">
+							<span class="ico-ios7 ico-settings"></span>
+						</button>
+					</div>
+
+					<!-- Help -->
+					<div class="header-shortcuts-help">
+						<button name="help" class="btn btn-background btn-help">
+							<span class="ico-ios7 ico-info"></span>
+						</button>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!--
+				RIGHT Panel
+			-->
+			<!-- <div class="span width2-nopad align-right" style=""> -->
+			<div class="header-right">
+				<!-- Flags -->
+				<div class="header-small-flags phone">
+					<div data-bind="css:{&#39;new-notifications&#39;:$data.notifications.count()&gt;0}" class="ico-ios16 ico-flags"></div>
+					<div class=""><!-- Flags --></div>
+				</div>
+
+				<!-- More actions menu -->
+				<div data-bind="buttonmenu:$data.actions" class="header-more">
+					<button class="btn btn-background" value="&lt;span class=&quot;ico-ios7 ico-more&quot;&gt;&lt;/span&gt;"><span class="ico-ios7 ico-more"></span></button>
+					<ul class="menu menu-dropdown" tabindex="99">
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="your place">your place</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="contacts">contacts</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="notifications">notifications</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="settings">settings</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="signout">signout</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="help">help</button></li>
+					</ul>
+				</div>
+			</div>
+
+	</div>
+	<!-- /ko -->
+<!-- /ko -->
+
+
+<!-- MASK -->
+<div id="mask" class="concealed" style="position:absolute;z-order:100;background-color:rgba(0,0,0,0.5);height:100%;width:100%;"></div>
+
+<!-- TOAST -->
+<!-- Template for Toast-Message -->
+<script type="text/html" id="toast-message">
+	<div data-bind="css:{'removing':!$data.visible()}" class="toast span2" style="padding:2px 0px;">
+		<p data-bind="html:$data.msg"></p>
+		<div class="toast-btns">
+			<!-- ko if:$data.auto===false -->
+				<!-- ko if:$data.btnCancel -->
+					<button data-bind="click:$data.btnCancel" class="btn is-error">cancel</button>
+				<!-- /ko -->
+				<button data-bind="click:$data.btnOk" class="btn is-success">ok</button>
+			<!-- /ko -->
+		</div>
+	</div>
+</script>
+<div id="toast" data-bind="toast:$data.toast"></div>
+
+<!-- LOADERBAR -->
+<div data-bind="loader:$data.loader" class="loaderbar concealed" style="width:50%"></div>
+
+<!-- MAIN site i.e. main web flow content -->
+<div class="centralise">
+	<!-- PLACES -->
+	<!-- ko foreach:$data.places -->
+		<div data-bind="place:$data" id="5bc0ae91d58eff59402db82a" class="place is-owner">
+
+			<!-- AMONIS: 21/08/2015: Removed old ( incorrect ) header references, as the purpose has moved to the header console -->
+
+			<!-- SPACES -->
+			<!-- ko foreach:$root.getSpaces( $data.id ) -->
+				<div data-bind="space:$data" id="5bc0ae92d58eff59402db8aa" name="Iotaa.localOfficeLandingPageSpace" class="space iotaa-panels">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.localOfficeLandingPageLeftCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/* common.css */
+
+/***********/
+/* Global  */
+/***********/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn {
+  height: 48px;
+  margin: 4px 0px;
+  border-radius: 5px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn:hover {
+  cursor: pointer;
+}
+
+/***********/
+/* Layout  */
+/***********/
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile {
+  flex-grow:1;
+}
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .screen {
+  display: flex;
+  flex-direction: column;
+}
+
+/***********/
+/* Sidebar */
+/***********/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-sidebar {
+    background-color: #693357;
+    display: grid;
+    grid-template-rows: 1fr 108px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .sidebar-menu {
+    padding: 20px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info {
+    background-color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info > p:first-child {
+  font-size:16px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info > p:nth-child(n+2) {
+  font-size:10px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .sidebar-menu .btn.is-error {
+  margin-top: 30px;
+}
+
+/**
+ * Reports
+ */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-sub-heading {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-container .btn {
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 2px;
+}
+
+/* Useful reports */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .useful-reports .reports-row .btn:nth-child(1) {
+  margin-right: 8px;
+  /*width: 225px;*/
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .no-reports-saved {
+  color: white;
+  font-size: 14px;
+}
+
+/* All available reports */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn-wrapper button {
+  height: 38px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn {
+  flex-direction: column;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn select {
+  font-size: 14px;
+  height: 35px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn > select {
+  max-width: 100%;
+  padding-left: 10px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper .btn {
+  height: 38px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper .btn:nth-child(1) {
+  margin-right: 3px;
+  margin-left: 0;
+}
+
+/*************/
+/* Dashboard */
+/*************/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+/********************/
+/* Dashboard Footer */
+/********************/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer {
+    display: flex;
+    background-color: #ccc;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons > * {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: transparent;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons button.is-highlight:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #4f0f3a;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-top: 18px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 48px;
+    margin: 2px 0px;
+    flex-grow:1;
+    margin: 4px 0px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn {
+  display: flex;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn > select {
+  max-width: 150px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn .btn {
+  width:unset;
+  margin-left: 5px;
+  padding: 5px;
+  flex-grow: 1;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .clickable {
+    cursor:pointer;
+}
+</style><div id="5bc0ae92d58eff59402db8a8" class="cog-body"><!-- // Sidebar -->
+<div name="home" class="iotaa-sidebar screen displayed">
+    <div class="profile">
+        <div class="profile-info">
+            <p data-bind="i18n: &#39;franchise-office&#39;">Franchise Office</p>
+            <!-- ko with:$data.vcard -->
+            <p data-bind="text:$data.fn" class="profile-name">Bristol Office Admin</p>
+            <!-- /ko -->
+        </div>
+        <div class="sidebar-menu" data-bind="foreach:$data.actions">
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Alerts</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Notifications</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Actionable Insights</button>
+        </div>
+
+        <div class="reports-container">
+          <p data-bind="i18n: &#39;useful-reports&#39;" class="reports-sub-heading">Useful Reports</p>
+          <div class="sidebar-menu useful-reports">
+              <!-- ko foreach:$data.savedReports --><!-- /ko -->
+
+              <!-- ko if: $data.savedReports().length === 0 -->
+              <p data-bind="i18n: &#39;no-reports-saved&#39;" class="no-reports-saved">No Reports Saved</p>
+              <!-- /ko -->
+          </div>
+
+          <p data-bind="i18n: &#39;all-available-reports&#39;" class="reports-sub-heading">All Available Reports</p>
+          <div class="sidebar-menu available-reports">
+            <div class="slc-btn">
+              <select data-bind="options:$data.allReports, optionsText:&#39;label&#39;, value:$data.selectedReport"><option value="">Actions Report</option><option value="">Alert &amp; AI Analysis Report</option><option value="">Client Activity Graph</option><option value="">Client High Risk Areas</option><option value="">Client Nudges Report</option><option value="">Device Analysis Report</option><option value="">Hub Pause &amp; Suspend Requests Report</option><option value="">Kettle Reboiling Report</option><option value="">Night Time Activity Report</option><option value="">No Kettle Use Report</option><option value="">Residency Report</option><option value="">Scenario Analysis Report</option><option value="">Service Package Status Report</option></select>
+              <div class="btn-wrapper">
+                <button data-bind="i18n: &#39;generate-reports&#39;, click:$data.onGenerateReport" class="btn">Generate report</button>
+                <button data-bind="i18n: &#39;add-to-useful-reports&#39;, click:$data.onAddReport" class="btn">Add to Useful Reports</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="logo">
+        <img data-bind="attr:{src:$data.logo}" class="profile-box" src="./page1_files/logo.png">
+    </div>
+</div>
+</div></div>
+
+
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.localOfficeLandingPageRightCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/* -------------------------------------------------- */
+/* // Common right cog styles */
+/* -------------------------------------------------- */
+/*
+ * TYPOGRAPHY
+ */
+h1,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h1 {
+  color: #693357;
+  font-size: 3.2rem; }
+
+h2,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h2 {
+  color: #693357;
+  font-size: 2.6rem; }
+
+h3,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h3 {
+  color: #693357;
+  font-size: 2.0rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h3 > span:nth-child(1) {
+  font-weight: bold; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-highlight {
+  color: green; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .pill {
+  margin: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .pill-32 {
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  text-align: center; }
+
+/*
+ * LAYOUT (Area the cards reside in.)
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen {
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: scroll; */
+  /* AMONIS: 06/06/2018: Added to improve access */ }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen > .main-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow-y: scroll; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-main {
+  display: grid;
+  grid-template-rows: 1fr 48px;
+  grid-template-rows: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-body {
+  text-align: left;
+  background-color: #f9f9f9; }
+
+/**
+ * Helper / Daughter
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .helper-app > .main-body {
+  grid-template-columns: 1fr; }
+
+@media (min-width: 901px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+    visibility: hidden;
+    display: none !important; } }
+@media (max-width: 900px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen > .main-body {
+    display: grid;
+    grid-template-columns: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+    grid-column: initial; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+    visibility: visible;
+    display: flex; } }
+/*
+ * DASHBOARD FOOTER
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+  display: flex;
+  background-color: #ccc; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons {
+  display: flex;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: #eee;
+  border-top: 1px solid #ccc; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons > * {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons button.is-highlight:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #4f0f3a;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-top: 18px; }
+
+/*
+ * BUTTONS
+ */
+.btn,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc {
+  border-radius: 5px;
+  margin: 2px 0px;
+  /* AMONIS: 22/01/2018: This causes problems with profile icon layout */
+  /* height:40px; */ }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] button.svg {
+  border: 0; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card > div > .btn {
+  height: initial;
+  min-height: 40px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-btn-group {
+  margin-top: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] select {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 40px;
+  margin: 2px 0px;
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc-btn {
+  display: flex; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc-btn .btn {
+  width: unset;
+  height: unset; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .clickable {
+  cursor: pointer; }
+
+/**
+ * GRAPH
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-row {
+  width: 100%;
+  height: 50px;
+  margin: 5px 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-bedroom-temperature {
+  height: 70px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph {
+  font-family: Arial, sans-serif;
+  font-size: 6px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph {
+  border: 1px solid #d8dcdc;
+  background-color: whitesmoke; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-header {
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  background-color: #1590ab; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-key {
+  display: flex;
+  border-top: 1px solid #d8dcdc;
+  border-left: 1px solid #d8dcdc;
+  border-right: 1px solid #d8dcdc;
+  background-color: whitesmoke; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-key > div {
+  display: flex;
+  align-items: center; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-keycolor {
+  width: 16px;
+  height: 16px;
+  margin: 0 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-keytext {
+  font-size: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .movement-color {
+  background-color: #92dbed;
+  border: 1px solid #45c6e7; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .temp-color {
+  background-color: #f6e7e4;
+  border: 1px solid #f88e7c; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .light-color {
+  background-color: #f4dfb2;
+  border: 1px solid #fcd57d; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-movement .line1 {
+  fill: #92dbed;
+  stroke-width: 1px;
+  stroke: #45c6e7; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-light .line1 {
+  fill: #f4dfb2;
+  stroke-width: 1px;
+  stroke: #fcd57d; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-temperature .line1 {
+  fill: #f6e7e4;
+  stroke-width: 1px;
+  stroke: #f88e7c; }
+
+/*
+ * COMPONENT IOTAA CARD
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card {
+  background-color: white;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  flex-grow: 1;
+  min-height: 120px;
+  overflow-y: hidden; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card:before {
+  content: "";
+  color: red;
+  height: 10px;
+  width: 100%;
+  display: block;
+  position: absolute; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.is-expanded {
+  max-height: initial;
+  min-height: auto;
+  overflow-y: visible; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card .iotaa-card-head {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head .btn {
+  height: initial;
+  min-height: 40px;
+  border-radius: 5px;
+  margin: 2px 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head select {
+  border: 0px;
+  margin: 2px;
+  font-size: 2rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head .h3 {
+  text-align: left; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card p {
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card select {
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card csv-table {
+  margin: 5px 0px;
+  display: block; }
+
+/**
+ * Allows a card to be visually made full width in the dashboard
+ * @type {[type]}
+ */
+.iotaa-card.is-full-width,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-divider.is-full-width {
+  grid-column: 1/3; }
+
+/**
+ * Divider used to visually separate cards
+ * @type {[type]}
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-divider {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  grid-column: 1/3;
+  padding: 0px 20px;
+  margin: 0px 20px; }
+
+/* # Full cog width cards */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+  grid-column: span 2; }
+
+@media (max-width: 900px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+    grid-column: initial; } }
+/* # Red border displayed around alert cards */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-alert {
+  border: 2px solid #ff6e6e; }
+
+@media (max-width: 425px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card {
+    padding: 2px;
+    margin: 2px; } }
+/**
+ * Helper dashboard:
+ * Remove strange box appearing on the Schedule card
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.schedule-today .h3 {
+  font-size: 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.schedule-today span {
+  font-size: 2rem;
+  margin: 0 3px; }
+
+/*
+ * COMPONENT IOTAA CARD LIST
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list {
+  display: grid;
+  grid-template-columns: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list > div > * {
+  padding: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list-row {
+  display: flex;
+  display: grid;
+  border-bottom: 1px solid #eee;
+  margin-top: .7rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list-row:last-child {
+  border-bottom: none; }
+
+/*
+ * COMPONENT ROW
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row {
+  align-items: center;
+  margin-bottom: 5px;
+  padding-bottom: 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row .with-extras {
+  font-size: 10px;
+  color: #999; }
+
+/* Remove the default margins that make it to spacey */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row p {
+  margin: 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-alert {
+  color: red; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-ok {
+  color: green; }
+
+/*
+ * COMPONENT ROW-BASIC ( plain text )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-basic {
+  grid-template-columns: 1fr !important; }
+
+/*
+ * COMPONENT ROW-INFO ( text with action button )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info {
+  grid-template-columns: 1fr 32px !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info .with-extras {
+  grid-column: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info button {
+  grid-column: 2;
+  grid-row: 1/3; }
+
+/*
+ * ROW-INFO-ICON ( text with action and icon at the front )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon {
+  grid-template-columns: 32px 1fr 32px !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon img {
+  grid-row: 1/4;
+  grid-column: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon .with-extras {
+  grid-column: 2; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon button {
+  grid-column: 4;
+  grid-row: 1/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon img {
+  max-width: 32px;
+  max-height: 32px;
+  margin: 0px; }
+
+/*
+ * COMPONENT ROW-LIST-VISITCLIENT
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient > img {
+  grid-row: 1/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name p {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #693357;
+  flex-grow: 0;
+  margin-right: 10px;
+  line-height: 22px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name img {
+  max-width: 25px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-desc {
+  grid-column: 2/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-date {
+  grid-row: 3/3;
+  grid-column: 2/5; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient button {
+  grid-column: 4/4;
+  grid-row: 2/2; }
+
+/*
+ * COMPONENT ROW-LIST-ACTIVITY
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity {
+  grid-template-columns: 32px 1fr !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity > p {
+    text-transform: capitalize; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info {
+    display: flex; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-one {
+      flex-grow: 1;
+      font-size: 12px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-two {
+      flex-grow: 0; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-two p {
+        background: #f3f3f3;
+        border-radius: 3px;
+        padding: 0px 8px;
+        font-size: 13px;
+        text-align: right;
+        border: 1px solid #e4e4e4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .highlight {
+    font-weight: bold;
+    width: 83px;
+    border-radius: 3px;
+    margin-left: 6px !important;
+    border: 1px solid #d6c6c6;
+    padding: 2px 10px !important;
+    margin-top: 3px;
+    margin-bottom: 3px; }
+
+/*
+ * COMPONENT ROW-LIST-REMOVEITEM
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem {
+  grid-template-columns: 32px 1fr 32px !important;
+  padding-bottom: 15px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem button:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem p:nth-child(2) {
+    grid-column: 2;
+    margin-left: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem img:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    margin-left: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem p:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    margin-left: 45px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem button:nth-child(5) {
+    grid-column: 3;
+    grid-row: 1; }
+
+/*
+ * COMPONENT ROW-TABULAR-BASIC
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-basic {
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content)) !important; }
+
+/*
+ * COMPONENT ROW-TABULAR-MYCLIENT
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients {
+  align-items: start;
+  grid-template-columns: 1fr 1fr 10fr !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients *:nth-child(3) {
+  grid-column: 1/3;
+  font-size: 12px;
+  font-weight: bold; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients *:nth-child(4) {
+  grid-row: 1/3;
+  grid-column: 3; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients > .with-extras {
+  grid-column: 1/4; }
+
+/*
+ * COMPONENT ROW-TABULAR-TWOCOLUMN
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col p:nth-child(1) {
+  font-weight: bold;
+  margin-right: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col p:nth-child(2) {
+  align-self: flex-end; }
+
+/*# sourceMappingURL=dashboard.css.map */
+</style><div id="5bc0ae92d58eff59402db8a9" class="cog-body"><!-- // Main wrapper -->
+<div name="home" class="screen iotaa-main displayed">
+
+  <!-- // Main body -->
+  <div class="main-body">
+
+    <!--
+        ALERTS
+    -->
+    <div class="iotaa-card is-alert" data-bind="css:{&#39;is-alert&#39;:$data.alerts().length&gt;0, &#39;is-expanded&#39;:$data.isExpanded.alerts()===false}">
+
+      <div class="iotaa-card-list">
+        <div class="iotaa-card-head">
+            <button class="btn h3" data-bind="i18n:&#39;alerts-title&#39;, click:$data.openNotifications">Alerts</button> 
+            <p data-bind="text:$data.alerts().length" class="pill pill-32">1</p>
+            <button class="btn svg svg-32 svg-down" data-bind="click:$data.expand(&#39;alerts&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.alerts()===false, &#39;svg-down&#39;:$data.isExpanded.alerts()===true}"></button>
+        </div>
+
+        <!-- ko if:$data.alerts().length===0 --><!-- /ko -->
+
+        <!-- Stencil -->
+        <!-- ko foreach: $data.alerts -->
+
+        <!-- /ko -->
+      </div>
+
+    </div><!-- END ALERTS -->
+
+
+    <!-- NOTIFICATIONS -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.notifications()===false}" class="iotaa-card demo-next">
+
+      <div class="iotaa-card-list">
+        <div class="iotaa-card-head">
+            <button data-bind="i18n: &#39;notifications-title&#39;, click:$data.openNotifications" class="btn h3">Notifications</button> 
+            <button data-bind="click:$data.expand(&#39;notifications&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.notifications()===false, &#39;svg-down&#39;:$data.isExpanded.notifications()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+
+        <!-- ko if:$data.notifications().length===0 -->
+            <p data-bind="i18n: &#39;notifications-no-items&#39;">No notifications</p>
+        <!-- /ko -->
+
+        <!-- Stencil -->
+        <!-- ko foreach: $data.notifications --><!-- /ko -->
+      </div>
+
+    </div><!-- END NOTIFCATIONS -->
+
+    <!-- ACTIONALBE INSIGHTS -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.insights()===false}" class="iotaa-card is-wider">
+<div class="iotaa-card-list">
+      <div class="iotaa-card-head">
+          <p data-bind="i18n: &#39;actionable-insights-title&#39;" class="h3">Actionable Insights</p> 
+          <button data-bind="click:$data.expand(&#39;insights&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.insights()===false, &#39;svg-down&#39;:$data.isExpanded.insights()===true}" class="btn svg svg-32 svg-down"></button>
+      </div>
+
+      <!-- ko if:$data.actions().length===0 -->
+          <p data-bind="i18n: &#39;actionable-insights-no-items&#39;">No actionable insights</p>
+      <!-- /ko -->
+
+      <!-- Stencil -->
+      <!-- ko foreach: $data.actions --><!-- /ko -->
+</div>
+    </div><!-- END ACTIONALBE INSIGHTS -->
+
+    <!-- // JCARNEY 26/09/18: Service Status table -->
+    <!-- <div data-bind="css:{'is-expanded':$data.isExpanded.status()===false}" class="iotaa-card is-wider">
+
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: 'service-status'" class="h3"></p> 
+            <button data-bind="click:$data.expand('status'),css:{'svg-up':$data.isExpanded.status()===false, 'svg-down':$data.isExpanded.status()===true}" class="btn svg svg-32"></button>
+        </div>
+
+        <csv-table params="data:$data.serviceStatus"></csv-table>
+
+    </div> -->
+
+    <!-- // JCARNEY 27/09/18: Hub status ( implanted into Service status card ) -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.status()===false}" class="iotaa-card is-wider">
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: &#39;service-status&#39;" class="h3">Service Status</p> 
+            <button data-bind="click:$data.expand(&#39;status&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.status()===false, &#39;svg-down&#39;:$data.isExpanded.status()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+        <csv-table params="data:$data.hubStatus"><div data-bind="foreach:csv" class="csv-table"><!-- ko if:$index()===0 -->	<div data-bind="foreach:$data" class="csv-tr">	   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">No data available</div>	</div><!-- /ko --><!-- ko if:$index()>0 --><!-- /ko --></div></csv-table>
+    </div>
+
+    <!-- // First morning activity ( Kettle Reboil ) -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.clients()===false}" class="iotaa-card">
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: &#39;client-events&#39;" class="h3">First Morning Activity</p> 
+            <!-- <button data-bind="i18n: 'client-events', click:$data.openConvCentre" class="btn h3"></button>  -->
+            <button data-bind="click:$data.expand(&#39;clients&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.clients()===false, &#39;svg-down&#39;:$data.isExpanded.clients()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+        <!-- <p data-bind="text:ko.toJSON( $data.clientEvents )"></p> -->
+        <csv-table params="data:$data.clientEvents"><div data-bind="foreach:csv" class="csv-table"><!-- ko if:$index()===0 -->	<div data-bind="foreach:$data" class="csv-tr">	   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Forename</div>		   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Surname</div>		   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Time of Activity</div>	</div><!-- /ko --><!-- ko if:$index()>0 --><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">Beth</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">Booker</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td error">No hub installed</div>   </div><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">John</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">Jenkins</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td warning">Hub offline</div>   </div><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">PAT1</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">user</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td warning">Hub offline</div>   </div><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">PAT2</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">user</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td warning">Hub offline</div>   </div><!-- /ko --></div></csv-table>
+    </div>
+
+    <!-- // TOOLS -->
+    <div class="iotaa-card">
+
+      <div class="iotaa-card-head">
+          <p data-bind="i18n: &#39;tools-title&#39;" class="h3">Tools</p> 
+          <!-- <button data-bind="click:$data.expand('tools'),css:{'svg-up':$data.isExpanded.tools()===false, 'svg-down':$data.isExpanded.tools()===true}" class="btn svg svg-32"></button> -->
+      </div>
+
+      <div class="iotaa-card-list iotaa-btn-group">
+          <button data-bind="i18n: &#39;tools-admin-tasks&#39;, click:$data.onAdminTask" class="btn is-primary">Admin tasks</button>
+          <!-- AMONIS: 01/02/2018: Removed as Non functional at time of pilot -->
+          <!-- <button data-bind="i18n: 'tools-client-search'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-action-caregiver'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-message-caregiver'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-resource-centre'" class="btn is-primary"></button> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+			<!-- /ko -->
+
+		</div>
+	<!-- /ko -->
+
+	<!-- SnackBar -->
+	<script type="text/html" id="snackbar-template">
+		<p data-bind="html:$data.msg"></p>
+	</script>
+	<div data-bind="snackbar:$data.snackBar" class="snackbar concealed">
+		<p data-bind="html:$data.msg"></p>
+	</div>
+</div>
+</body></html>

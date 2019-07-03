@@ -1,0 +1,124 @@
+/*
+AMONIS: 29/05/2018: Attempt to detect if web app is pinned.
+This class should be accessible in the cog, but due to rule rewriting
+.os-web is not accessible unless in sites.
+Should this be accessible via cog?
+*/
+/* .os-web h1 { color:red !important; } */
+/* .os-pwa h1 { color:blue !important; } */
+
+/* OS background ( pre load ) */
+.os-loading {
+	background-color: #333;
+	background-size: 400% 400%;
+}
+/* OS background ( post load )*/
+.os-background {
+	background-size:100% 100%;
+	background-attachment: fixed;
+	background: #e8e8e8;
+}
+
+.space.tiled > .cog {
+    box-shadow: 2px 1px 1px 1px rgba(0,0,0,0.25);
+    border-radius: 10px;
+}
+
+/*
+ 	HEADER
+ */
+.header {
+	font-size: 0px;		/* Fix for display-inline spacing margin-right:-4px; */
+	height:55px;
+	width:100%;
+	background-color:#4f0f3a;
+	position:fixed;
+	top:0;
+}
+.header.visiting {
+	background: #006dcc !important;
+}
+.header button span {
+	color: white;
+}
+.header button {
+	font-size: 11pt;
+	font-weight: bold;
+	color: white;
+	height: 100%;  /* fit the height to fill the header */
+	/* width: 14.2857%; */
+	min-width: 32px;
+	margin: 0;
+	padding: 0;
+}
+.header img {
+	margin: 5px;
+	height: 40px;
+	border-radius: 25%;
+}
+.header .lbl-ball {
+	position: absolute;
+ 	margin-left: -14px;
+  	margin-top: 6px;
+  	border-width: 0px;
+}
+.header .menu-dropdown {
+  background-color: #4f0f3a;
+}
+
+/*
+ * Forms
+ */
+ /* .form-screen .lbl { text-align: center; } */
+
+ .background { background-color:rgba(255,255,255,0.5); }
+
+ .spotlight { background-color:red; }
+
+ .speech { margin: 0 10px; }
+
+ /*
+  * Home Space Layout
+  */
+.cog > .cog-body { display: flex; flex-grow: 1; }
+
+.iotaa-panels { display:flex; flex-direction:row; flex-grow:1; background-color: white;}
+.iotaa-panels > div[name*='Left'] {
+	display:flex;
+	flex-direction:column;
+	flex-grow:1;
+	max-width:320px;
+	min-width:160px;
+    order: 1;
+}
+.iotaa-panels > div[name*='Right'] {
+	display:flex;
+	background-color: #f9f9f9;
+	flex-direction:column;
+	flex-grow:1;
+    order: 2;
+}
+
+/*
+	AMONIS: 25/04/2018: IMPORTANT
+	Hide the Left hand panel for Helper Dashboard.
+	This is now the Family Dashboard and will become an SPA
+*/
+.iotaa-panels > div[name='Iotaa.helperLandingPageLeftCog'] {
+    display: none;
+}
+
+/* Media queries */
+@media (max-width: 767px) {
+	.iotaa-panels > div:nth-child(1) {
+		/* display: none; */
+	}
+
+	.iotaa-panels .mobile-menu {
+		float: right;
+		margin-right: 30px;
+		color: grey;
+		padding: 0px 10px;
+		display: block !important;
+	}
+}

@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://at.cnect.to/iotaa -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- AOS-DEMO-ASTERIX REQUIRED -->
+  <script src="../../common.js"></script>
+<title>IoTAA - The Business of IoT</title>
+
+
+
+<!-- PumpHouse v1.44.0-SNAPSHOT - vcs: tag=-, branch=master, parent=081fa83de6ec8f39638818cfff0ee9ed3ef6dc48, commit=- -->
+
+<!--link rel="stylesheet" type="text/css" href="iotaa/sdk/ext/resources/css/ext-all.css" /-->
+<!--link rel="stylesheet" type="text/css" href="iotaa/resources/css/pumpco.css" /-->
+<!--link rel="shortcut icon" href="resources/images/favicon.ico" /-->
+    <!--script type="text/javascript" src="aos/sdk/the.js"></script-->
+    <!-- ExtJS library: base/adapter -->
+<style type="text/css" charset="UTF-8">#PanelLoading { background-color:#ccc; box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.74); text-align:center; display:none; }
+#PanelLoading > p { margin:0px; padding:5px 5px; font-size:12px; font-family: monospace; }
+#PanelLoading > h1 { display:none; background-color: #ccc; font-size:44px; font-weight:bold; margin:0px; padding:10px 0px; text-transform:uppercase; }
+#loaderbar { height: 2px; background-color: #0088cc; height: 2px; position: fixed; top: 0; }
+#logo { box-shadow:0px 0px 5px rgba(0,0,0,0.5); border-radius:25px; position: absolute; left: -48px; top: -48px; margin-left: 50%; margin-top: 50%; width: 96px; height: 96px; background-image:url(aos/resources/iotaa/favicon/favicon-96x96.png); background-repeat: no-repeat; background-position: center center; }</style><meta name="HandheldFriendly" content="true">
+
+<!-- @JC 7/11/18: retained 'initial-scale' tag below as dosnt cause an issue for logic demo -->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
+
+<link rel="icon" type="image/x-icon" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon.ico">
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-180x180.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" sizes="750x1334" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_750.png"><link rel="apple-touch-icon" sizes="640x1136" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_640.png"><link rel="icon" type="image/png" sizes="192x192" href="https://at.cnect.to/aos/resources//iotaa/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://at.cnect.to/aos/resources//iotaa/favicon/ms-icon-144x144.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="theme-color" content="#ffffff">
+<!-- PumpCo config -->
+<script type="text/javascript">
+       siteId = "002753674d6a19be00000001";
+       var params = {"siteId":"002753674d6a19be00000001","siteName":"Iotaa.cnect_to_iotaa","siteTitle":"IoTAA - The Business of IoT","loginLogo":"/PumpHouse/uploads/iotaa/images/Iotaa-logo.png","sitePath":"iotaa/","pumpfacePath":"aos/","favicon":"resources/images/favicon.ico","bootstrapVersion":"0.02.00","contactDetails":"Your Support Contact"};
+</script>
+
+<!-- (Optional) manifest -->
+
+
+<link rel="stylesheet" type="text/css" href="./page1_files/phil-1.0.0.css"><link rel="stylesheet" type="text/css" href="./page1_files/animate.css"><link rel="stylesheet" type="text/css" href="./page1_files/core.css"><link rel="stylesheet" type="text/css" href="./page1_files/site.css"></head>
+<body class="os-background webapp os-large os-landscape" data-bind="body:$data" style="background-attachment:fixed;"><script type="text/tmpl" id="card-contactlist"><div data-name="select" data-bind="click:oFlipSelected, css:{ 'concealed':oVisible()===false, 'selected':oSelected()===true }" class="card list width10 text-clip align-left"><span class="img-wrapper"><img data-name="select" data-bind="attr:{'src':$data.photo}" class="img profile"/></span><p data-name="select" data-bind="html:$data.label" class="is-info height2 align-top align-left inline-block widthauto text-clip" style="margin-left:4px;">...</p></div></script>
+<!-- Base Card - used as a fallback for all card rendering -->
+<script type="text/html" id="card-default">
+	<div class="span span1">
+		<p class="p width8 height2 text-clip">Base Card</p>
+	</div>
+</script>
+
+<!-- HEADER -->
+<!-- HEADER -->
+
+<!-- ko if:$root.header().oVisible -->
+	<!-- ko with:$root.header -->
+	<div data-bind="header:$data, css:$data.status, css:{&#39;concealed&#39;:$root.places().length&lt;1}" class="header" id="header" style="">
+
+			<!--
+				LEFT Panel
+			-->
+			<!-- <div class="span width3-nopad align-left" style="min-width:80px;"> -->
+			<!-- <div class="span left align-left" style="min-width:80px;"> -->
+			<div class="header-left">
+				<!-- Back Button -->
+				<div class="header-left-back">
+				<!-- ko with:$root.header -->
+					<!-- ko with:$data.breadcrumb -->
+						<!-- ko with:$data[$data.length-2] -->
+							<button name="back" class="btn btn-background btn-breadcrumb">
+								<span class="ico-ios7 ico-back"></span>
+							</button>
+						<!-- /ko -->
+						<!-- ko if:$data.length<=1 --><!-- /ko-->
+					<!-- /ko -->
+				<!-- /ko -->
+				</div>
+
+				<!-- User Picture -->
+                <a href="/"><div class="header-left-you">
+                        <button data-bind="style:{&#39;backgroundColor&#39;: true ? &#39;&#39; + $data.initialsColour() : &#39;#ffffff&#39; }" id="header-user" name="yourpicture" class="btn btn-background btn-yourpicture" tabindex="0" style="line-height:48px;">
+                            <img data-bind="attr:{src:$data.icon}, css:{&#39;concealed&#39;:$data.initials()!==&#39;&#39;}" class="" style="width:40px; height:42px; margin:0;vertical-align:top;" src="./page1_files/admin.jpg">
+                            <p data-bind="html:$data.initials, css:{&#39;concealed&#39;:$data.initials()==&#39;&#39;}" class="concealed font12"></p>
+                        </button>
+                    </div></a>
+
+				<!-- Place Icon -->
+				<div class="header-left-place">
+					<!-- ko if:$data.placeIcon --><!-- /ko -->
+				</div>
+			</div>
+
+			<!--
+				CENTRE Panel
+			-->
+			<!-- <div class="span width5-nopad"> -->
+			<div class="header-centre">
+				<div class="header-console">
+
+					<div data-bind="css:{&#39;expanded&#39;:$data.consoleExpanded()}" class="header-console-inner">
+						<div>
+							<!-- Place Message -->
+							<p data-bind="html:$data.placeMessage" class="header-console-placemessage font10"><strong>Home</strong></p>
+
+							<p class="font8">recently visited</p>
+							<div data-bind="foreach:$data.breadcrumbPlaces.array" class="flex-row flex-wrap">
+								<button data-bind="click:$parent.breadcrumbPlacesFn,text:$data.label" class="btn btn-link font8">HISC Office Admin</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="header-shortcuts desktop">
+
+					<!-- Contacts -->
+					<div class="header-shortcuts-contacts">
+						<button name="contacts" class="btn btn-background btn-contacts">
+							<span class="ico-ios7 ico-contacts"></span>
+						</button>
+					</div>
+
+					<!-- Notifications -->
+					<div class="header-shortcuts-notifications">
+						<button name="notifications" class="btn btn-background btn-notifications">
+							<label data-bind="css:{&#39;concealed&#39;:$data.notifications.count()&lt;=0}, html:$data.notifications.count()" class="lbl lbl-ball is-small is-error concealed">0</label>
+							<span class="ico-ios7 ico-flags"></span>
+						</button>
+					</div>
+
+					<!-- Settings -->
+					<div class="header-shortcuts-settings">
+						<button name="settings" class="btn btn-background btn-settings">
+							<span class="ico-ios7 ico-settings"></span>
+						</button>
+					</div>
+
+					<!-- Help -->
+					<div class="header-shortcuts-help">
+						<button name="help" class="btn btn-background btn-help">
+							<span class="ico-ios7 ico-info"></span>
+						</button>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!--
+				RIGHT Panel
+			-->
+			<!-- <div class="span width2-nopad align-right" style=""> -->
+			<div class="header-right">
+				<!-- Flags -->
+				<div class="header-small-flags phone">
+					<div data-bind="css:{&#39;new-notifications&#39;:$data.notifications.count()&gt;0}" class="ico-ios16 ico-flags"></div>
+					<div class=""><!-- Flags --></div>
+				</div>
+
+				<!-- More actions menu -->
+				<div data-bind="buttonmenu:$data.actions" class="header-more">
+					<button class="btn btn-background demo-reset" value="&lt;span class=&quot;ico-ios7 ico-more&quot;&gt;&lt;/span&gt;"><span class="ico-ios7 ico-more"></span></button>
+					<ul class="menu menu-dropdown" tabindex="99">
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="your place">your place</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="contacts">contacts</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="notifications">notifications</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="settings">settings</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="signout">signout</button></li>
+
+						<li><button data-bind="button:$data" type="button" class="btn btn-link" value="help">help</button></li>
+					</ul>
+				</div>
+			</div>
+
+	</div>
+	<!-- /ko -->
+<!-- /ko -->
+
+
+<!-- MASK -->
+<div id="mask" class="concealed" style="position:absolute;z-order:100;background-color:rgba(0,0,0,0.5);height:100%;width:100%;"></div>
+
+<!-- TOAST -->
+<!-- Template for Toast-Message -->
+<script type="text/html" id="toast-message">
+	<div data-bind="css:{'removing':!$data.visible()}" class="toast span2" style="padding:2px 0px;">
+		<p data-bind="html:$data.msg"></p>
+		<div class="toast-btns">
+			<!-- ko if:$data.auto===false -->
+				<!-- ko if:$data.btnCancel -->
+					<button data-bind="click:$data.btnCancel" class="btn is-error">cancel</button>
+				<!-- /ko -->
+				<button data-bind="click:$data.btnOk" class="btn is-success">ok</button>
+			<!-- /ko -->
+		</div>
+	</div>
+</script>
+<div id="toast" data-bind="toast:$data.toast"></div>
+
+<!-- LOADERBAR -->
+<div data-bind="loader:$data.loader" class="loaderbar concealed" style="width:50%"></div>
+
+<!-- MAIN site i.e. main web flow content -->
+<div class="centralise">
+	<!-- PLACES -->
+	<!-- ko foreach:$data.places -->
+		<div data-bind="place:$data" id="5bd1b5aad58eff6c46069814" class="place is-owner">
+
+			<!-- AMONIS: 21/08/2015: Removed old ( incorrect ) header references, as the purpose has moved to the header console -->
+
+			<!-- SPACES -->
+			<!-- ko foreach:$root.getSpaces( $data.id ) -->
+				<div data-bind="space:$data" id="5bd1b5aad58eff6c46069894" name="Iotaa.localOfficeLandingPageSpace" class="space iotaa-panels concealed">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.localOfficeLandingPageLeftCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/* common.css */
+
+/***********/
+/* Global  */
+/***********/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn {
+  height: 48px;
+  margin: 4px 0px;
+  border-radius: 5px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn:hover {
+  cursor: pointer;
+}
+
+/***********/
+/* Layout  */
+/***********/
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile {
+  flex-grow:1;
+}
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .screen {
+  display: flex;
+  flex-direction: column;
+}
+
+/***********/
+/* Sidebar */
+/***********/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-sidebar {
+    background-color: #693357;
+    display: grid;
+    grid-template-rows: 1fr 108px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .sidebar-menu {
+    padding: 20px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info {
+    background-color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info > p:first-child {
+  font-size:16px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .profile-info > p:nth-child(n+2) {
+  font-size:10px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .sidebar-menu .btn.is-error {
+  margin-top: 30px;
+}
+
+/**
+ * Reports
+ */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-sub-heading {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-container .btn {
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 2px;
+}
+
+/* Useful reports */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .reports-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .useful-reports .reports-row .btn:nth-child(1) {
+  margin-right: 8px;
+  /*width: 225px;*/
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .no-reports-saved {
+  color: white;
+  font-size: 14px;
+}
+
+/* All available reports */
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .btn-wrapper button {
+  height: 38px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn {
+  flex-direction: column;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn select {
+  font-size: 14px;
+  height: 35px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .slc-btn > select {
+  max-width: 100%;
+  padding-left: 10px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper .btn {
+  height: 38px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .available-reports .btn-wrapper .btn:nth-child(1) {
+  margin-right: 3px;
+  margin-left: 0;
+}
+
+/*************/
+/* Dashboard */
+/*************/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+/********************/
+/* Dashboard Footer */
+/********************/
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer {
+    display: flex;
+    background-color: #ccc;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons > * {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: transparent;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .main-footer-buttons button.is-highlight:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #4f0f3a;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-top: 18px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 48px;
+    margin: 2px 0px;
+    flex-grow:1;
+    margin: 4px 0px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn {
+  display: flex;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn > select {
+  max-width: 150px;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .slc-btn .btn {
+  width:unset;
+  margin-left: 5px;
+  padding: 5px;
+  flex-grow: 1;
+}
+
+div[name="Iotaa.localOfficeLandingPageLeftCog"] .clickable {
+    cursor:pointer;
+}
+</style><div id="5bd1b5aad58eff6c46069892" class="cog-body"><!-- // Sidebar -->
+<div name="home" class="iotaa-sidebar screen displayed">
+    <div class="profile">
+        <div class="profile-info">
+            <p data-bind="i18n: &#39;franchise-office&#39;">Franchise Office</p>
+            <!-- ko with:$data.vcard -->
+            <p data-bind="text:$data.fn" class="profile-name">HISC Office Admin</p>
+            <!-- /ko -->
+        </div>
+        <div class="sidebar-menu" data-bind="foreach:$data.actions">
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Alerts</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Notifications</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Actionable Insights</button>
+        </div>
+
+        <div class="reports-container">
+          <p data-bind="i18n: &#39;useful-reports&#39;" class="reports-sub-heading">Useful Reports</p>
+          <div class="sidebar-menu useful-reports">
+              <!-- ko foreach:$data.savedReports --><!-- /ko -->
+
+              <!-- ko if: $data.savedReports().length === 0 -->
+              <p data-bind="i18n: &#39;no-reports-saved&#39;" class="no-reports-saved">No Reports Saved</p>
+              <!-- /ko -->
+          </div>
+
+          <p data-bind="i18n: &#39;all-available-reports&#39;" class="reports-sub-heading">All Available Reports</p>
+          <div class="sidebar-menu available-reports">
+            <div class="slc-btn">
+              <select data-bind="options:$data.allReports, optionsText:&#39;label&#39;, value:$data.selectedReport"><option value="">Actions Report</option><option value="">Alert &amp; AI Analysis Report</option><option value="">Client Activity Graph</option><option value="">Client High Risk Areas</option><option value="">Client Nudges Report</option><option value="">Device Analysis Report</option><option value="">Hub Pause &amp; Suspend Requests Report</option><option value="">Kettle Reboiling Report</option><option value="">Night Time Activity Report</option><option value="">No Kettle Use Report</option><option value="">Residency Report</option><option value="">Scenario Analysis Report</option><option value="">Service Package Status Report</option></select>
+              <div class="btn-wrapper">
+                <button data-bind="i18n: &#39;generate-reports&#39;, click:$data.onGenerateReport" class="btn">Generate report</button>
+                <button data-bind="i18n: &#39;add-to-useful-reports&#39;, click:$data.onAddReport" class="btn">Add to Useful Reports</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="logo">
+        <img data-bind="attr:{src:$data.logo}" class="profile-box" src="./page1_files/logo.png">
+    </div>
+</div>
+</div></div>
+
+
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.localOfficeLandingPageRightCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/* -------------------------------------------------- */
+/* // Common right cog styles */
+/* -------------------------------------------------- */
+/*
+ * TYPOGRAPHY
+ */
+h1,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h1 {
+  color: #693357;
+  font-size: 3.2rem; }
+
+h2,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h2 {
+  color: #693357;
+  font-size: 2.6rem; }
+
+h3,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h3 {
+  color: #693357;
+  font-size: 2.0rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .h3 > span:nth-child(1) {
+  font-weight: bold; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-highlight {
+  color: green; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .pill {
+  margin: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .pill-32 {
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  text-align: center; }
+
+/*
+ * LAYOUT (Area the cards reside in.)
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen {
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: scroll; */
+  /* AMONIS: 06/06/2018: Added to improve access */ }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen > .main-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow-y: scroll; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-main {
+  display: grid;
+  grid-template-rows: 1fr 48px;
+  grid-template-rows: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-body {
+  text-align: left;
+  background-color: #f9f9f9; }
+
+/**
+ * Helper / Daughter
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .helper-app > .main-body {
+  grid-template-columns: 1fr; }
+
+@media (min-width: 901px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+    visibility: hidden;
+    display: none !important; } }
+@media (max-width: 900px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .screen > .main-body {
+    display: grid;
+    grid-template-columns: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+    grid-column: initial; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+    visibility: visible;
+    display: flex; } }
+/*
+ * DASHBOARD FOOTER
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer {
+  display: flex;
+  background-color: #ccc; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons {
+  display: flex;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: #eee;
+  border-top: 1px solid #ccc; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons > * {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .main-footer-buttons button.is-highlight:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #4f0f3a;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-top: 18px; }
+
+/*
+ * BUTTONS
+ */
+.btn,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc {
+  border-radius: 5px;
+  margin: 2px 0px;
+  /* AMONIS: 22/01/2018: This causes problems with profile icon layout */
+  /* height:40px; */ }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] button.svg {
+  border: 0; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card > div > .btn {
+  height: initial;
+  min-height: 40px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-btn-group {
+  margin-top: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] select {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 40px;
+  margin: 2px 0px;
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc-btn {
+  display: flex; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .slc-btn .btn {
+  width: unset;
+  height: unset; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .clickable {
+  cursor: pointer; }
+
+/**
+ * GRAPH
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-row {
+  width: 100%;
+  height: 50px;
+  margin: 5px 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-bedroom-temperature {
+  height: 70px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph {
+  font-family: Arial, sans-serif;
+  font-size: 6px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph {
+  border: 1px solid #d8dcdc;
+  background-color: whitesmoke; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-header {
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  background-color: #1590ab; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-key {
+  display: flex;
+  border-top: 1px solid #d8dcdc;
+  border-left: 1px solid #d8dcdc;
+  border-right: 1px solid #d8dcdc;
+  background-color: whitesmoke; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-key > div {
+  display: flex;
+  align-items: center; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-keycolor {
+  width: 16px;
+  height: 16px;
+  margin: 0 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-graph-keytext {
+  font-size: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .movement-color {
+  background-color: #92dbed;
+  border: 1px solid #45c6e7; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .temp-color {
+  background-color: #f6e7e4;
+  border: 1px solid #f88e7c; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .light-color {
+  background-color: #f4dfb2;
+  border: 1px solid #fcd57d; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-movement .line1 {
+  fill: #92dbed;
+  stroke-width: 1px;
+  stroke: #45c6e7; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-light .line1 {
+  fill: #f4dfb2;
+  stroke-width: 1px;
+  stroke: #fcd57d; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .graph-temperature .line1 {
+  fill: #f6e7e4;
+  stroke-width: 1px;
+  stroke: #f88e7c; }
+
+/*
+ * COMPONENT IOTAA CARD
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card {
+  background-color: white;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  flex-grow: 1;
+  min-height: 120px;
+  overflow-y: hidden; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card:before {
+  content: "";
+  color: red;
+  height: 10px;
+  width: 100%;
+  display: block;
+  position: absolute; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.is-expanded {
+  max-height: initial;
+  min-height: auto;
+  overflow-y: visible; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card .iotaa-card-head {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head .btn {
+  height: initial;
+  min-height: 40px;
+  border-radius: 5px;
+  margin: 2px 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head select {
+  border: 0px;
+  margin: 2px;
+  font-size: 2rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-head .h3 {
+  text-align: left; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card p {
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card select {
+  flex-grow: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card csv-table {
+  margin: 5px 0px;
+  display: block; }
+
+/**
+ * Allows a card to be visually made full width in the dashboard
+ * @type {[type]}
+ */
+.iotaa-card.is-full-width,
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-divider.is-full-width {
+  grid-column: 1/3; }
+
+/**
+ * Divider used to visually separate cards
+ * @type {[type]}
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-divider {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  grid-column: 1/3;
+  padding: 0px 20px;
+  margin: 0px 20px; }
+
+/* # Full cog width cards */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+  grid-column: span 2; }
+
+@media (max-width: 900px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-wider {
+    grid-column: initial; } }
+/* # Red border displayed around alert cards */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .is-alert {
+  border: 2px solid #ff6e6e; }
+
+@media (max-width: 425px) {
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card {
+    padding: 2px;
+    margin: 2px; } }
+/**
+ * Helper dashboard:
+ * Remove strange box appearing on the Schedule card
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.schedule-today .h3 {
+  font-size: 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card.schedule-today span {
+  font-size: 2rem;
+  margin: 0 3px; }
+
+/*
+ * COMPONENT IOTAA CARD LIST
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list {
+  display: grid;
+  grid-template-columns: 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list > div > * {
+  padding: 0px 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list-row {
+  display: flex;
+  display: grid;
+  border-bottom: 1px solid #eee;
+  margin-top: .7rem; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-list-row:last-child {
+  border-bottom: none; }
+
+/*
+ * COMPONENT ROW
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row {
+  align-items: center;
+  margin-bottom: 5px;
+  padding-bottom: 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row .with-extras {
+  font-size: 10px;
+  color: #999; }
+
+/* Remove the default margins that make it to spacey */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row p {
+  margin: 0px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-alert {
+  color: red; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-ok {
+  color: green; }
+
+/*
+ * COMPONENT ROW-BASIC ( plain text )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-basic {
+  grid-template-columns: 1fr !important; }
+
+/*
+ * COMPONENT ROW-INFO ( text with action button )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info {
+  grid-template-columns: 1fr 32px !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info .with-extras {
+  grid-column: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info button {
+  grid-column: 2;
+  grid-row: 1/3; }
+
+/*
+ * ROW-INFO-ICON ( text with action and icon at the front )
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon {
+  grid-template-columns: 32px 1fr 32px !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon img {
+  grid-row: 1/4;
+  grid-column: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon .with-extras {
+  grid-column: 2; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon button {
+  grid-column: 4;
+  grid-row: 1/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-info-icon img {
+  max-width: 32px;
+  max-height: 32px;
+  margin: 0px; }
+
+/*
+ * COMPONENT ROW-LIST-VISITCLIENT
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient > img {
+  grid-row: 1/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name p {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #693357;
+  flex-grow: 0;
+  margin-right: 10px;
+  line-height: 22px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-name img {
+  max-width: 25px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-desc {
+  grid-column: 2/4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient-date {
+  grid-row: 3/3;
+  grid-column: 2/5; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-visitclient button {
+  grid-column: 4/4;
+  grid-row: 2/2; }
+
+/*
+ * COMPONENT ROW-LIST-ACTIVITY
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity {
+  grid-template-columns: 32px 1fr !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity > p {
+    text-transform: capitalize; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info {
+    display: flex; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-one {
+      flex-grow: 1;
+      font-size: 12px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-two {
+      flex-grow: 0; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .activity-supplementary-info .activity-col-two p {
+        background: #f3f3f3;
+        border-radius: 3px;
+        padding: 0px 8px;
+        font-size: 13px;
+        text-align: right;
+        border: 1px solid #e4e4e4; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-activity .highlight {
+    font-weight: bold;
+    width: 83px;
+    border-radius: 3px;
+    margin-left: 6px !important;
+    border: 1px solid #d6c6c6;
+    padding: 2px 10px !important;
+    margin-top: 3px;
+    margin-bottom: 3px; }
+
+/*
+ * COMPONENT ROW-LIST-REMOVEITEM
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem {
+  grid-template-columns: 32px 1fr 32px !important;
+  padding-bottom: 15px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem button:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem p:nth-child(2) {
+    grid-column: 2;
+    margin-left: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem img:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    margin-left: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem p:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    margin-left: 45px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-list-removeitem button:nth-child(5) {
+    grid-column: 3;
+    grid-row: 1; }
+
+/*
+ * COMPONENT ROW-TABULAR-BASIC
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-basic {
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content)) !important; }
+
+/*
+ * COMPONENT ROW-TABULAR-MYCLIENT
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients {
+  align-items: start;
+  grid-template-columns: 1fr 1fr 10fr !important; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients *:nth-child(3) {
+  grid-column: 1/3;
+  font-size: 12px;
+  font-weight: bold; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients *:nth-child(4) {
+  grid-row: 1/3;
+  grid-column: 3; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .comp-row-tabular-myclients > .with-extras {
+  grid-column: 1/4; }
+
+/*
+ * COMPONENT ROW-TABULAR-TWOCOLUMN
+ */
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col p:nth-child(1) {
+  font-weight: bold;
+  margin-right: 10px; }
+
+div[name="Iotaa.localOfficeLandingPageRightCog"] .iotaa-card-tabular-row-two-col p:nth-child(2) {
+  align-self: flex-end; }
+
+/*# sourceMappingURL=dashboard.css.map */
+</style><div id="5bd1b5aad58eff6c46069893" class="cog-body"><!-- // Main wrapper -->
+<div name="home" class="screen iotaa-main displayed">
+
+  <!-- // Main body -->
+  <div class="main-body">
+
+    <!--
+        ALERTS
+    -->
+    <div class="iotaa-card" data-bind="css:{&#39;is-alert&#39;:$data.alerts().length&gt;0, &#39;is-expanded&#39;:$data.isExpanded.alerts()===false}">
+
+      <div class="iotaa-card-list">
+        <div class="iotaa-card-head">
+            <button class="btn h3" data-bind="i18n:&#39;alerts-title&#39;, click:$data.openNotifications">Alerts</button> 
+            <p data-bind="text:$data.alerts().length" class="pill pill-32">0</p>
+            <button class="btn svg svg-32 svg-down" data-bind="click:$data.expand(&#39;alerts&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.alerts()===false, &#39;svg-down&#39;:$data.isExpanded.alerts()===true}"></button>
+        </div>
+
+        <!-- ko if:$data.alerts().length===0 -->
+            <p data-bind="i18n:&#39;alerts-no-items&#39;">No high priority alerts</p>
+        <!-- /ko -->
+
+        <!-- Stencil -->
+        <!-- ko foreach: $data.alerts --><!-- /ko -->
+      </div>
+
+    </div><!-- END ALERTS -->
+
+
+    <!-- NOTIFICATIONS -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.notifications()===false}" class="iotaa-card">
+
+      <div class="iotaa-card-list">
+        <div class="iotaa-card-head">
+            <button data-bind="i18n: &#39;notifications-title&#39;, click:$data.openNotifications" class="btn h3">Notifications</button> 
+            <button data-bind="click:$data.expand(&#39;notifications&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.notifications()===false, &#39;svg-down&#39;:$data.isExpanded.notifications()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+
+        <!-- ko if:$data.notifications().length===0 -->
+            <p data-bind="i18n: &#39;notifications-no-items&#39;">No notifications</p>
+        <!-- /ko -->
+
+        <!-- Stencil -->
+        <!-- ko foreach: $data.notifications --><!-- /ko -->
+      </div>
+
+    </div><!-- END NOTIFCATIONS -->
+
+    <!-- ACTIONALBE INSIGHTS -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.insights()===false}" class="iotaa-card is-wider is-expanded">
+<div class="iotaa-card-list">
+      <div class="iotaa-card-head">
+          <p data-bind="i18n: &#39;actionable-insights-title&#39;" class="h3">Actionable Insights</p> 
+          <button data-bind="click:$data.expand(&#39;insights&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.insights()===false, &#39;svg-down&#39;:$data.isExpanded.insights()===true}" class="btn svg svg-32 svg-up"></button>
+      </div>
+
+      <!-- ko if:$data.actions().length===0 --><!-- /ko -->
+
+      <!-- Stencil -->
+      <!-- ko foreach: $data.actions -->
+      <div class="iotaa-card-list-row comp-row comp-row-info">
+        <p data-bind="text:$data.context.description">Last night, John Jenkins has shown an increase in activity. Bathroom: 00:19, 02:35, 03:29, 04:51. Kitchen: 00:57, 04:19. Living Room: 01:27, 03:05. Chair: 01:28, 03:06, 03:23. Please contact client to discuss.</p>
+        <p data-bind="text:$parent.parseDate($data.createdOn)" class="with-extras">25-Oct-18, 13:30</p>
+        <!-- ko if:$data.appFlowName -->
+          <button data-bind="click:$parent.openInsight" class="svg svg-32 svg-next clickable"></button>
+        <!-- /ko -->
+      </div>
+
+      <div class="iotaa-card-list-row comp-row comp-row-info">
+        <p data-bind="text:$data.context.description">John Jenkins has not opened the fridge door at least 7 time(s) a day for the past 3 day(s) (22-Oct: 07:31, 08:05, 11:37, 23-Oct: 07:31, 08:05, 11:37, 24-Oct: 07:31, 08:05, 11:37). Please contact client to discuss.</p>
+        <p data-bind="text:$parent.parseDate($data.createdOn)" class="with-extras">25-Oct-18, 13:30</p>
+        <!-- ko if:$data.appFlowName -->
+          <button data-bind="click:$parent.openInsight" class="svg svg-32 svg-next clickable"></button>
+        <!-- /ko -->
+      </div>
+      <!-- /ko -->
+</div>
+    </div><!-- END ACTIONALBE INSIGHTS -->
+
+    <!-- // JCARNEY 26/09/18: Service Status table -->
+    <!-- <div data-bind="css:{'is-expanded':$data.isExpanded.status()===false}" class="iotaa-card is-wider">
+
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: 'service-status'" class="h3"></p> 
+            <button data-bind="click:$data.expand('status'),css:{'svg-up':$data.isExpanded.status()===false, 'svg-down':$data.isExpanded.status()===true}" class="btn svg svg-32"></button>
+        </div>
+
+        <csv-table params="data:$data.serviceStatus"></csv-table>
+
+    </div> -->
+
+    <!-- // JCARNEY 27/09/18: Hub status ( implanted into Service status card ) -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.status()===false}" class="iotaa-card is-wider">
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: &#39;service-status&#39;" class="h3">Service Status</p> 
+            <button data-bind="click:$data.expand(&#39;status&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.status()===false, &#39;svg-down&#39;:$data.isExpanded.status()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+        <csv-table params="data:$data.hubStatus"><div data-bind="foreach:csv" class="csv-table"><!-- ko if:$index()===0 -->	<div data-bind="foreach:$data" class="csv-tr">	   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">No data available</div>	</div><!-- /ko --><!-- ko if:$index()>0 --><!-- /ko --></div></csv-table>
+    </div>
+
+    <!-- // First morning activity ( Kettle Reboil ) -->
+    <div data-bind="css:{&#39;is-expanded&#39;:$data.isExpanded.clients()===false}" class="iotaa-card">
+        <div class="iotaa-card-head">
+            <p data-bind="i18n: &#39;client-events&#39;" class="h3">First Morning Activity</p> 
+            <!-- <button data-bind="i18n: 'client-events', click:$data.openConvCentre" class="btn h3"></button>  -->
+            <button data-bind="click:$data.expand(&#39;clients&#39;),css:{&#39;svg-up&#39;:$data.isExpanded.clients()===false, &#39;svg-down&#39;:$data.isExpanded.clients()===true}" class="btn svg svg-32 svg-down"></button>
+        </div>
+        <!-- <p data-bind="text:ko.toJSON( $data.clientEvents )"></p> -->
+        <csv-table params="data:$data.clientEvents"><div data-bind="foreach:csv" class="csv-table"><!-- ko if:$index()===0 -->	<div data-bind="foreach:$data" class="csv-tr">	   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Forename</div>		   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Surname</div>		   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th">Time of Activity</div>	</div><!-- /ko --><!-- ko if:$index()>0 --><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">David</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">Bell</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td error">No activity yet</div>   </div><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">John</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">Jenkins</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td ok">Kitchen 07:30</div>   </div><!-- /ko --><!-- ko if:$index()===0 --><!-- /ko --><!-- ko if:$index()>0 -->   <div data-bind="foreach:$data" class="csv-tr">       <div data-bind="html:$data.value, css:$data.style" class="csv-td">Rose</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td">Smith</div>          <div data-bind="html:$data.value, css:$data.style" class="csv-td ok">Living Room 08:03</div>   </div><!-- /ko --></div></csv-table>
+    </div>
+
+    <!-- // TOOLS -->
+    <div class="iotaa-card">
+
+      <div class="iotaa-card-head">
+          <p data-bind="i18n: &#39;tools-title&#39;" class="h3">Tools</p> 
+          <!-- <button data-bind="click:$data.expand('tools'),css:{'svg-up':$data.isExpanded.tools()===false, 'svg-down':$data.isExpanded.tools()===true}" class="btn svg svg-32"></button> -->
+      </div>
+
+      <div class="iotaa-card-list iotaa-btn-group">
+          <button data-bind="i18n: &#39;tools-admin-tasks&#39;, click:$data.onAdminTask" class="btn is-primary">Admin tasks</button>
+          <!-- AMONIS: 01/02/2018: Removed as Non functional at time of pilot -->
+          <!-- <button data-bind="i18n: 'tools-client-search'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-action-caregiver'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-message-caregiver'" class="btn is-primary"></button> -->
+          <!-- <button data-bind="i18n: 'tools-resource-centre'" class="btn is-primary"></button> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+
+				<div data-bind="space:$data" id="5bd1b5aad58eff6c46069876" name="System.formSpace" class="space flow">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="System.formCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/*
+  IE11
+ */
+
+/*
+  /IE11
+ */
+
+
+.btn, input, .lbl, .progress, .slc,
+
+div[name="System.formCog"]
+
+div[name="System.formCog"] .spn {
+    box-sizing: border-box;
+    /* width: 99.375%; */
+    /* width: unset !important; */
+    margin-left: unset !important;
+    margin-right: .3125%;
+}
+
+div[name="System.formCog"] .lbl {
+    text-align: left;
+}
+/* .btn, .frm, .ico, input, .lbl, .progress, .slc, .spn {
+    height: 32px;
+} */
+
+div[name="System.formCog"] .appflow {
+  height: 100%;
+  overflow-y: auto;
+}
+
+div[name="System.formCog"] .footer {
+    padding: 16px 0 48px 0;
+    border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+div[name="System.formCog"] .footer .btn { min-width:160px; }
+
+div[name="System.formCog"] .appflow-panel { overflow: hidden; }
+
+div[name="System.formCog"] .btn.is-primary { box-shadow:0px 3px 4px -2px rgba(0,0,0,0.5); }
+
+/* AMONIS: 16/03/2018: Resolve none rounded corners in appflow input fields ( should be in UI library )*/
+
+div[name="System.formCog"] .btn-file.is-primary > span { color: white; line-height: 32px;}
+
+/* System.FormCog */
+.timepicker,
+
+div[name="System.formCog"] .datepicker { border: 1px solid #ccc; }
+
+div[name="System.formCog"] .timepicker table { margin-left: auto; margin-right: auto; }
+
+div[name="System.formCog"] .timepicker a { width: 64px; height: 32px; }
+
+/* AMONIS: 26/06/2018 Added to left align most labels */
+
+div[name="System.formCog"] .form-screen .lbl { text-align:left;     height: 32px; }
+
+div[name="System.formCog"] textarea { min-height:150px; }
+
+div[name="System.formCog"] p.appflow-help {
+    color: #999;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px 10px 0px;
+    font-family: monospace;
+
+    /* Flexbox fallback */
+    width: 100%;
+
+    /* grid */
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+p.appflow-help:before,
+
+div[name="System.formCog"] p.appflow-help:after  {
+    content: '"'
+}
+
+div[name="System.formCog"] .appflow-full {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+div[name="System.formCog"] .grid-form-element {
+    /* Flexbox fallback */
+    display: flex;
+    flex-wrap: wrap;
+    /* Grid */
+    display: grid;
+    grid-template-columns: 40% 1fr;
+}
+
+div[name="System.formCog"] .grid-form-element:first-child {
+    flex-grow: 1;
+    width: auto;
+}
+
+div[name="System.formCog"] .grid-form-element > .lbl {
+    flex-grow: 1;
+    width: auto;
+}
+
+div[name="System.formCog"] .grid-form-element > .inline-cells {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+div[name="System.formCog"] .grid-form-element .lbl.is-error {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+/* AMONIS: 16/03/2018: Resolve none rounded corners in appflow input fields */
+
+div[name="System.formCog"] .txt-append>input {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+/* AMONIS: 16/03/2018: Resolve layout alignment in phone number */
+
+div[name="System.formCog"] phone-number {
+    padding-left: 0.4rem;
+}
+
+div[name="System.formCog"] .single-line-control{
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  AMONIS: 2018-05-07
+  Defining new Flex & Grid layouts for applfow
+ */
+
+div[name="System.formCog"] .tmpl {
+  display: flex;
+}
+
+div[name="System.formCog"] .tmpl > .lbl {
+  height: auto !important;
+  white-space: unset !important;
+  overflow: unset !important;
+  text-overflow: unset !important;
+  width: unset !important;
+}
+
+/*
+  CONTENTGROUP
+ */
+
+div[name="System.formCog"] .tmpl-contentGroup > .lbl {
+  text-align: left;
+  background-color: #eee;
+}
+
+/*
+  TEXTAREA
+ */
+
+div[name="System.formCog"] .tmpl-textArea {
+  grid-template-columns: 1fr;
+  text-align:left;
+}
+
+div[name="System.formCog"] .tmpl-textArea > textarea {
+  min-height: 100px;
+}
+
+/*
+  BOOLEANVALUE
+ */
+
+div[name="System.formCog"] .tmpl-booleanValue {
+  grid-template-columns: 1fr 32px;
+  text-align:left;
+  flex-direction: column;
+}
+
+div[name="System.formCog"] .tmpl-booleanValue .appflow-help {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+}
+
+div[name="System.formCog"] .tmpl-booleanValue .lbl {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  flex-grow: 12;
+  flex-basis: 90%;
+  text-align: left;
+  padding-left: 5px;
+  width: 40%;
+  max-width: 40%;
+}
+
+div[name="System.formCog"] .tmpl-booleanValue-button {
+  width: 60%;
+  max-width: 60%;
+  text-align: right;
+}
+
+div[name="System.formCog"] .tmpl-booleanValue .btn {
+  flex-grow: 1;
+}
+
+div[name="System.formCog"] .tmpl-booleanValue .flex-row {
+  flex-grow:1;
+}
+
+/*
+  FlowTable
+ */
+
+div[name="System.formCog"] .tmpl-flowTable {
+  display:table;
+  width: 100%;
+  border-top: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+div[name="System.formCog"] .tmpl-flowTable .tr {
+  display: table-row;
+}
+
+div[name="System.formCog"] .tmpl-flowTable .td {
+  display: table-cell;
+  font-size: 12px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+div[name="System.formCog"] .tmpl-flowTable .is-error .td{
+  border-bottom-color:red;
+}
+
+div[name="System.formCog"] .tmpl-flowTable .td:last-child{
+  border-right: 2px solid #ddd;
+}
+
+/* AMONIS: Specifically hide the labels ( as they are provide by table columns ) in table display */
+/
+
+div[name="System.formCog"] * .tmpl-flowTable .td label {
+    display: none;
+} */
+.tmpl-flowTable .txt-append .lbl,
+
+div[name="System.formCog"] .tmpl-flowTable .flex-row .lbl {
+    display: none;
+}
+
+
+/* MULTI-SELECT */
+
+div[name="System.formCog"] .tmpl-multiSelect {
+    flex-direction: column;
+}
+
+div[name="System.formCog"] .tmpl-multiSelect-dropdown {
+  text-align: right;
+}
+/* /MULTI-SELECT */
+
+div[name="System.formCog"] .tmpl-stack-control {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.lbl-tag,
+
+div[name="System.formCog"] .lbl-closing {
+  width:auto;
+}
+
+/*
+  Small Screen Optimisation
+ */
+@Media screen and ( max-width:639px ){
+}
+</style><div id="5bd1b5aad58eff6c46069875" class="cog-body">
+
+
+    <div id="appflow" data-bind="css:$data.cssname" class="screen appflow iotaa-form-reporting-client-activity-internal">
+
+        <!-- TEMPLATES -->
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-original" type="text/html">
+            <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <div data-bind="foreach:$data" class="tr">
+                  <div class="td">
+                    <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </script>
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-default" type="text/html">
+          <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <!-- ko template:{ name:$root._getTmpl, data:$data } --><!-- /ko -->
+            </div>
+          </div>
+        </script>
+
+        <!--
+          FLOW-ROW
+        -->
+        <script id="tmpl-flowRow-default" type="text/html">
+          <div data-bind="foreach:$data.cols, css:{ 'is-error':$data.status()==='incomplete'}" class="tr">
+            <div class="td">
+              <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+            </div>
+          </div>
+          <label data-bind="html:$data.validation().label" class="lbl "></label>
+        </script>
+
+        <!--
+            BUTTON
+        -->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <!-- ko if:$data.img -->
+                    <button data-bind="click:$data.click" class="btn width10 heightauto">
+                        <img data-bind="attr:{ 'src':$data.img }" style="max-width:100%;"></img>
+                    </button>
+                <!-- /ko -->
+                <!-- ko if:!$data.img -->
+                    <button data-bind="html:$data.label, click:$data.click" class="btn width10"></button>
+                <!-- /ko -->
+            </div>
+        </script>
+
+        <!-- csvData -->
+        <!-- CSV Table for outputting tables in appflows -->
+        <script id="tmpl-csvData-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <csv-table params="data:data" class="appflow-full"></csv-table>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- TextValue -->
+        <script id="tmpl-textValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }" type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- ukPhoneNumber -->
+        <!-- UK specific telephone formatting 00000 123 456 -->
+        <script id="tmpl-ukPhoneNumber-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl lbl-important' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                <phone-number params="value:answer.value" ></phone-number>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- PasswordValue -->
+        <script id="tmpl-passwordValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, valueUpdate:['afterkeydown','propertychange','input'], event:{keyup:$data.onKeyUp}, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" type="password"  tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <script id="tmpl-dateValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+
+                    <div class="width6 inline-block ">
+                        <!-- ko with:$data.el -->
+                        <section data-bind="datepicker:$data" class="datepicker2">
+                            <div class="datepicker2-dd">
+                                <select data-bind="options:$data.dd,optionsText:'lbl',optionsValue:'val',value:$data.ddValue" class="datepicker2-dd-select"></select>
+                            </div>
+                            <div class="datepicker2-mm">
+                                <select data-bind="options:$data.mm,optionsText:'lbl',optionsValue:'val',value:$data.mmValue" class=datepicker2-mm-select></select>
+                            </div>
+                            <div class="datepicker2-yy">
+                                <select data-bind="options:$data.yy,optionsText:'lbl',optionsValue:'val',value:$data.yyValue" class="datepicker2-yy-select"></select>
+                            </div>
+                        </section>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- timeValue -->
+        <script id="tmpl-timeValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <!-- ko if:$root.isOs2===true -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" data-time-inline="true" type="text" tabindex="0">
+                    <!-- /ko -->
+                    <!-- ko if:!$root.isOs2 -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" type="text">
+                    <!-- /ko -->
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                </div>
+            </div>
+        </script>
+
+        <!-- TextArea -->
+        <script id="tmpl-textArea-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-textArea">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                  <textarea data-bind="value:answer.value" class="txt"></textarea>
+                </div>
+            </div>
+        </script>
+
+        <!-- multiChoice -->
+        <script id="tmpl-multiChoice-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                        <option data-bind="html: label, attr:{ 'value': id }"></option>
+                    </select>
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- numericValue -->
+        <script id="tmpl-numericValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl-numericValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }"  type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip spn text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- image -->
+        <script id="tmpl-image-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <img class="img inline-block" data-bind="attr:{ 'src': location }, style:{ maxWidth: '100%' }"></img>
+                <label class="lbl" data-bind="html:label"></label><br />
+            </div>
+        </script>
+
+        <!-- static -->
+        <script id="tmpl-static-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html: staticRender" class="text-info width10" style="white-space: normal; word-wrap: break-word; word-break: break-all;"></p>
+            </div>
+        </script>
+
+        <!-- contentGroup -->
+        <script id="tmpl-contentGroup-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-contentGroup">
+								<label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }"></label>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+						</div>
+        </script>
+
+        <!-- button - display nothing yet-->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            </div>
+        </script>
+
+        <!-- fileUpload -->
+        <script id="tmpl-fileUpload-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <form data-bind="fileUpload:{'property':answer.pulse}" action="/PumpHouse/uploads/uploadKeyDocument" method="POST">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <span class="btn is-primary btn-file width2">
+                        <span data-bind="i18n:'upload'"class="inline-block"><!--upload--></span>
+                        <input data-bind="value: answer.file, event: {'mouseup': selectFile}" name = "file" type="file"  tabindex="0" />
+                    </span>
+                    <span class="lbl width4" data-bind="html:answer.status()">
+                    </span>
+                </form>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect default-->
+        <script id="tmpl-multiSelect-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0" />
+                        <button class="btn"><span class="ico ico-caron"></span></button>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect basic-->
+        <script id="tmpl-multiSelect-basic" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <!-- <p data-bind="text:ko.toJSON($data)"></p>
+                <p data-bind="text:ko.toJSON($data.answer.id)"></p> -->
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <!-- <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                            <option data-bind="html: label, attr:{ 'value': id }"></option>
+                        </select> -->
+                        <!-- <input data-bind="value:$data.answer.id"></input> -->
+                        <select data-bind="value:$data.selected,foreach:$data.options" class="txt" >
+                          <option data-bind="text:$data.label, attr:{'value':$data.id}"></option>
+                        </select>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                          <span class="lbl lbl-closing">
+                            <!-- <label data-bind="text:ko.toJSON($data)"></label> -->
+                            <label data-bind="text:key"></label>
+                            <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                          </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiSelect: Contacts -->
+        <script id="tmpl-multiSelect-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiChoice: Contacts -->
+        <script id="tmpl-multiChoice-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect system.tag-->
+        <script id="tmpl-multiSelect-system.tag" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            	<!--multiselect-system.tag-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="width10-nopad">
+                    <div class="txt-append width10-nopad inline-block align-top" data-type="txt-append">
+
+
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt width5 height2" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0">
+                        <button class="btn width1 height2"><span class="ico ico-caron"></span></button>
+                    </div>
+
+                    <div class="width10-nopad" data-bind="css:{ 'hidden': answer.id().length === 0 }">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing height2 widthauto">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- text -->
+        <script id="tmpl-text-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label, attr: {'class': success === false ? 'text-info is-error' : 'text-info'}" style="padding-top: 10px;"></p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- boolean -->
+        <script id="tmpl-booleanValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-booleanValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="flex-row">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}"></label>
+                  <div class="tmpl-booleanValue-button">
+                    <button data-bind="click:$data.click, css:{'active':$data.answer.value()==='true'}" class="btn btn-boolean"></button>
+                  </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- AppFlow UI Templates -->
+        <script id="tmpl-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p class="height2">default template</p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- Comment -->
+        <script id="tmpl-comment-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label" class="text-info text-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fRegistration
+        -->
+        <script id="tmpl-u2fRegistration-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fAuthentication
+        -->
+        <script id="tmpl-u2fAuthentication-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!-- /TEMPLATES -->
+
+        <!-- Loading Screen -->
+        <div class="hidden" style="padding-top: 200px" data-bind="css:{ &#39;hidden&#39;: !loading() || error() }">
+            <div class="progress progress-striped active height2">
+                <div class="bar height2" data-bind="style:{ &#39;width&#39;: (((100 / totalStep()) * currentStep()) + &#39;%&#39;) }" style="overflow: hidden; width: 100%;">
+                    <p style="color: white; font-weight: bold; white-space: nowrap;" data-bind="html: stepMessage()">loading</p>
+                </div>
+            </div>
+            <p style="color: black; font-weight: bold; text-align: center; padding-top: 10px; width: 100%;" data-bind="html:$data.statusMessage()"></p>
+        </div>
+
+        <!-- Error Screen -->
+        <div data-bind="css:{ &#39;hidden&#39;:!$data.error() }" class="width10 hidden background">
+            <p class="font-h3 is-error">an error occurred</p>
+            <p class="is-warning" data-bind="html: errorMessage()"></p>
+        </div>
+
+        <!-- Form-Screen -->
+        <div class="width10 background form-screen" data-bind="css:{ &#39;hidden&#39;: loading() || error() }">
+
+    			<div class="section-header" style="padding:5px">
+    				<span class="span width5 align-left">
+    					<button data-bind="click:selectCancel, disable:!enableCancel() || finishState(), enable:enableCancel() &amp;&amp; !finishState()" class="action-cancel btn svg svg-16 svg-close"></button>
+    				</span>
+    				<span class="span width5 align-right">
+                <!-- <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link widthauto">help</button> -->
+                <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="action-cancel btn svg svg-16 svg-help"></button>
+            </span>
+          </div>
+
+            <!-- Current Section -->
+            <div data-bind="with:currentSection">
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    &nbsp;
+                </div>-->
+
+                <!-- current section header -->
+                <div class="appflow-panel width10 heightauto align-top">
+                    <h3 data-bind="html:label" class="text-center width10"></h3>
+                </div>
+
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link">help</button>
+                </div>-->
+
+                <!-- AMONIS: 21/07/2015: Updated to show a summary -->
+                <div data-bind="css:{&#39;concealed&#39;:!$data.showSummary()}" class="appflow-summary width10 concealed">
+                    <h3 class="align-center">Summary</h3>
+                    <p data-bind="paragraph:$data.summaryText" class="align-center"></p>
+                    <button data-bind="button:$data.flipSummary" class="btn" value="show detail">show detail</button>
+                </div>
+
+                <!-- AMONIS: 21/07/2015: Updated to hide if a summary is present,
+                     AMONIS: 09/11/2015: also adds the summary class for styling-->
+                <div data-bind="template:{ name:$root._getTmpl, foreach:content }, css:{&#39;concealed&#39;:$data.showSummary(),&#39;summary&#39;:$data.isSummary()}" class="appflow-panel">
+            <div data-bind="css:$data.cssname" class="form-element form-result form-text">
+                <p data-bind="html:label, attr: {&#39;class&#39;: success === false ? &#39;text-info is-error&#39; : &#39;text-info&#39;}" style="padding-top: 10px;" class="text-info"><a href="https://at.cnect.to/PumpHouse/uploads/keydocs/18/10/25/cfcdd53b-7ff3-40ba-8e52-f94fb3567e87.pdf" rel="noopener noreferrer" target="_blank">click here to download the graph</a></p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+
+            <div data-bind="css:$data.cssname" class="grid-form-element form-table form-csvData">
+                <p data-bind="html:$data.helpText, css:{&#39;concealed&#39;:$root.showHelp()===false}" class="appflow-help concealed">no extra help available</p>
+                <csv-table params="data:data" class="appflow-full"><div data-bind="foreach:csv" class="csv-table"><!-- ko if:$index()===0 -->	<div data-bind="foreach:$data" class="csv-tr">	   	<div data-bind="html:$data.value, css:$data.style" class="csv-td csv-th"><img id="google-home-sound" src="page1_files/story-2-cag.png" style="width: 100%;"></div>	</div><!-- /ko --><!-- ko if:$index()>0 --><!-- /ko --></div></csv-table>
+
+                <!-- @JC 15/11/18: original CAG image source 
+                data:image/svg+xml;base64,PHN2ZyBzdHlsZT0iZmlsbC1vcGFjaXR5OjE7IGNvbG9yLXJlbmRlcmluZzphdXRvOyBjb2xvci1pbnRlcnBvbGF0aW9uOmF1dG87IHRleHQtcmVuZGVyaW5nOmF1dG87IHN0cm9rZTpibGFjazsgc3Ryb2tlLWxpbmVjYXA6c3F1YXJlOyBzdHJva2UtbWl0ZXJsaW1pdDoxMDsgc2hhcGUtcmVuZGVyaW5nOmF1dG87IHN0cm9rZS1vcGFjaXR5OjE7IGZpbGw6YmxhY2s7IHN0cm9rZS1kYXNoYXJyYXk6bm9uZTsgZm9udC13ZWlnaHQ6bm9ybWFsOyBzdHJva2Utd2lkdGg6MTsgZm9udC1mYW1pbHk6J0RpYWxvZyc7IGZvbnQtc3R5bGU6bm9ybWFsOyBzdHJva2UtbGluZWpvaW46bWl0ZXI7IGZvbnQtc2l6ZToxMnB4OyBzdHJva2UtZGFzaG9mZnNldDowOyBpbWFnZS1yZW5kZXJpbmc6YXV0bzsiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9ImF1dG8iIHZpZXdCb3g9IjAgMCAxMjgwIDYwMCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGhlaWdodD0iMTAwJSIKPjwhLS1HZW5lcmF0ZWQgYnkgdGhlIEJhdGlrIEdyYXBoaWNzMkQgU1ZHIEdlbmVyYXRvci0tPjxkZWZzIGlkPSJnZW5lcmljRGVmcyIKICAvPjxnCiAgPjxkZWZzIGlkPSJkZWZzMSIKICAgID48bGluZWFyR3JhZGllbnQgeDE9IjE4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIyODUiIHkxPSI2NyIgeTI9IjY3IiBpZD0ibGluZWFyR3JhZGllbnQxIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjU2MCIgeTE9IjY3IiB5Mj0iNjciIGlkPSJsaW5lYXJHcmFkaWVudDIiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI3ODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iODg1IiB5MT0iNjciIHkyPSI2NyIgaWQ9ImxpbmVhckdyYWRpZW50MyIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjEwNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMTE2MCIgeTE9IjY3IiB5Mj0iNjciIGlkPSJsaW5lYXJHcmFkaWVudDQiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMjg1IiB5MT0iMTE1IiB5Mj0iMTE1IiBpZD0ibGluZWFyR3JhZGllbnQ1IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjU2MCIgeTE9IjExNSIgeTI9IjExNSIgaWQ9ImxpbmVhckdyYWRpZW50NiIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9Ijc4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI4ODUiIHkxPSIxMTUiIHkyPSIxMTUiIGlkPSJsaW5lYXJHcmFkaWVudDciIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxMDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjExNjAiIHkxPSIxMTUiIHkyPSIxMTUiIGlkPSJsaW5lYXJHcmFkaWVudDgiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMjg1IiB5MT0iMTYzIiB5Mj0iMTYzIiBpZD0ibGluZWFyR3JhZGllbnQ5IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjU2MCIgeTE9IjE2MyIgeTI9IjE2MyIgaWQ9ImxpbmVhckdyYWRpZW50MTAiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI3ODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iODg1IiB5MT0iMTYzIiB5Mj0iMTYzIiBpZD0ibGluZWFyR3JhZGllbnQxMSIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjEwNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMTE2MCIgeTE9IjE2MyIgeTI9IjE2MyIgaWQ9ImxpbmVhckdyYWRpZW50MTIiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMjg1IiB5MT0iMjExIiB5Mj0iMjExIiBpZD0ibGluZWFyR3JhZGllbnQxMyIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjQ2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI1NjAiIHkxPSIyMTEiIHkyPSIyMTEiIGlkPSJsaW5lYXJHcmFkaWVudDE0IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNzg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9Ijg4NSIgeTE9IjIxMSIgeTI9IjIxMSIgaWQ9ImxpbmVhckdyYWRpZW50MTUiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxMDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjExNjAiIHkxPSIyMTEiIHkyPSIyMTEiIGlkPSJsaW5lYXJHcmFkaWVudDE2IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjI4NSIgeTE9IjI1OSIgeTI9IjI1OSIgaWQ9ImxpbmVhckdyYWRpZW50MTciIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI0NjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iNTYwIiB5MT0iMjU5IiB5Mj0iMjU5IiBpZD0ibGluZWFyR3JhZGllbnQxOCIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9Ijc4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI4ODUiIHkxPSIyNTkiIHkyPSIyNTkiIGlkPSJsaW5lYXJHcmFkaWVudDE5IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTA2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIxMTYwIiB5MT0iMjU5IiB5Mj0iMjU5IiBpZD0ibGluZWFyR3JhZGllbnQyMCIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjE4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIyODUiIHkxPSIzMDciIHkyPSIzMDciIGlkPSJsaW5lYXJHcmFkaWVudDIxIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjU2MCIgeTE9IjMwNyIgeTI9IjMwNyIgaWQ9ImxpbmVhckdyYWRpZW50MjIiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI3ODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iODg1IiB5MT0iMzA3IiB5Mj0iMzA3IiBpZD0ibGluZWFyR3JhZGllbnQyMyIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjEwNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMTE2MCIgeTE9IjMwNyIgeTI9IjMwNyIgaWQ9ImxpbmVhckdyYWRpZW50MjQiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMjg1IiB5MT0iMzU1IiB5Mj0iMzU1IiBpZD0ibGluZWFyR3JhZGllbnQyNSIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjQ2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI1NjAiIHkxPSIzNTUiIHkyPSIzNTUiIGlkPSJsaW5lYXJHcmFkaWVudDI2IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNzg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9Ijg4NSIgeTE9IjM1NSIgeTI9IjM1NSIgaWQ9ImxpbmVhckdyYWRpZW50MjciIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxMDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjExNjAiIHkxPSIzNTUiIHkyPSIzNTUiIGlkPSJsaW5lYXJHcmFkaWVudDI4IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjI4NSIgeTE9IjQwMyIgeTI9IjQwMyIgaWQ9ImxpbmVhckdyYWRpZW50MjkiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI0NjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iNTYwIiB5MT0iNDAzIiB5Mj0iNDAzIiBpZD0ibGluZWFyR3JhZGllbnQzMCIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9Ijc4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI4ODUiIHkxPSI0MDMiIHkyPSI0MDMiIGlkPSJsaW5lYXJHcmFkaWVudDMxIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTA2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIxMTYwIiB5MT0iNDAzIiB5Mj0iNDAzIiBpZD0ibGluZWFyR3JhZGllbnQzMiIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjE4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIyODUiIHkxPSI0NTEiIHkyPSI0NTEiIGlkPSJsaW5lYXJHcmFkaWVudDMzIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjU2MCIgeTE9IjQ1MSIgeTI9IjQ1MSIgaWQ9ImxpbmVhckdyYWRpZW50MzQiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI3ODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iODg1IiB5MT0iNDUxIiB5Mj0iNDUxIiBpZD0ibGluZWFyR3JhZGllbnQzNSIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjEwNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMTE2MCIgeTE9IjQ1MSIgeTI9IjQ1MSIgaWQ9ImxpbmVhckdyYWRpZW50MzYiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iMjg1IiB5MT0iNDk5IiB5Mj0iNDk5IiBpZD0ibGluZWFyR3JhZGllbnQzNyIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIyNSwyMjUsMjI1KTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDI0NSwyNDUsMjQ1KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9IjQ2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI1NjAiIHkxPSI0OTkiIHkyPSI0OTkiIGlkPSJsaW5lYXJHcmFkaWVudDM4IiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iNzg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9Ijg4NSIgeTE9IjQ5OSIgeTI9IjQ5OSIgaWQ9ImxpbmVhckdyYWRpZW50MzkiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMjUsMjI1LDIyNSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyNDUsMjQ1LDI0NSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSIxMDYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjExNjAiIHkxPSI0OTkiIHkyPSI0OTkiIGlkPSJsaW5lYXJHcmFkaWVudDQwIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjQ1LDI0NSwyNDUpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjI1LDIyNSwyMjUpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTg1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDI9IjI4NSIgeTE9IjU0NyIgeTI9IjU0NyIgaWQ9ImxpbmVhckdyYWRpZW50NDEiIHNwcmVhZE1ldGhvZD0icGFkIgogICAgICA+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigxODcsMjAzLDIyOSk7IiBvZmZzZXQ9IjAlIgogICAgICAgIC8+PHN0b3Agc3R5bGU9InN0b3Atb3BhY2l0eToxOyBzdG9wLWNvbG9yOnJnYigyMTgsMjI4LDI0MSk7IiBvZmZzZXQ9IjEwMCUiCiAgICAgIC8+PC9saW5lYXJHcmFkaWVudAogICAgICA+PGxpbmVhckdyYWRpZW50IHgxPSI0NjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4Mj0iNTYwIiB5MT0iNTQ3IiB5Mj0iNTQ3IiBpZD0ibGluZWFyR3JhZGllbnQ0MiIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48bGluZWFyR3JhZGllbnQgeDE9Ijc4NSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSI4ODUiIHkxPSI1NDciIHkyPSI1NDciIGlkPSJsaW5lYXJHcmFkaWVudDQzIiBzcHJlYWRNZXRob2Q9InBhZCIKICAgICAgPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMTg3LDIwMywyMjkpOyIgb2Zmc2V0PSIwJSIKICAgICAgICAvPjxzdG9wIHN0eWxlPSJzdG9wLW9wYWNpdHk6MTsgc3RvcC1jb2xvcjpyZ2IoMjE4LDIyOCwyNDEpOyIgb2Zmc2V0PSIxMDAlIgogICAgICAvPjwvbGluZWFyR3JhZGllbnQKICAgICAgPjxsaW5lYXJHcmFkaWVudCB4MT0iMTA2MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgyPSIxMTYwIiB5MT0iNTQ3IiB5Mj0iNTQ3IiBpZD0ibGluZWFyR3JhZGllbnQ0NCIgc3ByZWFkTWV0aG9kPSJwYWQiCiAgICAgID48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDIxOCwyMjgsMjQxKTsiIG9mZnNldD0iMCUiCiAgICAgICAgLz48c3RvcCBzdHlsZT0ic3RvcC1vcGFjaXR5OjE7IHN0b3AtY29sb3I6cmdiKDE4NywyMDMsMjI5KTsiIG9mZnNldD0iMTAwJSIKICAgICAgLz48L2xpbmVhckdyYWRpZW50CiAgICAgID48aW1hZ2Ugd2lkdGg9IjEwIiBpZD0iaW1hZ2UxIiBoZWlnaHQ9IjIwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUFvQUFBQVVDQVlBQUFDMDdxeFdBQUFCU1VsRVFWUjQyblhRUzBzQwpVUmpHOFduaHVKNmhsZU5IaWhaUjBBMmtJR2haaTRJeVVsTFN4RkJTdk9DeXlWdVQxL2E1RUFVTmRXYVJOR3FFCllSL0RwNWtKc2ZHY0ZuODQ3OHR2YzE2R1laZ2xsaGV1TEx6d1NZdmw3UzdkTU5abDIrcng2Zm5VNmZaZzFvV1cKL3pZTTcwMFFSeWRuVXlzbnJEQVdUamlNSlZOd2UzMW90MXBHNmtERjZHT0UxM1lidFpjYUxMejl3SUNSV0FKTwpsNGRBK2t5Rmk0Z0tmY0VRZ1FpWXpqMmlWSDFHUmF0Y3FacTZGOU56R0V1a0lENWtJRDBWVEpYS0ZVakZFdjB6CnM3cWREc1pmWTd5cjZ2OXdoaWJmRS9Sa21RNy9vdUZ3Z0hxOVRzSkYxT3QyOGRidm0rR2w1NXBBK3R4c051Y3cKR2s4aUVJb1FTRkZrOHgzRlRBNkJjSVJBeE1HelVnRmVmNUJBQkpRVmhZb0kyR2cwcUlpQVlqWVBxVkNFbU00UQozVVhqdjVEbDdEdHIydzdvYmV6dWFlMGJyV3R2WTcvbEFNdlpObjhBVU1MNkJiWEVyeVlBQUFBQVNVVk9SSzVDCllJST0iCiAgICAgIC8+PGltYWdlIHdpZHRoPSIyMCIgaWQ9ImltYWdlMiIgaGVpZ2h0PSIyMCIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCUUFBQUFVQ0FZQUFBQ05pUjBOQUFBQkgwbEVRVlI0MnAzVUwwaEQKVVJpRzhXc1JweUlXazJWWjBDSU13ZWhnMm9RRjArb1FURVoxY2JBaWdwaUdKazBXWnhBMHppQm9HcXlJUVF5QwpVYmNaaGtPY2ovQUd1WDQ3ODl1QkgreUU4M0RIK1JORjRUR0dPYVNSd1RKeUtHQVA4OUUveGlKMlVjTW51Z0VkCnJGdVJFWVVxZlFLV0w2ekdnNU40YzRadThhRGZ6eGlPUjQrZHdRMzlzeWZOVitMQk5XZndTT3VLbW0vSGd4Tm8KTzRMWFdwZlN2R1J0am1kVEhyVm1Tdk1kSzNqb0NMNXJ6YlRtT1N0NDZqd3VDVzNHejN6V0NwNDdOeWFKTWw0dwpaQVV2bk1Fc0dqam9kZTB1QjdncEhYMnBPYW9EQkd1aGgrSE9HV3RoSmhTc080TmIvWjZ1ZTJld3FpdG52b3VqCmFEcUQrZERYTGVEREVXdjJPbnUveHppV3NJbDluT0FNVjdqQnE4NXFXVi8zSi9nTjBnMzNpVDFTQmtJQUFBQUEKU1VWT1JLNUNZSUk9IgogICAgICAvPjxpbWFnZSB3aWR0aD0iMjAiIGlkPSJpbWFnZTMiIGhlaWdodD0iMjAiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQlFBQUFBVUNBWUFBQUNOaVIwTkFBQUErRWxFUVZSNDJtTmdvRFpRCmtwTnpVWkpUOHFFT2xuTmhVSlpYK08vcTZQVGZ6OXVIYU96bTVQd2ZwQTlkWEZWUjZUK0RtcEx5L3p1M2IvOG4KQlR5NGZ4K3NHUjNvNitoQ0RieHpoeWlERGg0NDhQL2IxNi8vSHp4NGdOVkFBMUlON092cCtmLzJ6UnV3Z1NvSwppdjg5M2R6K2U3cENNWkN0QXZjeUdRYUNYTmhRVy9mZjI5M2pmMGhnMFArU29xTC9tcXBxbExrUUZESG9lTlJBCk9oczRzWC9DLzNkdjMxTFB3RisvZnYzLzkrOGZmZ05CNlducGtpWC9EeDA4UkRSZXNYdzViZ09WNUJST0tjdkoKWDZZR0JwbkZJQ1lpdGtSU1FtSUhOVERJTEZEeDlRZWIwOG5FZnhpVTVlU01nWVdqTXpVd3lDeXExd0FBdk5OaQpGZWFVa1A0QUFBQUFTVVZPUks1Q1lJST0iCiAgICAgIC8+PGltYWdlIHdpZHRoPSIyMCIgaWQ9ImltYWdlNCIgaGVpZ2h0PSIyMCIgeGxpbms6aHJlZj0iZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCUUFBQUFVQ0FZQUFBQ05pUjBOQUFBRDRVbEVRVlI0Mm8yVVdVaGIKYVJUSE5URXhoa1NtcU5GUnNLSW9ZbHhBb1RJUGlpK09PT0NHT0EvNmx0cVNnZ09EUGlqRkIxZml2b3g3SGJkeApHZU9TbTZnWUU0MWJOTVltWHF2Z0RIMG9wWVdXUXVuRERETWQybXBPei9uYXlEaHFtUXQvYnU3OXZ1OTMvbWU1CjhmQzQ1a3BPVGc1TVNFalF5T1Z5enQvZjN4NFpHZmxNSnBOeGNYRnhtckt5c2lTUC8zdGxaV1ZKbzZLaWZ2THkKOHZwYkpCSzlDd2tKZWFwVUttMmtvS0NncHhLSjVBTUs4RmtmSEJ3cy9TSXNJQ0JBNXVQanM0dXcwOWpZMkxuOAovUHp3Lys3SnlNajRPakV4OFZlRXVoUUt4WXZ5OG5MbGxiQ2VuaDVaWUdDZ0RZR0FMbTlYVlZWSlltSmkxT2prCkRTNy9TUW9MQzN1SnFhc0xDZ3FFb2FHaFNrOVB6OWRTcVhRbk16UFQreElRWVNyY0FLbXBxYXFrcENTUm41L2YKQ2oyajYrT1VsQlFPSGZkaXlzY0NnUUNvcHQzZDNUY1JkQWV6b1ROOWw0Qyt2cjdQbzZPamVRRHdqSWlJV01LVQp6dExUMDB0cERaMTlSWnFabVJGaW83NUg2Ri9oNGVFSG40MW9NZlUzSXlNamtndkF3c0xDNy9MeThoUzV1YmxwClFxRVFzSnZsS3BWS2pnZW14V0t4Q3dYeDhmR0hkWFYxTjlIeEQzZ0UwSEdhV3ExVzVPVGtaRjNiR0kxR2N5TTcKTzN0OGNYRlJWMXhjL05iYjJ4dEtTa3BjcGFXbExxb3ZOdXJ0NnVvcVYxUlVwRzF2YjAvOFlwY1hGaFl5VVU5UQpZRFFhb2FXbEJkQVJySzJ0QVVLZ3RiVVZtcHFhMkROcGZYMzl1ZFZxdmRxZHdXQzROejgvZjZiWDZ3SGRnY2xrCkFvdkZ3clM5dlEwN096dXd0YlhGZnBNMk5qYmM2NmMybSszSEM3Q3BxYWx2cHFlbjM4L056VEdZMld4bUlvalQKNllTam95TW1udWZaT3pkd2MzT1RYRktnZHc2SDR4YUQ0YndKY0FRczQrUGpRRUNkVGdjckt5c3NKVHFBS1RIQQovdjQrb0pOejdlN3VzalhhUTg1eGZjRU5sRFUwTlB3eE1EQUFFeE1UZ0duRDh2SXlTL2x6ZEFiOE4yeHZidy9zCmRqdDdUM3NvT0RwL2hTTW44R2hzYkpRajlCL3NMdlQyOWpJb3VhU21VSTNJZ2RzcHBVdDNja2VCQ0VhQmw1YVcKcUVTZmdPaE1WRk5UODN0RlJRWHJhR2RuSjR5T2pnSU9NYmk3VGFLRDd1NjZhMHpybEJHVkN2Y1l6NXVDNDNDbgp0cllXS2lzcm9icTZtbzBHZnRzd05EUUVrNU9UZ0Exam1wMmRaWWUxV2kzTFpHeHNqQVhIUGFjY3gzMTdEa1EzCjR2Nytmak9tejF3U3ZMNitIckMyYkJiYjJ0cWdxNnNMc0hrc0VKV21yNitQQ1Q4NXF2a0QrbVF2akE3VzRjWXMKcDdNOEdCeGtBMHdnY2tyMzV1Wm02T2pvWUNJd1FRZHhuNDdqemh4TzU4OG5KeWZpSzRjYlo4dHJ5MnE5YTFvegpQOUZ4T3ZnRlIybG9lSmlsUG94M25GZlFHd3l3dnJuaDRoL3h4Nzg5ZnB4N3lkbFZGLzJyR0ZlTmFRalgyUGJ0CjNFT2VOeDg4T2pBNUQva1p4K0hCZmV4MHduV2dqLzkrelpUUGpWWWNBQUFBQUVsRlRrU3VRbUNDIgogICAgLz48L2RlZnMKICAgID48ZyBzdHlsZT0iZmlsbDp3aGl0ZTsgdGV4dC1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyBzdHJva2U6d2hpdGU7IgogICAgPjxyZWN0IHg9IjAiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjYwMCIgeT0iMCIgc3R5bGU9InN0cm9rZTpub25lOyIKICAgIC8+PC9nCiAgICA+PGcgc3R5bGU9ImZpbGw6cmdiKDIxOCwyMjgsMjQxKTsgdGV4dC1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyBmb250LXNpemU6OXB4OyBmb250LWZhbWlseTpzYW5zLXNlcmlmOyBzdHJva2U6cmdiKDIxOCwyMjgsMjQxKTsiCiAgICA+PHJlY3QgeD0iNjAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUyOCIgeT0iNDMiIHN0eWxlPSJzdHJva2U6bm9uZTsiCiAgICAgIC8+PHJlY3QgeD0iNjAiIHk9IjQzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSIzNjAiIHk9IjQzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50Mik7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2NjAiIHk9IjQzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50Myk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI5NjAiIHk9IjQzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50NCk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2MCIgeT0iOTEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjM2MCIgeT0iOTEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ2KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjY2MCIgeT0iOTEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ3KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9Ijk2MCIgeT0iOTEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ4KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjYwIiB5PSIxMzkiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ5KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjM2MCIgeT0iMTM5IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTApOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iNjYwIiB5PSIxMzkiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxMSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI5NjAiIHk9IjEzOSIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDEyKTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjYwIiB5PSIxODciIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxMyk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSIzNjAiIHk9IjE4NyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE0KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjY2MCIgeT0iMTg3IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iOTYwIiB5PSIxODciIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxNik7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2MCIgeT0iMjM1IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MTcpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iMzYwIiB5PSIyMzUiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQxOCk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2NjAiIHk9IjIzNSIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDE5KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9Ijk2MCIgeT0iMjM1IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MjApOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iNjAiIHk9IjI4MyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDIxKTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjM2MCIgeT0iMjgzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MjIpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iNjYwIiB5PSIyODMiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQyMyk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI5NjAiIHk9IjI4MyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDI0KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjYwIiB5PSIzMzEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQyNSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSIzNjAiIHk9IjMzMSIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDI2KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjY2MCIgeT0iMzMxIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MjcpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iOTYwIiB5PSIzMzEiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQyOCk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2MCIgeT0iMzc5IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MjkpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iMzYwIiB5PSIzNzkiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQzMCk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2NjAiIHk9IjM3OSIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDMxKTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9Ijk2MCIgeT0iMzc5IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MzIpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iNjAiIHk9IjQyNyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDMzKTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjM2MCIgeT0iNDI3IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MzQpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iNjYwIiB5PSI0MjciIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQzNSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI5NjAiIHk9IjQyNyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDM2KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjYwIiB5PSI0NzUiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQzNyk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSIzNjAiIHk9IjQ3NSIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDM4KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9IjY2MCIgeT0iNDc1IiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50MzkpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iOTYwIiB5PSI0NzUiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ0MCk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2MCIgeT0iNTIzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50NDEpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PHJlY3QgeD0iMzYwIiB5PSI1MjMiIHdpZHRoPSIzMDAiIHN0eWxlPSJmaWxsOnVybCgjbGluZWFyR3JhZGllbnQ0Mik7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSI0OCIKICAgICAgLz48cmVjdCB4PSI2NjAiIHk9IjUyMyIgd2lkdGg9IjMwMCIgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDQzKTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjQ4IgogICAgICAvPjxyZWN0IHg9Ijk2MCIgeT0iNTIzIiB3aWR0aD0iMzAwIiBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50NDQpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iNDgiCiAgICAgIC8+PGxpbmUgeDE9IjYwIiB4Mj0iNjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iNTQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjAwPC90ZXh0CiAgICAgID48dGV4dCB4PSI1NCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iMzgiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4wMDwvdGV4dAogICAgICA+PGxpbmUgeDE9Ijg1IiB4Mj0iODUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTEwIiB4Mj0iMTEwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjEzNSIgeDI9IjEzNSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSIxMjkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjAzPC90ZXh0CiAgICAgID48dGV4dCB4PSIxMjkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MDM8L3RleHQKICAgICAgPjxsaW5lIHgxPSIxNjAiIHgyPSIxNjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTg1IiB4Mj0iMTg1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjIxMCIgeDI9IjIxMCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSIyMDQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjA2PC90ZXh0CiAgICAgID48dGV4dCB4PSIyMDQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MDY8L3RleHQKICAgICAgPjxsaW5lIHgxPSIyMzUiIHgyPSIyMzUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMjYwIiB4Mj0iMjYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjI4NSIgeDI9IjI4NSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSIyNzkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjA5PC90ZXh0CiAgICAgID48dGV4dCB4PSIyNzkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MDk8L3RleHQKICAgICAgPjxsaW5lIHgxPSIzMTAiIHgyPSIzMTAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMzM1IiB4Mj0iMzM1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjM2MCIgeDI9IjM2MCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSIzNTQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjEyPC90ZXh0CiAgICAgID48dGV4dCB4PSIzNTQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MTI8L3RleHQKICAgICAgPjxsaW5lIHgxPSIzODUiIHgyPSIzODUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iNDEwIiB4Mj0iNDEwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjQzNSIgeDI9IjQzNSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSI0MjkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjE1PC90ZXh0CiAgICAgID48dGV4dCB4PSI0MjkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MTU8L3RleHQKICAgICAgPjxsaW5lIHgxPSI0NjAiIHgyPSI0NjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iNDg1IiB4Mj0iNDg1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjUxMCIgeDI9IjUxMCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSI1MDQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjE4PC90ZXh0CiAgICAgID48dGV4dCB4PSI1MDQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MTg8L3RleHQKICAgICAgPjxsaW5lIHgxPSI1MzUiIHgyPSI1MzUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iNTYwIiB4Mj0iNTYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjU4NSIgeDI9IjU4NSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSI1NzkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjIxPC90ZXh0CiAgICAgID48dGV4dCB4PSI1NzkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MjE8L3RleHQKICAgICAgPjxsaW5lIHgxPSI2MTAiIHgyPSI2MTAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iNjM1IiB4Mj0iNjM1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjYwIiB4Mj0iNjAiIHkxPSI1NzEiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpibGFjazsiIHkyPSI1NzMiCiAgICAgIC8+PGxpbmUgeDE9IjYwIiB4Mj0iNjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnJnYig2NCw2NCw2NCk7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSI2NjAiIHgyPSI2NjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iNjU0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4wMDwvdGV4dAogICAgICA+PHRleHQgeD0iNjU0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjAwPC90ZXh0CiAgICAgID48bGluZSB4MT0iNjg1IiB4Mj0iNjg1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjcxMCIgeDI9IjcxMCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSI3MzUiIHgyPSI3MzUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iNzI5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4wMzwvdGV4dAogICAgICA+PHRleHQgeD0iNzI5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjAzPC90ZXh0CiAgICAgID48bGluZSB4MT0iNzYwIiB4Mj0iNzYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9Ijc4NSIgeDI9Ijc4NSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSI4MTAiIHgyPSI4MTAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iODA0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4wNjwvdGV4dAogICAgICA+PHRleHQgeD0iODA0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjA2PC90ZXh0CiAgICAgID48bGluZSB4MT0iODM1IiB4Mj0iODM1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9Ijg2MCIgeDI9Ijg2MCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSI4ODUiIHgyPSI4ODUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iODc5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4wOTwvdGV4dAogICAgICA+PHRleHQgeD0iODc5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjA5PC90ZXh0CiAgICAgID48bGluZSB4MT0iOTEwIiB4Mj0iOTEwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjkzNSIgeDI9IjkzNSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSI5NjAiIHgyPSI5NjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iOTU0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4xMjwvdGV4dAogICAgICA+PHRleHQgeD0iOTU0IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjEyPC90ZXh0CiAgICAgID48bGluZSB4MT0iOTg1IiB4Mj0iOTg1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjEwMTAiIHgyPSIxMDEwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjEwMzUiIHgyPSIxMDM1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTczIgogICAgICAvPjx0ZXh0IHg9IjEwMjkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU4MSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjE1PC90ZXh0CiAgICAgID48dGV4dCB4PSIxMDI5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIzOCIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPjE1PC90ZXh0CiAgICAgID48bGluZSB4MT0iMTA2MCIgeDI9IjEwNjAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTA4NSIgeDI9IjEwODUiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLWRhc2hhcnJheTo1OyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTExMCIgeDI9IjExMTAiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzMiCiAgICAgIC8+PHRleHQgeD0iMTEwNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iNTgxIiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MTg8L3RleHQKICAgICAgPjx0ZXh0IHg9IjExMDQiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjM4IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlOm5vbmU7IgogICAgICA+MTg8L3RleHQKICAgICAgPjxsaW5lIHgxPSIxMTM1IiB4Mj0iMTEzNSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSIxMTYwIiB4Mj0iMTE2MCIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2UtZGFzaGFycmF5OjU7IHN0cm9rZTpzaWx2ZXI7IiB5Mj0iNTcwIgogICAgICAvPjxsaW5lIHgxPSIxMTg1IiB4Mj0iMTE4NSIgeTE9IjQzIiBzdHlsZT0iZmlsbDpub25lOyBzdHJva2U6c2lsdmVyOyIgeTI9IjU3MyIKICAgICAgLz48dGV4dCB4PSIxMTc5IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1ODEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4yMTwvdGV4dAogICAgICA+PHRleHQgeD0iMTE3OSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iMzgiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID4yMTwvdGV4dAogICAgICA+PGxpbmUgeDE9IjEyMTAiIHgyPSIxMjEwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjEyMzUiIHgyPSIxMjM1IiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS1kYXNoYXJyYXk6NTsgc3Ryb2tlOnNpbHZlcjsiIHkyPSI1NzAiCiAgICAgIC8+PGxpbmUgeDE9IjY2MCIgeDI9IjY2MCIgeTE9IjU3MSIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOmJsYWNrOyIgeTI9IjU3MyIKICAgICAgLz48bGluZSB4MT0iNjYwIiB4Mj0iNjYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpyZ2IoNjQsNjQsNjQpOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTI2MCIgeDI9IjEyNjAiIHkxPSI1NzEiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpibGFjazsiIHkyPSI1NzMiCiAgICAgIC8+PGxpbmUgeDE9IjEyNjAiIHgyPSIxMjYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpyZ2IoNjQsNjQsNjQpOyIgeTI9IjU3MCIKICAgICAgLz48bGluZSB4MT0iMTAxMyIgeDI9IjEwMTMiIHkxPSI0MyIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOmJsdWU7IiB5Mj0iNTcwIgogICAgICAvPjx0ZXh0IHg9IjM1IiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1NTEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID5DaGFpcjwvdGV4dAogICAgICA+PHJlY3QgeD0iMjQ5IiB5PSI1MzciIHdpZHRoPSIxMSIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSIyNjMiIHk9IjUzNyIgd2lkdGg9IjI4IiBzdHlsZT0iZmlsbDpyZ2IoMjMwLDI1LDc1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9IjI5MyIgeT0iNTM3IiB3aWR0aD0iNTUiIHN0eWxlPSJmaWxsOnJnYigyMzAsMjUsNzUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMzUyIiB5PSI1MzciIHdpZHRoPSIyOCIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSIzODIiIHk9IjUzNyIgd2lkdGg9Ijc4IiBzdHlsZT0iZmlsbDpyZ2IoMjMwLDI1LDc1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9IjQ2MiIgeT0iNTM3IiB3aWR0aD0iMzUiIHN0eWxlPSJmaWxsOnJnYigyMzAsMjUsNzUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNTAwIiB5PSI1MzciIHdpZHRoPSIzOSIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSI1NDAiIHk9IjUzNyIgd2lkdGg9IjUzIiBzdHlsZT0iZmlsbDpyZ2IoMjMwLDI1LDc1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9IjU5NSIgeT0iNTM3IiB3aWR0aD0iMTIiIHN0eWxlPSJmaWxsOnJnYigyMzAsMjUsNzUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjk2IiB5PSI1MzciIHdpZHRoPSI1IiBzdHlsZT0iZmlsbDpyZ2IoMjMwLDI1LDc1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9IjczNyIgeT0iNTM3IiB3aWR0aD0iMyIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSI3NDQiIHk9IjUzNyIgd2lkdGg9IjIiIHN0eWxlPSJmaWxsOnJnYigyMzAsMjUsNzUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iODQ5IiB5PSI1MzciIHdpZHRoPSIxMSIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSI4NjMiIHk9IjUzNyIgd2lkdGg9IjI4IiBzdHlsZT0iZmlsbDpyZ2IoMjMwLDI1LDc1KTsgc3Ryb2tlOm5vbmU7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9Ijg5MyIgeT0iNTM3IiB3aWR0aD0iNTUiIHN0eWxlPSJmaWxsOnJnYigyMzAsMjUsNzUpOyBzdHJva2U6bm9uZTsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iOTUyIiB5PSI1MzciIHdpZHRoPSIyOCIgc3R5bGU9ImZpbGw6cmdiKDIzMCwyNSw3NSk7IHN0cm9rZTpub25lOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48dGV4dCB4PSIzIiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1MDMiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID5MaXZpbmcgUm9vbTwvdGV4dAogICAgICA+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyNDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSIyNDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyNjMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSIyNjMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyOTEiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSIyOTEiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIzNDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSIzNDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIzODAiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSIzODAiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI0NjAiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI0NjAiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI0OTciIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI0OTciIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI1MzkiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI1MzkiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI1OTMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI1OTMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI2OTYiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI2OTYiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3MzciIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI3MzciIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI4NDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI4NDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI4NjMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI4NjMiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI4OTEiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI4OTEiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI5NDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI5NDgiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNjAsMTgwLDc1KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI5ODAiIGN5PSI0OTkiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig2MCwxODAsNzUpOyIgcj0iMTAiIGN4PSI5ODAiIGN5PSI0OTkiCiAgICAgIC8+PHRleHQgeD0iNiIgeT0iNDU1IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgPk1hc3RlciBCZWQ8L3RleHQKICAgICAgPjxyZWN0IHg9IjYwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzIiIHk9IjQ0MSIgd2lkdGg9IjEzIiBzdHlsZT0iZmlsbDpyZ2IoMCwxMzAsMjAwKTsgc3Ryb2tlOm5vbmU7IHN0cm9rZS13aWR0aDoyOyIgaGVpZ2h0PSIyMCIKICAgICAgLz48cmVjdCB4PSI4NSIgeT0iNDQxIiB3aWR0aD0iMTIiIHN0eWxlPSJmaWxsOnJnYigwLDEzMCwyMDApOyBzdHJva2U6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IiBoZWlnaHQ9IjIwIgogICAgICAvPjxyZWN0IHg9Ijk3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTEwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTIyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTM1IiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTQ3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTYwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTcyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTg1IiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMTk3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMjEwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iMjIyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjEwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjIyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjM1IiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjQ3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjYwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjcyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjg1IiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNjk3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzEwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzIyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzQ3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzYwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzcyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzg1IiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iNzk3IiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iODEwIiB5PSI0NDEiIHdpZHRoPSIxMiIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHJlY3QgeD0iODIyIiB5PSI0NDEiIHdpZHRoPSIxMyIgc3R5bGU9ImZpbGw6cmdiKDAsMTMwLDIwMCk7IHN0cm9rZTpub25lOyBzdHJva2Utd2lkdGg6MjsiIGhlaWdodD0iMjAiCiAgICAgIC8+PHRleHQgeD0iMTciIHk9IjQwNyIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgID5CZWRyb29tPC90ZXh0CiAgICAgID48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigyNDUsMTMwLDQ4KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIxMTIiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNDUsMTMwLDQ4KTsiIHI9IjEwIiBjeD0iMTEyIiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDI0NSwxMzAsNDgpOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjE2NiIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDI0NSwxMzAsNDgpOyIgcj0iMTAiIGN4PSIxNjYiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMjQ1LDEzMCw0OCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iMjM3IiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMjQ1LDEzMCw0OCk7IiByPSIxMCIgY3g9IjIzNyIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigyNDUsMTMwLDQ4KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI2MDkiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNDUsMTMwLDQ4KTsiIHI9IjEwIiBjeD0iNjA5IiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDI0NSwxMzAsNDgpOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjY2NiIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDI0NSwxMzAsNDgpOyIgcj0iMTAiIGN4PSI2NjYiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMjQ1LDEzMCw0OCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNjgyIiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMjQ1LDEzMCw0OCk7IiByPSIxMCIgY3g9IjY4MiIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigyNDUsMTMwLDQ4KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3MDIiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNDUsMTMwLDQ4KTsiIHI9IjEwIiBjeD0iNzAyIiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDI0NSwxMzAsNDgpOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjcyMyIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDI0NSwxMzAsNDgpOyIgcj0iMTAiIGN4PSI3MjMiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMjQ1LDEzMCw0OCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNzQ4IiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMjQ1LDEzMCw0OCk7IiByPSIxMCIgY3g9Ijc0OCIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigyNDUsMTMwLDQ4KTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3NjciIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNDUsMTMwLDQ4KTsiIHI9IjEwIiBjeD0iNzY3IiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDI0NSwxMzAsNDgpOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9Ijc4MiIgY3k9IjQwMyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDI0NSwxMzAsNDgpOyIgcj0iMTAiIGN4PSI3ODIiIGN5PSI0MDMiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMjQ1LDEzMCw0OCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iODM3IiBjeT0iNDAzIgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMjQ1LDEzMCw0OCk7IiByPSIxMCIgY3g9IjgzNyIgY3k9IjQwMyIKICAgICAgLz48dGV4dCB4PSIyNCIgeT0iMzU5IiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgPkhhbGx3YXk8L3RleHQKICAgICAgPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjExNCIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSIxMTQiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iMTY3IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjE2NyIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyMzkiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iMjM5IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjI2MSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSIyNjEiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iMjkxIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjI5MSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIzNDgiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iMzQ4IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjM4MSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSIzODEiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNDYwIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjQ2MCIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI0OTciIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iNDk3IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjUzOSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSI1MzkiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNTkzIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjU5MyIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI2MDciIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iNjA3IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjY2NyIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSI2NjciIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNjgzIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjY4MyIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3MDIiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iNzAyIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjcyNCIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSI3MjQiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNzQ2IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9Ijc0NiIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3NjciIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iNzY3IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9Ijc4MiIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSI3ODIiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iODM5IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9IjgzOSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI4NjEiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iODYxIiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDE0NSwzMCwxODApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9Ijg5MSIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDE0NSwzMCwxODApOyIgcj0iMTAiIGN4PSI4OTEiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoMTQ1LDMwLDE4MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iOTQ4IiBjeT0iMzU1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoMTQ1LDMwLDE4MCk7IiByPSIxMCIgY3g9Ijk0OCIgY3k9IjM1NSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYigxNDUsMzAsMTgwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI5ODEiIGN5PSIzNTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigxNDUsMzAsMTgwKTsiIHI9IjEwIiBjeD0iOTgxIiBjeT0iMzU1IgogICAgICAvPjx0ZXh0IHg9IjEzIiB5PSIzMTEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICA+QmF0aHJvb208L3RleHQKICAgICAgPjxjaXJjbGUgc3R5bGU9ImZpbGw6bWFyb29uOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjExNCIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bWFyb29uOyIgcj0iMTAiIGN4PSIxMTQiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDptYXJvb247IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iMTY3IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTptYXJvb247IiByPSIxMCIgY3g9IjE2NyIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm1hcm9vbjsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyMzkiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm1hcm9vbjsiIHI9IjEwIiBjeD0iMjM5IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bWFyb29uOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjM0OSIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bWFyb29uOyIgcj0iMTAiIGN4PSIzNDkiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDptYXJvb247IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNTk0IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTptYXJvb247IiByPSIxMCIgY3g9IjU5NCIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm1hcm9vbjsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI2NjciIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm1hcm9vbjsiIHI9IjEwIiBjeD0iNjY3IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bWFyb29uOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjcyNCIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bWFyb29uOyIgcj0iMTAiIGN4PSI3MjQiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDptYXJvb247IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNzQ3IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTptYXJvb247IiByPSIxMCIgY3g9Ijc0NyIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm1hcm9vbjsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI3ODEiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm1hcm9vbjsiIHI9IjEwIiBjeD0iNzgxIiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bWFyb29uOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjgzOSIgY3k9IjMwNyIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bWFyb29uOyIgcj0iMTAiIGN4PSI4MzkiIGN5PSIzMDciCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDptYXJvb247IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iOTQ5IiBjeT0iMzA3IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTptYXJvb247IiByPSIxMCIgY3g9Ijk0OSIgY3k9IjMwNyIKICAgICAgLz48dGV4dCB4PSIzMCIgeT0iMjYzIiBzdHlsZT0iZmlsbDpibGFjazsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgPkZyaWRnZTwvdGV4dAogICAgICA+PHVzZSBzdHlsZT0iZmlsbDpuYXZ5OyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5hdnk7IiB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLDI0MiwyNDkpIiB4bGluazpocmVmPSIjaW1hZ2UxIgogICAgICAvPjx1c2Ugc3R5bGU9ImZpbGw6bmF2eTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpuYXZ5OyIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwyNTcsMjQ5KSIgeGxpbms6aHJlZj0iI2ltYWdlMSIKICAgICAgLz48dXNlIHN0eWxlPSJmaWxsOm5hdnk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bmF2eTsiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMzQ1LDI0OSkiIHhsaW5rOmhyZWY9IiNpbWFnZTEiCiAgICAgIC8+PHVzZSBzdHlsZT0iZmlsbDpuYXZ5OyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5hdnk7IiB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLDg0MiwyNDkpIiB4bGluazpocmVmPSIjaW1hZ2UxIgogICAgICAvPjx1c2Ugc3R5bGU9ImZpbGw6bmF2eTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpuYXZ5OyIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSw4NTcsMjQ5KSIgeGxpbms6aHJlZj0iI2ltYWdlMSIKICAgICAgLz48dXNlIHN0eWxlPSJmaWxsOm5hdnk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bmF2eTsiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsOTQ1LDI0OSkiIHhsaW5rOmhyZWY9IiNpbWFnZTEiCiAgICAgIC8+PHRleHQgeD0iMzIiIHk9IjIxNSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgID5LZXR0bGU8L3RleHQKICAgICAgPjx1c2Ugc3R5bGU9ImZpbGw6cmdiKDI0MCw1MCwyMzApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNDAsNTAsMjMwKTsiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsNDUxLDIwMSkiIHhsaW5rOmhyZWY9IiNpbWFnZTIiCiAgICAgIC8+PHRleHQgeD0iMTAiIHk9IjE2NyIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgID5NaWNyb3dhdmU8L3RleHQKICAgICAgPjx1c2Ugc3R5bGU9ImZpbGw6cmdiKDI1NSwyMjUsMjUpOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYigyNTUsMjI1LDI1KTsiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsNDg5LDE1MykiIHhsaW5rOmhyZWY9IiNpbWFnZTMiCiAgICAgIC8+PHRleHQgeD0iMjQiIHk9IjExOSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgID5LaXRjaGVuPC90ZXh0CiAgICAgID48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYig3MCwyNDAsMjQwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIyNDciIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig3MCwyNDAsMjQwKTsiIHI9IjEwIiBjeD0iMjQ3IiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDcwLDI0MCwyNDApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjI2MSIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDcwLDI0MCwyNDApOyIgcj0iMTAiIGN4PSIyNjEiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNzAsMjQwLDI0MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iMjkyIiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoNzAsMjQwLDI0MCk7IiByPSIxMCIgY3g9IjI5MiIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYig3MCwyNDAsMjQwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSIzNTAiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig3MCwyNDAsMjQwKTsiIHI9IjEwIiBjeD0iMzUwIiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDcwLDI0MCwyNDApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9IjQ2MCIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDcwLDI0MCwyNDApOyIgcj0iMTAiIGN4PSI0NjAiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNzAsMjQwLDI0MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iNDk4IiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoNzAsMjQwLDI0MCk7IiByPSIxMCIgY3g9IjQ5OCIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYig3MCwyNDAsMjQwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI2ODMiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig3MCwyNDAsMjQwKTsiIHI9IjEwIiBjeD0iNjgzIiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDcwLDI0MCwyNDApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9Ijc2NyIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDcwLDI0MCwyNDApOyIgcj0iMTAiIGN4PSI3NjciIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNzAsMjQwLDI0MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iODQ3IiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoNzAsMjQwLDI0MCk7IiByPSIxMCIgY3g9Ijg0NyIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOnJnYig3MCwyNDAsMjQwKTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpub25lOyIgcj0iMTAiIGN4PSI4NjEiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpub25lOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOnJnYig3MCwyNDAsMjQwKTsiIHI9IjEwIiBjeD0iODYxIiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6cmdiKDcwLDI0MCwyNDApOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiByPSIxMCIgY3g9Ijg5MiIgY3k9IjExNSIKICAgICAgLz48Y2lyY2xlIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6cmdiKDcwLDI0MCwyNDApOyIgcj0iMTAiIGN4PSI4OTIiIGN5PSIxMTUiCiAgICAgIC8+PGNpcmNsZSBzdHlsZT0iZmlsbDpyZ2IoNzAsMjQwLDI0MCk7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6bm9uZTsiIHI9IjEwIiBjeD0iOTUwIiBjeT0iMTE1IgogICAgICAvPjxjaXJjbGUgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlLXdpZHRoOjI7IHN0cm9rZTpyZ2IoNzAsMjQwLDI0MCk7IiByPSIxMCIgY3g9Ijk1MCIgY3k9IjExNSIKICAgICAgLz48dGV4dCB4PSIyNSIgeT0iNzEiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2Utd2lkdGg6Mjsgc3Ryb2tlOm5vbmU7IiB4bWw6c3BhY2U9InByZXNlcnZlIgogICAgICA+TnVkZ2VzPC90ZXh0CiAgICAgID48dXNlIHN0eWxlPSJmaWxsOnRlYWw7IHN0cm9rZS13aWR0aDoyOyBzdHJva2U6dGVhbDsiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsNDQ5LDU3KSIgeGxpbms6aHJlZj0iI2ltYWdlNCIKICAgICAgLz48dGV4dCB4PSIzMTkiIHhtbDpzcGFjZT0icHJlc2VydmUiIHk9IjU5NSIgc3R5bGU9ImZpbGw6YmxhY2s7IHN0cm9rZTpub25lOyIKICAgICAgPldlZCAyNC1PY3QtMjAxODwvdGV4dAogICAgICA+PHRleHQgeD0iOTIwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSI1OTUiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID5UaHUgMjUtT2N0LTIwMTg8L3RleHQKICAgICAgPjx0ZXh0IHg9IjMxOSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iMjYiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID5XZWQgMjQtT2N0LTIwMTg8L3RleHQKICAgICAgPjx0ZXh0IHg9IjkyMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iMjYiIHN0eWxlPSJmaWxsOmJsYWNrOyBzdHJva2U6bm9uZTsiCiAgICAgID5UaHUgMjUtT2N0LTIwMTg8L3RleHQKICAgICAgPjxsaW5lIHgxPSI2MCIgeDI9IjYwIiB5MT0iNDMiIHN0eWxlPSJmaWxsOm5vbmU7IHN0cm9rZTpibGFjazsiIHkyPSI1NzEiCiAgICAgIC8+PGxpbmUgeDE9IjYwIiB4Mj0iMTI2MCIgeTE9IjU3MSIgc3R5bGU9ImZpbGw6bm9uZTsgc3Ryb2tlOmJsYWNrOyIgeTI9IjU3MSIKICAgIC8+PC9nCiAgICA+PGcgc3R5bGU9InRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgZm9udC1zaXplOjExcHg7IGZvbnQtd2VpZ2h0OmJvbGQ7IGZvbnQtZmFtaWx5OnNhbnMtc2VyaWY7IgogICAgPjx0ZXh0IHg9IjQzNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeT0iMTMiIHN0eWxlPSJzdHJva2U6bm9uZTsiCiAgICAgID5BY3Rpdml0eSBmb3IgSm9obiBKZW5raW5zIDI0LU9jdC0yMDE4IDAwOjAwIC0gMjUtT2N0LTIwMTggMjM6NTk8L3RleHQKICAgID48L2cKICA+PC9nCj48L3N2Zwo+Cg==
+                -->
+
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></label></div>
+        </div>
+            </div>
+
+            <!-- Footer -->
+            <div data-bind="with:currentSection" class="footer btn-group">
+                <!-- ko if:$data.action().previous --><!-- /ko -->
+                <!-- ko if:$data.action().next -->
+                <button data-bind="click:$parent.finishState() ? $parent.selectFinish : $parent.selectNext, html:$parent.finishState() ? $parent.finishEndText : $parent.finishNextText" class="action-next btn btn-link widthauto">next</button>
+                <!-- /ko -->
+                <!-- <audio controls>
+                  <source src="page1_files/hello.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+                </audio> -->
+            </div>
+
+        </div>
+        <!-- /Form-Screen -->
+    </div>
+
+
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+			<!-- /ko -->
+
+		</div>
+
+		<div data-bind="place:$data" id="0499e8e74346247e00000001" class="place place-nopad concealed">
+
+			<!-- AMONIS: 21/08/2015: Removed old ( incorrect ) header references, as the purpose has moved to the header console -->
+
+			<!-- SPACES -->
+			<!-- ko foreach:$root.getSpaces( $data.id ) -->
+				<div data-bind="space:$data" id="04c600e643723c7d00000001" name="Iotaa.loginSpace" class="space flow">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.loginCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">
+
+div[name="Iotaa.loginCog"] .frm { background-color:transparent; border-width:0px; }
+
+div[name="Iotaa.loginCog"] h1 { font-size:64px; color:#fff; }
+
+div[name="Iotaa.loginCog"] .txt { min-height: 40px; normal; border-width:0; }
+
+div[name="Iotaa.loginCog"] .txt-email { border-top-left-radius:10px; border-top-right-radius:10px; border-bottom-left-radius:0px; border-bottom-right-radius:0px; margin-bottom: 0px; border-bottom: 1px solid #eee; }
+
+div[name="Iotaa.loginCog"] .txt-password { border-top-left-radius:0px; border-top-right-radius:0px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin-top: 0px; }
+
+div[name="Iotaa.loginCog"] .btn-signin { margin-top: 16px; background-color:transparent; border-bottom: 1px solid rgba(255,255,255,0.25); }
+
+div[name="Iotaa.loginCog"] .btn-forgotten { font-size:12px; }
+
+div[name="Iotaa.loginCog"] .login-home { display: flex; align-items: center; flex-direction: column; }
+
+div[name="Iotaa.loginCog"] .login-home > div {
+  max-width:480px;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
+  background-color: rgba(255,255,255,0.25);
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+</style><div id="0001095b66e53eb200000001" class="cog-body"><div name="home" data-bind="css:{ concealed:_ready() == false }" class="screen login-home align-center displayed">
+    <div>
+        <!-- WEB FORM used by Cordova App / PWA -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.useForm===true}" class="frm concealed">
+            <!-- ko if:$data.useForm === false --><!-- /ko -->
+        </div>
+
+        <!-- ko if:$data.useForm === true -->
+            <!-- ko if:$data.platform==="Mobile" --><!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko if:$data.state === 2 --><!-- /ko -->
+    </div>
+</div>
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+
+				<div data-bind="space:$data" id="04c600e6876a02d800000001" name="System.LoginFormSpace" class="space fullOne concealed">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="System.LoginFormCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">
+
+div[name="System.LoginFormCog"] .appflow {
+  height: 100%;
+  overflow-y: auto;
+}
+
+div[name="System.LoginFormCog"] .footer {
+    padding: 16px 0 48px 0;
+}
+
+div[name="System.LoginFormCog"] .footer .btn { min-width:150px; }
+
+div[name="System.LoginFormCog"] .action-cancel { height:48px; display:none; }
+
+/*
+ * override default styles to jazz up login
+ */
+
+div[name="System.LoginFormCog"] .lbl {
+    background-color:initial;
+	text-align: left;
+}
+
+div[name="System.LoginFormCog"] .txt-append>input {
+    border-radius:10px;
+}
+/*
+ * /override default styles to jazz up login
+ */
+
+div[name="System.LoginFormCog"] .width10.background.form-screen {
+	box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
+	background-color:rgba(255,255,255,0.25);
+	margin: 5px;
+	padding: 5px;
+	width: 96% !important;
+	border-radius: 10px;
+}
+
+div[name="System.LoginFormCog"] .system-form-login-default {
+    flex-grow:1;
+}
+
+/* Enlarge next */
+
+div[name="System.LoginFormCog"] .appflow-controls button {
+	width: 100%;
+	margin-top: 16px;
+	border-radius:0 !important;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn {
+    border-width: 0;
+    background: transparent;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn-boolean{
+	background: white;
+	border-width: 1px !important;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn-boolean.active{
+	background: #5bb75b;
+}
+
+/* Restrict the form size to make cuter for login */
+
+div[name="System.LoginFormCog"] .form-screen {
+	max-width: 480px;`
+}
+
+div[name="System.LoginFormCog"] img { max-width:100% !important; }
+
+/*
+  AMONIS: 2018-05-07
+  Defining new Flex & Grid layouts for applfow
+ */
+
+div[name="System.LoginFormCog"] .tmpl {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+}
+
+div[name="System.LoginFormCog"] .tmpl > .lbl {
+  height: auto !important;
+  white-space: unset !important;
+  overflow: unset !important;
+  text-overflow: unset !important;
+  width: unset !important;
+}
+
+/*
+  CONTENTGROUP
+ */
+
+div[name="System.LoginFormCog"] .tmpl-contentGroup > .lbl {
+  text-align: left;
+  background-color: #eee;
+}
+
+/*
+  TEXTAREA
+ */
+
+div[name="System.LoginFormCog"] .tmpl-textArea {
+  grid-template-columns: 1fr;
+  text-align:left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-textArea > textarea {
+  min-height: 100px;
+}
+
+/*
+  BOOLEANVALUE
+ */
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue {
+  grid-template-columns: 1fr 32px;
+  padding-left: 5px;
+  text-align:left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .appflow-help {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .lbl {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  flex-grow: 12;
+  flex-basis: 90%;
+  text-align: left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .btn {
+  flex-grow: 1;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .flex-row {
+  flex-grow:1;
+}
+</style><div id="0001095b5340dfcd00000001" class="cog-body">
+
+
+    <div id="appflow" data-bind="css:$data.cssname" class="screen appflow system-form-login-default">
+
+        <!-- TEMPLATES -->
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-original" type="text/html">
+            <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <div data-bind="foreach:$data" class="tr">
+                  <div class="td">
+                    <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </script>
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-default" type="text/html">
+          <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <!-- ko template:{ name:$root._getTmpl, data:$data } --><!-- /ko -->
+            </div>
+          </div>
+        </script>
+
+        <!--
+          FLOW-ROW
+        -->
+        <script id="tmpl-flowRow-default" type="text/html">
+          <div data-bind="foreach:$data.cols, css:{ 'is-error':$data.status()==='incomplete'}" class="tr">
+            <div class="td">
+              <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+            </div>
+          </div>
+          <label data-bind="html:$data.validation().label" class="lbl "></label>
+        </script>
+
+        <!--
+            BUTTON
+        -->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <!-- ko if:$data.img -->
+                    <button data-bind="click:$data.click" class="btn width10 heightauto">
+                        <img data-bind="attr:{ 'src':$data.img }" style="max-width:100%;"></img>
+                    </button>
+                <!-- /ko -->
+                <!-- ko if:!$data.img -->
+                    <button data-bind="html:$data.label, click:$data.click" class="btn width10"></button>
+                <!-- /ko -->
+            </div>
+        </script>
+
+        <!-- csvData -->
+        <!-- CSV Table for outputting tables in appflows -->
+        <script id="tmpl-csvData-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <csv-table params="data:data" class="appflow-full"></csv-table>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- TextValue -->
+        <script id="tmpl-textValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }" type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- ukPhoneNumber -->
+        <!-- UK specific telephone formatting 00000 123 456 -->
+        <script id="tmpl-ukPhoneNumber-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl lbl-important' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                <phone-number params="value:answer.value" ></phone-number>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- PasswordValue -->
+        <script id="tmpl-passwordValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, valueUpdate:['afterkeydown','propertychange','input'], event:{keyup:$data.onKeyUp}, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" type="password"  tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <script id="tmpl-dateValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+
+                    <div class="width6 inline-block ">
+                        <!-- ko with:$data.el -->
+                        <section data-bind="datepicker:$data" class="datepicker2">
+                            <div class="datepicker2-dd">
+                                <select data-bind="options:$data.dd,optionsText:'lbl',optionsValue:'val',value:$data.ddValue" class="datepicker2-dd-select"></select>
+                            </div>
+                            <div class="datepicker2-mm">
+                                <select data-bind="options:$data.mm,optionsText:'lbl',optionsValue:'val',value:$data.mmValue" class=datepicker2-mm-select></select>
+                            </div>
+                            <div class="datepicker2-yy">
+                                <select data-bind="options:$data.yy,optionsText:'lbl',optionsValue:'val',value:$data.yyValue" class="datepicker2-yy-select"></select>
+                            </div>
+                        </section>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- timeValue -->
+        <script id="tmpl-timeValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <!-- ko if:$root.isOs2===true -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" data-time-inline="true" type="text" tabindex="0">
+                    <!-- /ko -->
+                    <!-- ko if:!$root.isOs2 -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" type="text">
+                    <!-- /ko -->
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                </div>
+            </div>
+        </script>
+
+        <!-- TextArea -->
+        <script id="tmpl-textArea-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-textArea">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                  <textarea data-bind="value:answer.value" class="txt"></textarea>
+                </div>
+            </div>
+        </script>
+
+        <!-- multiChoice -->
+        <script id="tmpl-multiChoice-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                        <option data-bind="html: label, attr:{ 'value': id }"></option>
+                    </select>
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- numericValue -->
+        <script id="tmpl-numericValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl-numericValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }"  type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip spn text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- image -->
+        <script id="tmpl-image-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <img class="img inline-block" data-bind="attr:{ 'src': location }, style:{ maxWidth: '100%' }"></img>
+                <label class="lbl" data-bind="html:label"></label><br />
+            </div>
+        </script>
+
+        <!-- static -->
+        <script id="tmpl-static-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html: staticRender" class="text-info width10" style="white-space: normal; word-wrap: break-word; word-break: break-all;"></p>
+            </div>
+        </script>
+
+        <!-- contentGroup -->
+        <script id="tmpl-contentGroup-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-contentGroup">
+								<label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }"></label>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+						</div>
+        </script>
+
+        <!-- button - display nothing yet-->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            </div>
+        </script>
+
+        <!-- fileUpload -->
+        <script id="tmpl-fileUpload-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <form data-bind="fileUpload:{'property':answer.pulse}" action="/PumpHouse/uploads/uploadKeyDocument" method="POST">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <span class="btn is-primary btn-file width2">
+                        <span data-bind="i18n:'upload'"class="inline-block"><!--upload--></span>
+                        <input data-bind="value: answer.file, event: {'mouseup': selectFile}" name = "file" type="file"  tabindex="0" />
+                    </span>
+                    <span class="lbl width4" data-bind="html:answer.status()">
+                    </span>
+                </form>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect default-->
+        <script id="tmpl-multiSelect-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0" />
+                        <button class="btn"><span class="ico ico-caron"></span></button>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect basic-->
+        <script id="tmpl-multiSelect-basic" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <!-- <p data-bind="text:ko.toJSON($data)"></p>
+                <p data-bind="text:ko.toJSON($data.answer.id)"></p> -->
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <!-- <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                            <option data-bind="html: label, attr:{ 'value': id }"></option>
+                        </select> -->
+                        <!-- <input data-bind="value:$data.answer.id"></input> -->
+                        <select data-bind="value:$data.selected,foreach:$data.options" class="txt" >
+                          <option data-bind="text:$data.label, attr:{'value':$data.id}"></option>
+                        </select>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                          <span class="lbl lbl-closing">
+                            <!-- <label data-bind="text:ko.toJSON($data)"></label> -->
+                            <label data-bind="text:key"></label>
+                            <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                          </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiSelect: Contacts -->
+        <script id="tmpl-multiSelect-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiChoice: Contacts -->
+        <script id="tmpl-multiChoice-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect system.tag-->
+        <script id="tmpl-multiSelect-system.tag" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            	<!--multiselect-system.tag-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="width10-nopad">
+                    <div class="txt-append width10-nopad inline-block align-top" data-type="txt-append">
+
+
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt width5 height2" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0">
+                        <button class="btn width1 height2"><span class="ico ico-caron"></span></button>
+                    </div>
+
+                    <div class="width10-nopad" data-bind="css:{ 'hidden': answer.id().length === 0 }">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing height2 widthauto">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- text -->
+        <script id="tmpl-text-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label, attr: {'class': success === false ? 'text-info is-error' : 'text-info'}" style="padding-top: 10px;"></p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- boolean -->
+        <script id="tmpl-booleanValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-booleanValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="flex-row">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}"></label>
+                  <div class="tmpl-booleanValue-button">
+                    <button data-bind="click:$data.click, css:{'active':$data.answer.value()==='true'}" class="btn btn-boolean"></button>
+                  </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- AppFlow UI Templates -->
+        <script id="tmpl-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p class="height2">default template</p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- Comment -->
+        <script id="tmpl-comment-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label" class="text-info text-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fRegistration
+        -->
+        <script id="tmpl-u2fRegistration-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fAuthentication
+        -->
+        <script id="tmpl-u2fAuthentication-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!-- /TEMPLATES -->
+
+        <!-- Loading Screen -->
+        <div class="" style="padding-top: 200px" data-bind="css:{ &#39;hidden&#39;: !loading() || error() }">
+            <div class="progress progress-striped active height2">
+                <div class="bar height2" data-bind="style:{ &#39;width&#39;: (((100 / totalStep()) * currentStep()) + &#39;%&#39;) }" style="overflow: hidden; width: 100%;">
+                    <p style="color: white; font-weight: bold; white-space: nowrap;" data-bind="html: stepMessage()">1 of 1</p>
+                </div>
+            </div>
+            <p style="color: black; font-weight: bold; text-align: center; padding-top: 10px; width: 100%;" data-bind="html:$data.statusMessage()">created document Client Activity - John Jenkins 2018-10-24 - 2018-10-25.pdf for HISC Office Admin</p>
+        </div>
+
+        <!-- Error Screen -->
+        <div data-bind="css:{ &#39;hidden&#39;:!$data.error() }" class="width10 hidden background">
+            <p class="font-h3 is-error">an error occurred</p>
+            <p class="is-warning" data-bind="html: errorMessage()"></p>
+        </div>
+
+        <!-- Form-Screen -->
+        <div class="width10 background form-screen hidden" data-bind="css:{ &#39;hidden&#39;: loading() || error() }">
+
+    			<div class="section-header" style="padding:5px">
+    				<span class="span width5 align-left">
+    					<button data-bind="click:selectCancel, disable:!enableCancel() || finishState(), enable:enableCancel() &amp;&amp; !finishState()" class="action-cancel btn svg svg-16 svg-close" disabled=""></button>
+    				</span>
+    				<span class="span width5 align-right">
+                <!-- <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link widthauto">help</button> -->
+                <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="action-cancel btn svg svg-16 svg-help"></button>
+            </span>
+          </div>
+
+            <!-- Current Section -->
+            <div data-bind="with:currentSection">
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    &nbsp;
+                </div>-->
+
+                <!-- current section header -->
+                <div class="appflow-panel width10 heightauto align-top">
+                    <h3 data-bind="html:label" class="text-center width10"></h3>
+                </div>
+
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link">help</button>
+                </div>-->
+
+                <!-- AMONIS: 21/07/2015: Updated to show a summary -->
+                <div data-bind="css:{&#39;concealed&#39;:!$data.showSummary()}" class="appflow-summary width10">
+                    <h3 class="align-center">Summary</h3>
+                    <p data-bind="paragraph:$data.summaryText" class="align-center">completed <strong>1</strong> actions with <strong>1</strong> successes and <strong>0</strong> failures.</p>
+                    <button data-bind="button:$data.flipSummary" class="btn" value="show detail">show detail</button>
+                </div>
+
+                <!-- AMONIS: 21/07/2015: Updated to hide if a summary is present,
+                     AMONIS: 09/11/2015: also adds the summary class for styling-->
+                <div data-bind="template:{ name:$root._getTmpl, foreach:content }, css:{&#39;concealed&#39;:$data.showSummary(),&#39;summary&#39;:$data.isSummary()}" class="appflow-panel concealed summary">
+            <div data-bind="css:$data.cssname" class="form-element form-login form-text">
+                <p data-bind="html:label, attr: {&#39;class&#39;: success === false ? &#39;text-info is-error&#39; : &#39;text-info&#39;}" style="padding-top: 10px;" class="text-info">logged in successfully</p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </div>
+            </div>
+
+            <!-- Footer -->
+            <div data-bind="with:currentSection" class="footer btn-group">
+                <!-- ko if:$data.action().previous --><!-- /ko -->
+                <!-- ko if:$data.action().next -->
+                <button data-bind="click:$parent.finishState() ? $parent.selectFinish : $parent.selectNext, html:$parent.finishState() ? $parent.finishEndText : $parent.finishNextText" class="action-next btn btn-link widthauto">finish</button>
+                <!-- /ko -->
+            </div>
+
+        </div>
+        <!-- /Form-Screen -->
+    </div>
+
+
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+			<!-- /ko -->
+
+		</div>
+	<!-- /ko -->
+
+	<!-- SnackBar -->
+	<script type="text/html" id="snackbar-template">
+		<p data-bind="html:$data.msg"></p>
+	</script>
+	<div data-bind="snackbar:$data.snackBar" class="snackbar slideInUp animated">
+		<p data-bind="html:$data.msg"></p>
+	</div>
+</div>
+
+<!-- play google home sound -->
+<script>
+  //debugger
+  var audio = new Audio('page1_files/google-nudge-message.mp3');
+  var el = document.getElementById('google-home-sound');
+  el.addEventListener('click', function() {
+    console.log('// google home should say something!');
+    audio.play();
+  });
+</script>
+</body></html>

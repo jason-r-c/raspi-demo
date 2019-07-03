@@ -1,0 +1,31 @@
+#
+# Not used
+# Reverted to Jenkins build for now
+# AMONIS: 18/10/18
+#
+
+stages:
+  - install
+  - test
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+
+test_platform:
+  stage: test
+  script: npm test
+
+build_platform:
+  stage: build
+  script: npm run build
+  artifacts:
+    paths:
+    - ./*.tar.gz
+

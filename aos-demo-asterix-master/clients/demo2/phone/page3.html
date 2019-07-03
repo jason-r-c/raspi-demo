@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://at.cnect.to/iotaa -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>IoTAA - The Business of IoT</title>
+
+<!-- PumpHouse v1.44.0-SNAPSHOT - vcs: tag=-, branch=master, parent=081fa83de6ec8f39638818cfff0ee9ed3ef6dc48, commit=- -->
+
+<!--link rel="stylesheet" type="text/css" href="iotaa/sdk/ext/resources/css/ext-all.css" /-->
+<!--link rel="stylesheet" type="text/css" href="iotaa/resources/css/pumpco.css" /-->
+<!--link rel="shortcut icon" href="resources/images/favicon.ico" /-->
+    <!--script type="text/javascript" src="aos/sdk/the.js"></script-->
+    <!-- ExtJS library: base/adapter -->
+<style type="text/css" charset="UTF-8">#PanelLoading { background-color:#ccc; box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.74); text-align:center; display:none; }
+#PanelLoading > p { margin:0px; padding:5px 5px; font-size:12px; font-family: monospace; }
+#PanelLoading > h1 { display:none; background-color: #ccc; font-size:44px; font-weight:bold; margin:0px; padding:10px 0px; text-transform:uppercase; }
+#loaderbar { height: 2px; background-color: #0088cc; height: 2px; position: fixed; top: 0; }
+#logo { box-shadow:0px 0px 5px rgba(0,0,0,0.5); border-radius:25px; position: absolute; left: -48px; top: -48px; margin-left: 50%; margin-top: 50%; width: 96px; height: 96px; background-image:url(aos/resources/iotaa/favicon/favicon-96x96.png); background-repeat: no-repeat; background-position: center center; }</style><meta name="HandheldFriendly" content="true">
+
+<!-- @JC 7/11/18: retained 'initial-scale' tag below as dosnt cause an issue for logic demo -->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black"> -->
+
+<link rel="icon" type="image/x-icon" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="57x57" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple-icon-180x180.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" sizes="750x1334" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_750.png"><link rel="apple-touch-icon" sizes="640x1136" href="https://at.cnect.to/aos/resources//iotaa/favicon/apple_splash_640.png"><link rel="icon" type="image/png" sizes="192x192" href="https://at.cnect.to/aos/resources//iotaa/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="https://at.cnect.to/aos/resources//iotaa/favicon/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://at.cnect.to/aos/resources//iotaa/favicon/ms-icon-144x144.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="theme-color" content="#ffffff">
+
+<!-- PumpCo config -->
+<script type="text/javascript">
+       siteId = "002753674d6a19be00000001";
+       var params = {"siteId":"002753674d6a19be00000001","siteName":"Iotaa.cnect_to_iotaa","siteTitle":"IoTAA - The Business of IoT","loginLogo":"/PumpHouse/uploads/iotaa/images/Iotaa-logo.png","sitePath":"iotaa/","pumpfacePath":"aos/","favicon":"resources/images/favicon.ico","bootstrapVersion":"0.02.00","contactDetails":"Your Support Contact"};
+</script>
+
+<!-- (Optional) manifest -->
+
+
+<link rel="stylesheet" type="text/css" href="./page1_files/phil-1.0.0.css"><link rel="stylesheet" type="text/css" href="./page1_files/animate.css"><link rel="stylesheet" type="text/css" href="./page1_files/core.css"><link rel="stylesheet" type="text/css" href="./page1_files/site.css"></head>
+<body class="os-background native os-large os-landscape" data-bind="body:$data" style="background-attachment:fixed;">
+<!-- Base Card - used as a fallback for all card rendering -->
+<script type="text/html" id="card-default">
+	<div class="span span1">
+		<p class="p width8 height2 text-clip">Base Card</p>
+	</div>
+</script>
+
+<!-- HEADER -->
+<!-- HEADER -->
+
+<!-- ko if:$root.header().oVisible --><!-- /ko -->
+
+
+<!-- MASK -->
+<div id="mask" class="concealed" style="position:absolute;z-order:100;background-color:rgba(0,0,0,0.5);height:100%;width:100%;"></div>
+
+<!-- TOAST -->
+<!-- Template for Toast-Message -->
+<script type="text/html" id="toast-message">
+	<div data-bind="css:{'removing':!$data.visible()}" class="toast span2" style="padding:2px 0px;">
+		<p data-bind="html:$data.msg"></p>
+		<div class="toast-btns">
+			<!-- ko if:$data.auto===false -->
+				<!-- ko if:$data.btnCancel -->
+					<button data-bind="click:$data.btnCancel" class="btn is-error">cancel</button>
+				<!-- /ko -->
+				<button data-bind="click:$data.btnOk" class="btn is-success">ok</button>
+			<!-- /ko -->
+		</div>
+	</div>
+</script>
+<div id="toast" data-bind="toast:$data.toast"></div>
+
+<!-- LOADERBAR -->
+<div data-bind="loader:$data.loader" class="loaderbar concealed" style="width:50%"></div>
+
+<!-- MAIN site i.e. main web flow content -->
+<div class="centralise">
+	<!-- PLACES -->
+	<!-- ko foreach:$data.places -->
+		<div data-bind="place:$data" id="5bd1b5afd58eff6c46069b6f" class="place is-owner">
+
+			<!-- AMONIS: 21/08/2015: Removed old ( incorrect ) header references, as the purpose has moved to the header console -->
+
+			<!-- SPACES -->
+			<!-- ko foreach:$root.getSpaces( $data.id ) -->
+				<div data-bind="space:$data" id="5bd1b5afd58eff6c46069bea" name="Iotaa.helperLandingPageSpace" class="space iotaa-panels">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.helperLandingPageLeftCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">/* common.css */
+
+/***********/
+/* Global  */
+/***********/
+
+div[name="Iotaa.helperLandingPageLeftCog"] .btn {
+  height: 48px;
+  margin: 4px 0px;
+  border-radius: 5px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .btn:hover {
+  cursor: pointer;
+}
+
+/***********/
+/* Layout  */
+/***********/
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.helperLandingPageLeftCog"] .profile {
+  flex-grow:1;
+}
+
+/* @JC 05/10/17: May not need */
+
+div[name="Iotaa.helperLandingPageLeftCog"] .screen {
+  display: flex;
+  flex-direction: column;
+}
+
+/***********/
+/* Sidebar */
+/***********/
+
+div[name="Iotaa.helperLandingPageLeftCog"] .iotaa-sidebar {
+    background-color: #693357;
+    display: grid;
+    grid-template-rows: 1fr 108px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .sidebar-menu {
+    padding: 20px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .profile-info {
+    background-color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .profile-info > p:first-child {
+  font-size:16px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .profile-info > p:nth-child(n+2) {
+  font-size:10px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .sidebar-menu .btn.is-error {
+  margin-top: 30px;
+}
+
+/**
+ * Reports
+ */
+
+div[name="Iotaa.helperLandingPageLeftCog"] .reports-sub-heading {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .reports-container .btn {
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 2px;
+}
+
+/* Useful reports */
+
+div[name="Iotaa.helperLandingPageLeftCog"] .reports-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .useful-reports .reports-row .btn:nth-child(1) {
+  margin-right: 8px;
+  /*width: 225px;*/
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .no-reports-saved {
+  color: white;
+  font-size: 14px;
+}
+
+/* All available reports */
+
+div[name="Iotaa.helperLandingPageLeftCog"] .btn-wrapper button {
+  height: 38px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .slc-btn {
+  flex-direction: column;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .slc-btn select {
+  font-size: 14px;
+  height: 35px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .slc-btn > select {
+  max-width: 100%;
+  padding-left: 10px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .btn-wrapper .btn {
+  height: 38px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .available-reports .btn-wrapper .btn:nth-child(1) {
+  margin-right: 3px;
+  margin-left: 0;
+}
+
+/*************/
+/* Dashboard */
+/*************/
+
+div[name="Iotaa.helperLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+/********************/
+/* Dashboard Footer */
+/********************/
+
+div[name="Iotaa.helperLandingPageLeftCog"] .iotaa-main {
+    display: grid;
+    flex-grow: 1;
+    display: grid;
+    grid-template-rows: 1fr 48px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .iotaa-main .main-body {
+    overflow-y: scroll;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .main-footer {
+    display: flex;
+    background-color: #ccc;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .main-footer-buttons {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 5px;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .main-footer-buttons > * {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: transparent;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .main-footer-buttons button.is-highlight:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #4f0f3a;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-top: 18px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 48px;
+    margin: 2px 0px;
+    flex-grow:1;
+    margin: 4px 0px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .slc-btn {
+  display: flex;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .slc-btn > select {
+  max-width: 150px;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .slc-btn .btn {
+  width:unset;
+  margin-left: 5px;
+  padding: 5px;
+  flex-grow: 1;
+}
+
+div[name="Iotaa.helperLandingPageLeftCog"] .clickable {
+    cursor:pointer;
+}
+</style><div id="5bd1b5afd58eff6c46069be8" class="cog-body"><!-- // Sidebar -->
+<div name="home" class="iotaa-sidebar screen displayed">
+    <div class="profile">
+        <div class="profile-info">
+            <!-- ko with:$data.vcard -->
+                <!-- ko with:$data.n -->
+                <p data-bind="text:$data[&#39;given-name&#39;]" class="">Kathy</p>
+                <!-- /ko -->
+                <p data-bind="text:$data.fn" class="profile-name">Kathy Dawson</p>
+            <!-- /ko -->
+        </div>
+        <div class="sidebar-menu" data-bind="foreach:$data.actions">
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Alerts</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Notifications</button>
+
+            <button data-bind="text:$data.label, click:$data.fn" class="btn">Actions</button>
+        </div>
+    </div>
+    <div class="logo">
+        <img data-bind="attr:{src:$data.logo}" class="profile-box" src="./page1_files/logo.png">
+    </div>
+</div>
+</div></div>
+
+
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.helperLandingPageRightCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">
+
+div[name="Iotaa.helperLandingPageRightCog"] .svg-32 { min-height: 32px; }
+
+div[name="Iotaa.helperLandingPageRightCog"] h2 { margin-top: unset; margin-bottom: unset; }
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector { margin: 0 0 15px 0; }
+
+div[name="Iotaa.helperLandingPageRightCog"] .absolute { position:absolute; }
+
+.double-bounce1,
+
+div[name="Iotaa.helperLandingPageRightCog"] .double-bounce2 { background-color: rgba(0,0,0,0.5); }
+
+/*
+  SCREEN
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen {display: flex;flex-direction: column;align-items: center;background-color: white;touch-action: manipulation;padding-top: 80px;}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen.with-sub {
+  /* AMONIS: fixed sub header */
+  padding-top: 144px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-home {
+   padding-top: 92px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-home .app-sub-header {
+  top: 40px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen.withsub .app-header {
+  min-height: 48px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen > section {
+  padding: 5px;
+}
+
+/*
+  APP-HEADER
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header {
+  display: flex;
+  min-height: 80px;
+  height: 80px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  background: white;
+  max-width: 800px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen .app-header {
+  position: fixed;
+  /* position: sticky; */
+  top:0;
+  width: 100%;
+
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .concealed .app-header {
+  position: unset;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header .svg-back-inv {
+  align-self: flex-end;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header p {
+  flex-grow: 1;
+  color: white;
+  font-size: small;
+  text-align: left;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header button {
+  flex-grow: 1;
+  color: white;
+  text-align: left;
+  width:auto;
+  color: #006dcc;
+}
+
+.app-header .svg-settings-inv,
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header .svg-settings  {
+  align-self: flex-end;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header h2 {
+  flex-grow: 1;
+  flex-basis: 100%;
+  grid-row: 2;
+
+  color: white;
+  font-size: 22pt;
+  font-weight: 100;
+  text-align: left;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.settings {
+  background: #666;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.hydration {
+  background: #0070A2;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.movement {
+  background: #C2435B;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.nutrition {
+  background: #B29A56;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.safety {
+  background: #753145;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.email {
+  background: #273143;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.pause {
+  background: #273143;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-header.suspend {
+  background: #B29A56;
+}
+
+.app-content.pause,
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content.suspend {
+  display: flex;
+  flex-direction: column;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content.email {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/*
+  APP-SUB-HEADER
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-sub-header {
+  display: flex;
+  /* display: grid; */
+
+  /* grid-template-columns: 1fr 80px 80% 1fr; */
+  min-height: 64px;
+  height: 64px;
+
+  /* AMONIS: fixed sub header */
+  position: fixed;
+  width: 100%;
+  max-width: 800px;
+  top: 80px;
+  background-color: white;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-sub-header img {
+  grid-column: 2;
+  height: 80px;
+  width: 80px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-sub-header h1 {
+  grid-column: 3;
+  background-color: transparent;
+  color: #666;
+  height: 100%;
+  font-size: 26pt;
+  font-weight: 100;
+  text-align: left;
+  padding-left: 16px;
+  padding: 0 0 0 16px;
+  line-height: 80px;
+}
+
+/*
+  APP-CONTENT
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: left;
+  overflow-y: auto;
+  overscroll-behavior: auto contain;
+}
+
+ .app-content .h1, .app-content .h2, .app-content .h3,
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content .h4{
+   line-height: unset;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content .h2 {
+  font-size: 28px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .center {
+  text-align: center;
+}
+
+/*
+  DATE-DISPLAY
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-display {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+  DATE-SELECTOR
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  /* display: grid; */
+  /* grid-template-columns: 32px 1fr 32px; */
+  text-align: center;
+  font-size: 14px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .info > p {
+  font-size: 12px;
+  /* color: #999; */
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .picker {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    /* align-self: center; */
+    /* display: grid; */
+    /* justify-items: center; */
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .picker > div:first-child {
+    flex-grow: 1;
+    display: flex;
+    /* flex-direction: column; */
+    /* align-self: center; */
+    /* display: grid; */
+    justify-items: center;
+    min-height: 32px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .picker > div:first-child div {
+    flex-grow: 1;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .btn-link.btn-date {
+  height: 16px;
+  min-height: 16px;
+  color: black;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .weekend button {
+  color: #999 !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .today button {
+  color: #c2435a !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-date-selector .current .btn {
+    color: #0070A2 !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge {
+  /* background-color: #ddd; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 0 0 5px 0;
+}
+
+/
+
+div[name="Iotaa.helperLandingPageRightCog"] * .app-lozenge .concealed {
+  display: none;
+} */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge h3 {
+  padding: 5px;
+  font-size: 18px;
+  margin: 0 5px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge > div {
+  padding: 5px;
+  margin: 5px;
+}
+
+/
+
+div[name="Iotaa.helperLandingPageRightCog"] * .app-lozenge p {
+  font-weight: lighter;
+} */
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge.day-summary h3 {
+  margin: 0;
+  font-size: 14px;
+  background-color: #eee;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .day-summary h3:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    /* margin: 0px 3px;
+    vertical-align: sub; */
+    margin: 0px 8px;
+    vertical-align: baseline;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .day-summary h3.is-ok:before {
+    background-color: green;
+    content: "";
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .day-summary h3.is-warning:before {
+    background-color: orange;
+    content: "";
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .day-summary h3.is-danger:before {
+    background-color: red;
+    content: "";
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .day-summary p:first-child {
+  font-weight: lighter;
+  /* font-size: 12px; */
+  color: #333;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-not-monitored {
+  color: #C2435B;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point {
+  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin: 0;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point div:first-child {
+  flex-grow: 2;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point div:last-child {
+  flex-grow: 1;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point p {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  font-weight: lighter;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point label:first-child {
+  font-size: 24px;
+  font-weight: lighter;
+  text-align: right;
+  line-height: unset;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-lozenge-data-point label:last-child {
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: right;
+  line-height: unset;
+}
+
+/*
+  ITEM-VIEW
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view {
+  font-size: 16px;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  display: grid;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button {
+  grid-template-columns: 1fr 8fr 3fr 1fr;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view * {
+  margin: 0 5px;
+  /* line-height: 40px;
+  /* Single line - prevent wrap */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: no-wrap;
+  white-space: nowrap;  */
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button * {
+  line-height: 40px;
+  /* Single line - prevent wrap */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: no-wrap;
+  white-space: nowrap;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button label {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    display: block;
+
+    margin: 8px 8px 8px 5px;
+    color: white;
+    line-height: 24px;
+    border-radius: 5px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button p {
+    width: auto;
+    flex-grow:1;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button .btn {
+    width: auto;
+    min-width: 24px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] label.is-ok {
+  background-color: #67BE60;
+}
+
+label.is-hot,
+
+div[name="Iotaa.helperLandingPageRightCog"] label.is-notok {
+  background-color: #C2435B !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] label.is-cold {
+  background-color: #0070A2 !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-label-button button {
+  text-align: right;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-img-desc div {
+  display: flex;
+  padding: 10px 5px;
+  align-items: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-view-img-desc div p {
+  font-size: 14px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather {
+  display: flex;
+  align-items: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather p {
+    margin: 0;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather > div {
+  padding: 5px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather > div:nth-child(2) {
+  border-right: 1px solid black;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather-temp > p:first-child {
+  font-size: 24px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather-info p {
+    font-size: 12px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .img57 {
+  width: 57px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .img96 {
+  height: 96px;
+  width: 96px;
+  min-width: 96px;
+}
+/*
+  HOME
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .home > .app-sub-header {
+     top: 40px;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] .app-content .circles {
+   display: flex;
+   justify-content: center;
+   padding-top: 32px;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] .circles {
+  margin-bottom: 32px;
+}
+
+.ok.circles,
+
+div[name="Iotaa.helperLandingPageRightCog"] .error.circles {
+  background-color: unset !important;
+}
+
+.error .circle,
+
+div[name="Iotaa.helperLandingPageRightCog"] .paused .circle {
+  border-color: #C2435B !important;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .circle {
+  border-radius: 50%;
+  border-color: #67BE60;
+  border-style: solid;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .circle1 {
+  border-width: 1px;
+  width: 196px;
+  height: 196px;
+  padding: 1px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .circle2 {
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .circle3 {
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  padding: 32px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .circle3 > p {
+  font-size: 14pt;
+  color: #666;
+  font-weight: 100;
+  text-align: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .home-buttons {
+  display: flex;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .home-buttons > div {
+  width:50%;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .home-buttons div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 2px;
+  padding: 1px;
+  justify-content: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .home-buttons .btn {
+  background-color: white;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .pseudo {
+  border-radius: 10px;
+  flex-basis: 96px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .pseudo.hydration {
+  border: 1px solid #0070A2;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .btn.hydration {
+  color: #0070A2;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .pseudo.movement {
+  border: 1px solid #C2435B;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .btn.movement {
+  color: #C2435B;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .pseudo.nutrition {
+  border: 1px solid #B29A56;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .btn.nutrition {
+  color: #B29A56;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .pseudo.safety {
+  border: 1px solid #753145;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .btn.safety {
+  color: #753145;
+}
+
+/*
+  ENVIRONMENT
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather{
+  margin-bottom: 16px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .item-weather-h2 {
+  margin-top: 16px;
+}
+
+/*
+  SCENARIO
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .lbl {
+  vertical-align: top;
+  height: 40px;
+  padding: 5px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .lbl.is-primary {
+  background: #666;
+  color: white;
+}
+
+/*
+  EMAIL
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-email .is-success {
+  text-align: center;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-email textarea {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 5px 0px;
+  line-height: 1.2;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-email .app-content .is-muted span:last-child {
+  font-weight:lighter;
+}
+
+/*
+  SETTINGS
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-settings .is-raised {
+  height: 48px;
+  margin: 5px 0px;
+}
+
+/*
+  GRAPH
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .screen-graph .app-content {
+  display:flex;
+  flex-direction: column;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] .graph-tools {
+  flex-grow: 1;
+  min-height: 40px;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] csv-table {
+  overflow: scroll;
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] csv-table.zoomed{
+
+}
+
+div[name="Iotaa.helperLandingPageRightCog"] csv-table.zoomed img {
+  width: 800px;
+  height: 1000px;
+}
+
+/*
+  PAUSE
+ */
+
+div[name="Iotaa.helperLandingPageRightCog"] .pause textarea {
+  flex-grow: 1;
+  min-height: 48px;
+}
+
+ /*
+   Date-Time-Picker
+  */
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker {
+   display:flex;
+   flex-grow:1;
+   justify-content: center;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker label {
+   font-size:20px;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker .column {
+   display: flex;
+   flex-direction: column;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker select {
+   height: 32px;
+   font-size: 20px;
+   border: 1px solid transparent;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   background: 0;
+   cursor: pointer;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker .row {
+   display: flex;
+   align-items: center;
+   flex-grow: 1;
+   justify-content: space-evenly;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker .row:before {
+     border-bottom: 5px solid #ccc;
+ }
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker .row:after {
+     border-top: 5px solid #ccc;
+ }
+
+ date-time-picker .row:before,
+
+div[name="Iotaa.helperLandingPageRightCog"] date-time-picker .row:after {
+     position:initial;
+     display: inline-block;
+     content: "";
+     width: 0px;
+     height: 0px;
+     border-left: 5px solid transparent;
+     border-right: 5px solid transparent;
+ }
+</style><div id="5bd1b5afd58eff6c46069be9" class="cog-body"><!--
+  HOME
+-->
+<div data-bind="with:$root.home, css:{&#39;concealed&#39;:$root.home.concealed()===true, &#39;absolute&#39;:$root.home.absolute()}" name="home" class="screen screen-home withsub displayed">
+  <section name="header" class="app-header">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickSettings" class="svg svg-32 svg-settings"></div>
+    <!-- bottom row -->
+    <h2>&nbsp;</h2>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <img data-bind="attr:{src:$data.logo}" src="./page1_files/home-sense.png">
+    <h1 data-bind="i18n:&#39;title&#39;">Home Sense</h1>
+  </section>
+  <section name="content" class="app-content">
+    <div name="circles" data-bind="css:{&#39;paused&#39;:$data.hubPaused}" class="circles">
+      <div class="circle circle1">
+        <div class="circle circle2">
+          <div class="circle circle3">
+            <!-- ko if:$data.activityStatus()!=="" -->
+            <p data-bind="text:$data.activityMessage">John was up and about at 07:30</p>
+            <!-- /ko -->
+            <!-- ko if:$data.activityStatus()==="" --><!-- /ko -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-buttons">
+      <div>
+        <div class="pseudo hydration">
+          <button data-bind="click:$data.onClickHydration, disable:$data.initialising, i18n:&#39;hydration-title&#39;" class="btn hydration">Hydration</button>
+        </div>
+        <div class="pseudo movement">
+          <button data-bind="click:$data.onClickMovement, disable:$data.initialising, i18n:&#39;movement-title&#39;" class="btn movement">Activity</button>
+        </div>
+      </div>
+      <div>
+        <div class="pseudo nutrition">
+          <button data-bind="click:$data.onClickNutrition, disable:$data.initialising, i18n:&#39;nutrition-title&#39;" class="btn nutrition">Nutrition</button>
+        </div>
+        <div class="pseudo safety">
+          <button data-bind="click:$data.onClickSafety, disable:$data.initialising, i18n:&#39;safety-title&#39;" class="btn safety">Environment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!--
+  HYDRATION
+-->
+<div data-bind="with:$root.hydration, css:{&#39;concealed&#39;:$root.hydration.concealed()===true, &#39;slideIn&#39;:$root.hydration.inAnim(), &#39;slideOut&#39;:$root.hydration.outAnim(), &#39;absolute&#39;:$root.hydration.absolute() }" name="hydration" class="screen with-sub concealed animated">
+  <section name="header" class="app-header hydration">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickHome" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickHome, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;hydration-title&#39;">Hydration</h2>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <!-- date-selector -->
+    <section class="app-date-selector">
+      <div class="back"><button data-bind="click:$data.onDateSubWeek" class="svg svg-32 svg-back btn-link"></button></div>
+      <div class="picker">
+        <div>
+          <!-- ko foreach:$data.week -->
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">21</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">M</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">22</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">23</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">W</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">24</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="today current">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">25</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">F</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">26</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">27</button>
+          </div>
+          <!-- /ko -->
+        </div>
+        <div>
+          <div class="info">
+            <p data-bind="text:$data.dateLabel">Thursday, 25 Oct 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="next"><button data-bind="click:$data.onDateAddWeek" class="svg svg-32 svg-next btn-link"></button></div>
+    </section>
+    <!-- /date-selector -->
+  </section>
+  <section name="content" class="app-content hydration">
+    <!-- day summary lozenge -->
+    <section name="data-lozenge" class="app-lozenge day-summary">
+      <h3 data-bind="i18n:&#39;day-summary&#39;" class="is-ok">day summary</h3>
+      <div>
+        <p data-bind="text:$data.summary"></p>
+      </div>
+    </section>
+    <!-- /day summary lozenge -->
+    <!-- KETTLE Lozenge -->
+    <section name="data-lozenge" class="app-lozenge">
+      <h3 data-bind="i18n:&#39;hydration-kettle-title&#39;">kettle usage during the day</h3>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;hydration-kettle-boiled-title&#39;">the kettle has been boiled</p>
+        </div>
+        <!-- ko if:$data.kettle.boiledCount()===null --><!-- /ko -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.kettle.boiledCount()===null}">
+          <label class="lbl"><span data-bind="text:$data.kettle.boiledCount"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.kettle.boiledCountAvg"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+        </div>
+      </div>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;hydration-kettle-reboiled-title&#39;">the kettle has been reboiled repeatedly</p>
+        </div>
+        <!-- ko if:$data.kettle.reboiledCount()===null --><!-- /ko -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.kettle.reboiledCount()===null}">
+          <label class="lbl"><span data-bind="text:$data.kettle.reboiledCount"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.kettle.reboiledCountAvg"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+        </div>
+      </div>
+    </section>
+    <!-- BATHROOM Lozenge -->
+    <section name="data-lozenge" class="app-lozenge">
+      <h3 data-bind="i18n:&#39;hydration-bathroom-title&#39;">Bathroom visits during the day</h3>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;hydration-bathroom-visited-title&#39;">the bathroom has been visited</p>
+        </div>
+        <div>
+          <label class="lbl"><span data-bind="text:$data.bathroom.visitsCount"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.bathroom.visitsCountAvg"></span>&nbsp;<span data-bind="i18n:&#39;time(s)&#39;">time(s)</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Graph -->
+    <div>
+      <button data-bind="click:$data.onClickActivityGraph" class="btn is-primary">View Activity Graph</button>
+    </div>
+  </section>
+
+</div>
+
+<!--
+  ACTIVITY
+-->
+<div data-bind="with:$root.movement, css:{&#39;concealed&#39;:$root.movement.concealed()===true, &#39;slideIn&#39;:$root.movement.inAnim(), &#39;slideOut&#39;:$root.movement.outAnim(), &#39;absolute&#39;:$root.movement.absolute() }" name="movement" class="screen with-sub concealed animated">
+  <section name="header" class="app-header movement">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickHome" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickHome, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;movement-title&#39;">Activity</h2>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <!-- date-selector -->
+    <section class="app-date-selector">
+      <div class="back"><button data-bind="click:$data.onDateSubWeek" class="svg svg-32 svg-back btn-link"></button></div>
+      <div class="picker">
+        <div>
+          <!-- ko foreach:$data.week -->
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">21</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">M</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">22</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">23</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">W</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">24</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="today current">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">25</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">F</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">26</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">27</button>
+          </div>
+          <!-- /ko -->
+        </div>
+        <div>
+          <div class="info">
+            <p data-bind="text:$data.dateLabel">Thursday, 25 Oct 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="next"><button data-bind="click:$data.onDateAddWeek" class="svg svg-32 svg-next btn-link"></button></div>
+    </section>
+    <!-- /date-selector -->
+  </section>
+  <section name="content" class="app-content movement">
+    <!-- day summary lozenge -->
+    <section name="data-lozenge" class="app-lozenge day-summary">
+      <h3 data-bind="i18n:&#39;day-summary&#39;" class="is-ok">day summary</h3>
+      <div>
+        <!-- <p>John Jenkins movement is ok</p> -->
+        <p data-bind="text:$data.summary">John has been up quite a few times during the night.  The office have been made aware of this. John has been up and about since 07:30.</p>
+      </div>
+    </section>
+    <!-- /day summary lozenge -->
+    <!-- BEDROOM Lozenge -->
+    <section name="data-lozenge" class="app-lozenge">
+      <h3 data-bind="i18n:&#39;movement-bedroom-title&#39;">In Bed</h3>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;movement-bedroom-inbed-title&#39;">time spent in bed last night</p>
+        </div>
+        <div>
+          <label class="lbl"><span data-bind="text:$data.bed.timeIn">7h35m</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.bed.timeInAvg">8h23m</span></label>
+        </div>
+      </div>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;movement-bedroom-outbed-title&#39;">number of times out of bed last night</p>
+        </div>
+        <div>
+          <label class="lbl"><span data-bind="text:$data.bed.timesOut">7</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.bed.timesOutAvg">2</span></label>
+        </div>
+      </div>
+    </section>
+    <!-- CHAIR Lozenge -->
+    <section name="data-lozenge" class="app-lozenge">
+      <h3 data-bind="i18n:&#39;movement-chair-title&#39;">In Chair</h3>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;movement-chair-inchair-title&#39;">time spent in chair during the day</p>
+        </div>
+        <!-- ko if:$data.chair.timeIn()===null --><!-- /ko -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.chair.timeIn()===null}">
+          <label class="lbl"><span data-bind="text:$data.chair.timeIn">4h55m</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.chair.timeInAvg">13h21m</span></label>
+        </div>
+      </div>
+      <div class="app-lozenge-data-point">
+        <div>
+          <p data-bind="i18n:&#39;movement-chair-outchair-title&#39;">number of times out of chair during the day</p>
+        </div>
+        <!-- ko if:$data.chair.timesOut()===null --><!-- /ko -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.chair.timesOut()===null}">
+          <label class="lbl"><span data-bind="text:$data.chair.timesOut">3</span></label>
+          <label class="lbl"><span data-bind="i18n:&#39;usually&#39;">usually</span>&nbsp;<span data-bind="text:$data.chair.timesOutAvg">8</span></label>
+        </div>
+      </div>
+    </section>
+    <!-- Activity Graph -->
+    <div>
+      <button data-bind="click:$data.onClickActivityGraph" class="btn is-primary">View Activity Graph</button>
+    </div>
+  </section>
+
+</div>
+
+<!--
+  NUTRITION
+-->
+<div data-bind="with:$root.nutrition, css:{&#39;concealed&#39;:$root.nutrition.concealed()===true, &#39;slideIn&#39;:$root.nutrition.inAnim(), &#39;slideOut&#39;:$root.nutrition.outAnim(), &#39;absolute&#39;:$root.nutrition.absolute() }" name="nutrition" class="screen with-sub concealed animated">
+  <section name="header" class="app-header nutrition">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickHome" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickHome, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;nutrition-title&#39;">Nutrition</h2>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <!-- date-selector -->
+    <section class="app-date-selector">
+      <div class="back"><button data-bind="click:$data.onDateSubWeek" class="svg svg-32 svg-back btn-link"></button></div>
+      <div class="picker">
+        <div>
+          <!-- ko foreach:$data.week -->
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">21</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">M</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">22</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">23</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">W</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">24</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="today current">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">25</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">F</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">26</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">27</button>
+          </div>
+          <!-- /ko -->
+        </div>
+        <div>
+          <div class="info">
+            <p data-bind="text:$data.dateLabel">Thursday, 25 Oct 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="next"><button data-bind="click:$data.onDateAddWeek" class="svg svg-32 svg-next btn-link"></button></div>
+    </section>
+    <!-- /date-selector -->
+  </section>
+  <section name="content" class="app-content nutrition">
+    <!-- day summary lozenge -->
+    <section name="data-lozenge" class="app-lozenge day-summary">
+      <h3 data-bind="i18n:&#39;day-summary&#39;" class="is-ok">day summary</h3>
+      <div>
+        <!-- <p>John Jenkins movement is ok</p> -->
+        <p data-bind="text:$data.summary"></p>
+      </div>
+    </section>
+    <!-- /day summary lozenge -->
+    <!-- FOOD PREPARED Lozenge -->
+    <section name="data-lozenge" class="app-lozenge">
+      <h3 data-bind="i18n:&#39;nutrition-food-prepared-title&#39;">Food prepared during the day</h3>
+      <!-- ko foreach:$data.appliances --><!-- /ko -->
+    </section>
+
+    <!-- Activity Graph -->
+    <div>
+      <button data-bind="click:$data.onClickActivityGraph" class="btn is-primary">View Activity Graph</button>
+    </div>
+  </section>
+
+
+</div>
+
+<!--
+  ENVIRONMENT ( was safety )
+-->
+<div data-bind="with:$root.safety, css:{&#39;concealed&#39;:$root.safety.concealed()===true, &#39;slideIn&#39;:$root.safety.inAnim(), &#39;slideOut&#39;:$root.safety.outAnim(), &#39;absolute&#39;:$root.safety.absolute() }" name="safety" class="screen with-sub concealed animated">
+  <section name="header" class="app-header safety">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickHome" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickHome, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;safety-title&#39;">Environment</h2>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <!-- date-selector -->
+    <section class="app-date-selector">
+      <div class="back"><button data-bind="click:$data.onDateSubWeek" class="svg svg-32 svg-back btn-link"></button></div>
+      <div class="picker">
+        <div>
+          <!-- ko foreach:$data.week -->
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">21</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">M</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">22</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">23</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">W</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">24</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="today current">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">25</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">F</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">26</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">27</button>
+          </div>
+          <!-- /ko -->
+        </div>
+        <div>
+          <div class="info">
+            <p data-bind="text:$data.dateLabel">Thursday, 25 Oct 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="next"><button data-bind="click:$data.onDateAddWeek" class="svg svg-32 svg-next btn-link"></button></div>
+    </section>
+    <!-- /date-selector -->
+  </section>
+  <section name="content" class="app-content safety">
+    <!-- day summary lozenge -->
+    <section name="data-lozenge" class="app-lozenge day-summary">
+      <h3 data-bind="i18n:&#39;day-summary&#39;" class="is-ok">day summary</h3>
+      <div>
+        <!-- <p>John Jenkins movement is ok</p> -->
+        <p data-bind="text:$data.summary"></p>
+      </div>
+    </section>
+    <!-- /day summary lozenge -->
+
+    <!-- Item Weather -->
+    <!-- <h2 data-bind="i18n:'safety-weather-title'">###</h2> -->
+    <section data-bind="css:{&#39;concealed&#39;:$data.weatherAvailable()===false}" name="data-lozenge" class="app-lozenge concealed">
+      <h3 data-bind="text:$data.weatherTitle">###</h3>
+      <div class="item-weather">
+        <div class="item-weather-img">
+          <img data-bind="image:$data.weatherImage" class="img img57" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="background-color:transparent !important;">
+        </div>
+        <div class="item-weather-temp">
+          <p data-bind="text:$data.weatherTemp">###</p>
+          <!-- <p data-bind="text:$data.weatherParts().tempMin">12°C (54°F)</p> -->
+        </div>
+        <div class="item-weather-info">
+          <p data-bind="text:$data.weatherDir">###</p>
+          <p data-bind="text:$data.weatherSpd">###</p>
+          <p data-bind="text:$data.weatherUV">###</p>
+        </div>
+      </div>
+    </section>
+    <!-- /Item Weather -->
+
+    <section name="data-lozenge" class="app-lozenge">
+    <h3 data-bind="i18n:&#39;safety-room-title&#39;">Avg Room Temperatures</h3>
+    <!-- ko foreach:$data.rooms --><!-- /ko -->
+    </section>
+
+    <!-- Activity Graph -->
+    <div>
+      <button data-bind="click:$data.onClickTemperatureGraphAll" class="btn is-primary">View Temperature Graph</button>
+    </div>
+
+  </section>
+</div>
+
+<!--
+  GRAPHS
+-->
+<div data-bind="with:$root.graph, css:{&#39;concealed&#39;:$root.graph.concealed()===true, &#39;slideIn&#39;:$root.graph.inAnim(), &#39;slideOut&#39;:$root.graph.outAnim(), &#39;absolute&#39;:$root.graph.absolute() }" name="graph" class="screen screen-graph with-sub concealed animated">
+  <section data-bind="css:$data.css" name="header" class="app-header graphs">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickBack" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickBack, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2><span data-bind="text:$data.fromLabel"></span> <span data-bind="i18n:&#39;graph-title&#39;">Graph</span></h2>
+    <p data-bind="text:$data.css"></p>
+  </section>
+  <section name="sub-header" class="app-sub-header">
+    <!-- <section class="app-date-display">
+      <p data-bind="text:$data.dateLabel">###</p>
+    </section> -->
+    <!-- date-selector -->
+    <section class="app-date-selector">
+      <div class="back"><button data-bind="click:$data.onDateSubWeek" class="svg svg-32 svg-back btn-link"></button></div>
+      <div class="picker">
+        <div>
+          <!-- ko foreach:$data.week -->
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">21</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">M</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">22</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">23</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">W</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">24</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="today current">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">T</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">25</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">F</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">26</button>
+          </div>
+
+          <div data-bind="css:{&#39;today&#39;:$data.today,&#39;weekend&#39;:$data.weekend,&#39;current&#39;:$data.current}" class="weekend">
+            <button data-bind="click:$parent.onDateSelect,text:$data.label" class="btn btn-link btn-date">S</button><button data-bind="click:$parent.onDateSelect,text:$data.num" class="btn btn-link btn-date">27</button>
+          </div>
+          <!-- /ko -->
+        </div>
+        <div>
+          <div class="info">
+            <p data-bind="text:$data.dateLabel">Thursday, 25 Oct 2018</p>
+          </div>
+        </div>
+      </div>
+      <div class="next"><button data-bind="click:$data.onDateAddWeek" class="svg svg-32 svg-next btn-link"></button></div>
+    </section>
+    <!-- /date-selector -->
+  </section>
+  <section name="content" class="app-content">
+    <!-- ko if:$data.report().length===0 -->
+    <p>no graph data to display</p>
+    <!-- /ko -->
+    <csv-table params="data:$data.report" data-bind="css:{&#39;zoomed&#39;:$data.oZoomed}"><div data-bind="foreach:csv" class="csv-table"></div></csv-table>
+    <div class="graph-tools flex-row">
+      <button data-bind="click:$data.btnFlipGraphStyle,css:{&#39;concealed&#39;:$data.oHideButton}" class="btn is-primary">Line / Bar</button>
+      <button data-bind="click:$data.btnZoomGraph,text:$data.btnZoomTxt" class="btn is-primary">zoom in</button>
+    </div>
+  </section>
+
+</div>
+
+<!--
+  SCENARIOS
+-->
+<div data-bind="with:$root.scenario, css:{&#39;concealed&#39;:$root.scenario.concealed()===true, &#39;slideIn&#39;:$root.scenario.inAnim(), &#39;slideOut&#39;:$root.scenario.outAnim(), &#39;absolute&#39;:$root.scenario.absolute() }" name="scenario" class="screen concealed animated">
+  <section name="header" class="app-header settings">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickBack" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickBack, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;scenario-title&#39;">Scenario</h2>
+  </section>
+  <section name="content" class="app-content">
+    <h2 data-bind="text:$data.label" class="h2 center"></h2>
+    <p data-bind="text:$data.description"></p>
+    <label class="lbl is-primary">Required Devices</label>
+    <!-- ko foreach:$data.devices --><!-- /ko -->
+  </section>
+</div>
+
+<!--
+  SETTINGS
+-->
+<div data-bind="with:$root.settings, css:{&#39;concealed&#39;:$root.settings.concealed()===true, &#39;slideIn&#39;:$root.settings.inAnim(), &#39;slideOut&#39;:$root.settings.outAnim(), &#39;absolute&#39;:$root.settings.absolute() }" name="settings" class="screen screen-settings concealed animated">
+  <section name="header" class="app-header settings">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickHome" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickHome, i18n:&#39;back-btn&#39;">back</p>
+    <!-- <div class="svg svg-32 svg-settings-inv"></div> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;settings-title&#39;">Settings</h2>
+  </section>
+  <section name="content" class="app-content">
+    <!-- MEMBERS -->
+    <h3 data-bind="i18n:&#39;settings-members-title&#39;">member(s)</h3>
+    <!-- ko foreach:$data.members --><!-- /ko -->
+
+    <!-- SCENARIOS -->
+    <h3 data-bind="i18n:&#39;settings-scenarios-title&#39;">scenarios enabled</h3>
+    <!-- ko foreach:$data.scenarios --><!-- /ko -->
+
+    <!-- Actions -->
+    <h3 data-bind="i18n:&#39;settings-actions-title&#39;">actions</h3>
+    <!-- ko if:$data.pauseEnabled===true -->
+    <button data-bind="click:$data.onClickPause, i18n:&#39;settings-pause-button&#39;" class="btn is-primary is-raised">pause system</button>
+    <!-- /ko -->
+    <!-- ko if:$data.suspendEnabled===true -->
+    <button data-bind="click:$data.onClickSuspend, i18n:&#39;settings-suspend-button&#39;" class="btn is-primary is-raised">suspend system</button>
+    <!-- /ko -->
+    <button data-bind="click:$data.onClickEmail, i18n:&#39;settings-email-button&#39;" class="btn is-primary is-raised">email local office</button>
+    <button data-bind="click:$data.onClickLogout, i18n:&#39;settings-actions-logout&#39;" class="btn is-error is-raised">logout</button>
+  </section>
+</div>
+
+<!--
+  PAUSING
+-->
+<div data-bind="with:$root.pause, css:{&#39;concealed&#39;:$root.pause.concealed()===true, &#39;slideIn&#39;:$root.pause.inAnim(), &#39;slideOut&#39;:$root.pause.outAnim(), &#39;absolute&#39;:$root.pause.absolute() }" name="pause" class="screen screen-pause concealed animated">
+  <section name="header" class="app-header pause">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickBack" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickBack, i18n:&#39;back-btn&#39;">back</p>
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;pause-title&#39;">pause system</h2>
+  </section>
+  <section name="content" class="app-content pause">
+    <h3 data-bind="i18n:&#39;pause-sub-title&#39;">pause</h3>
+    <p>
+      pausing the platform is useful when visiting a monitored property for a
+      short period, which
+      then silences alerts that could be otherwise triggered from the increased
+      activity in the property.
+    </p>
+    <!-- ko if:$data.pausedDescription()==="" -->
+      <label data-bind="i18n:&#39;pause-platform-from&#39;" class="lbl">pause system from:</label>
+      <date-time-picker params="mm:$data.startMM,hh:$data.startHH,dmy:$data.startDMY,iso:$data.startISO"><div class="row"><div class=""><select data-bind="options:dates, value:dmy"><option value="Thu 25 Oct">Thu 25 Oct</option><option value="Fri 26 Oct">Fri 26 Oct</option><option value="Sat 27 Oct">Sat 27 Oct</option><option value="Sun 28 Oct">Sun 28 Oct</option><option value="Mon 29 Oct">Mon 29 Oct</option><option value="Tue 30 Oct">Tue 30 Oct</option><option value="Wed 31 Oct">Wed 31 Oct</option><option value="Thu 01 Nov">Thu 01 Nov</option><option value="Fri 02 Nov">Fri 02 Nov</option><option value="Sat 03 Nov">Sat 03 Nov</option><option value="Sun 04 Nov">Sun 04 Nov</option><option value="Mon 05 Nov">Mon 05 Nov</option><option value="Tue 06 Nov">Tue 06 Nov</option><option value="Wed 07 Nov">Wed 07 Nov</option><option value="Thu 08 Nov">Thu 08 Nov</option><option value="Fri 09 Nov">Fri 09 Nov</option><option value="Sat 10 Nov">Sat 10 Nov</option><option value="Sun 11 Nov">Sun 11 Nov</option><option value="Mon 12 Nov">Mon 12 Nov</option><option value="Tue 13 Nov">Tue 13 Nov</option><option value="Wed 14 Nov">Wed 14 Nov</option><option value="Thu 15 Nov">Thu 15 Nov</option><option value="Fri 16 Nov">Fri 16 Nov</option><option value="Sat 17 Nov">Sat 17 Nov</option></select></div></div><div class="row"><div class=""><select data-bind="options:hours, value:hh"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select></div><label>h</label></div><div class="row"><div class=""><select data-bind="options:mins, value:mm"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select></div><label>m</label></div></date-time-picker>
+      <label data-bind="i18n:&#39;pause-platform-for&#39;" class="lbl">pause system until:</label>
+      <date-time-picker params="mm:$data.endMM,hh:$data.endHH,dmy:$data.endDMY,iso:$data.endISO"><div class="row"><div class=""><select data-bind="options:dates, value:dmy"><option value="Thu 25 Oct">Thu 25 Oct</option><option value="Fri 26 Oct">Fri 26 Oct</option><option value="Sat 27 Oct">Sat 27 Oct</option><option value="Sun 28 Oct">Sun 28 Oct</option><option value="Mon 29 Oct">Mon 29 Oct</option><option value="Tue 30 Oct">Tue 30 Oct</option><option value="Wed 31 Oct">Wed 31 Oct</option><option value="Thu 01 Nov">Thu 01 Nov</option><option value="Fri 02 Nov">Fri 02 Nov</option><option value="Sat 03 Nov">Sat 03 Nov</option><option value="Sun 04 Nov">Sun 04 Nov</option><option value="Mon 05 Nov">Mon 05 Nov</option><option value="Tue 06 Nov">Tue 06 Nov</option><option value="Wed 07 Nov">Wed 07 Nov</option><option value="Thu 08 Nov">Thu 08 Nov</option><option value="Fri 09 Nov">Fri 09 Nov</option><option value="Sat 10 Nov">Sat 10 Nov</option><option value="Sun 11 Nov">Sun 11 Nov</option><option value="Mon 12 Nov">Mon 12 Nov</option><option value="Tue 13 Nov">Tue 13 Nov</option><option value="Wed 14 Nov">Wed 14 Nov</option><option value="Thu 15 Nov">Thu 15 Nov</option><option value="Fri 16 Nov">Fri 16 Nov</option><option value="Sat 17 Nov">Sat 17 Nov</option></select></div></div><div class="row"><div class=""><select data-bind="options:hours, value:hh"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select></div><label>h</label></div><div class="row"><div class=""><select data-bind="options:mins, value:mm"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select></div><label>m</label></div></date-time-picker>
+      <label data-bind="i18n:&#39;pause-platform-reason&#39;" class="lbl">pause system reason:</label>
+      <textarea data-bind="value:$data.pauseReason, attr:{&#39;placeholder&#39;:$data.messagePlaceHoler}" class="txt"></textarea>
+      <button data-bind="click:$data.onClickPause,i18n:&#39;pause-btn-create&#39;" class="btn is-primary">enable pause</button>
+    <!-- /ko -->
+    <!-- ko if:$data.pausedDescription()!=="" --><!-- /ko -->
+  </section>
+</div>
+
+<!--
+  SUSPENDING
+-->
+<div data-bind="with:$root.suspend, css:{&#39;concealed&#39;:$root.suspend.concealed()===true, &#39;slideIn&#39;:$root.suspend.inAnim(), &#39;slideOut&#39;:$root.suspend.outAnim(), &#39;absolute&#39;:$root.suspend.absolute() }" name="suspend" class="screen screen-suspend concealed animated">
+  <section name="header" class="app-header suspend">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickBack" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickBack, i18n:&#39;back-btn&#39;">back</p>
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;suspend-title&#39;">suspend system</h2>
+  </section>
+  <section name="content" class="app-content pause">
+    <h3 data-bind="i18n:&#39;suspend-sub-title&#39;">suspend</h3>
+    <p>
+      suspending the platform is useful when visiting a monitored property for a
+      short period, which
+      then silences alerts that could be otherwise triggered from the increased
+      activity in the property.
+    </p>
+    <!-- ko if:$data.pausedDescription()==="" -->
+      <label data-bind="i18n:&#39;suspend-platform-from&#39;" class="lbl">suspend system from:</label>
+      <date-time-picker params="mm:$data.startMM,hh:$data.startHH,dmy:$data.startDMY,iso:$data.startISO"><div class="row"><div class=""><select data-bind="options:dates, value:dmy"><option value="Thu 25 Oct">Thu 25 Oct</option><option value="Fri 26 Oct">Fri 26 Oct</option><option value="Sat 27 Oct">Sat 27 Oct</option><option value="Sun 28 Oct">Sun 28 Oct</option><option value="Mon 29 Oct">Mon 29 Oct</option><option value="Tue 30 Oct">Tue 30 Oct</option><option value="Wed 31 Oct">Wed 31 Oct</option><option value="Thu 01 Nov">Thu 01 Nov</option><option value="Fri 02 Nov">Fri 02 Nov</option><option value="Sat 03 Nov">Sat 03 Nov</option><option value="Sun 04 Nov">Sun 04 Nov</option><option value="Mon 05 Nov">Mon 05 Nov</option><option value="Tue 06 Nov">Tue 06 Nov</option><option value="Wed 07 Nov">Wed 07 Nov</option><option value="Thu 08 Nov">Thu 08 Nov</option><option value="Fri 09 Nov">Fri 09 Nov</option><option value="Sat 10 Nov">Sat 10 Nov</option><option value="Sun 11 Nov">Sun 11 Nov</option><option value="Mon 12 Nov">Mon 12 Nov</option><option value="Tue 13 Nov">Tue 13 Nov</option><option value="Wed 14 Nov">Wed 14 Nov</option><option value="Thu 15 Nov">Thu 15 Nov</option><option value="Fri 16 Nov">Fri 16 Nov</option><option value="Sat 17 Nov">Sat 17 Nov</option></select></div></div><div class="row"><div class=""><select data-bind="options:hours, value:hh"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select></div><label>h</label></div><div class="row"><div class=""><select data-bind="options:mins, value:mm"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select></div><label>m</label></div></date-time-picker>
+      <label data-bind="i18n:&#39;suspend-platform-for&#39;" class="lbl">suspend system until:</label>
+      <date-time-picker params="mm:$data.endMM,hh:$data.endHH,dmy:$data.endDMY,iso:$data.endISO"><div class="row"><div class=""><select data-bind="options:dates, value:dmy"><option value="Thu 25 Oct">Thu 25 Oct</option><option value="Fri 26 Oct">Fri 26 Oct</option><option value="Sat 27 Oct">Sat 27 Oct</option><option value="Sun 28 Oct">Sun 28 Oct</option><option value="Mon 29 Oct">Mon 29 Oct</option><option value="Tue 30 Oct">Tue 30 Oct</option><option value="Wed 31 Oct">Wed 31 Oct</option><option value="Thu 01 Nov">Thu 01 Nov</option><option value="Fri 02 Nov">Fri 02 Nov</option><option value="Sat 03 Nov">Sat 03 Nov</option><option value="Sun 04 Nov">Sun 04 Nov</option><option value="Mon 05 Nov">Mon 05 Nov</option><option value="Tue 06 Nov">Tue 06 Nov</option><option value="Wed 07 Nov">Wed 07 Nov</option><option value="Thu 08 Nov">Thu 08 Nov</option><option value="Fri 09 Nov">Fri 09 Nov</option><option value="Sat 10 Nov">Sat 10 Nov</option><option value="Sun 11 Nov">Sun 11 Nov</option><option value="Mon 12 Nov">Mon 12 Nov</option><option value="Tue 13 Nov">Tue 13 Nov</option><option value="Wed 14 Nov">Wed 14 Nov</option><option value="Thu 15 Nov">Thu 15 Nov</option><option value="Fri 16 Nov">Fri 16 Nov</option><option value="Sat 17 Nov">Sat 17 Nov</option></select></div></div><div class="row"><div class=""><select data-bind="options:hours, value:hh"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select></div><label>h</label></div><div class="row"><div class=""><select data-bind="options:mins, value:mm"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select></div><label>m</label></div></date-time-picker>
+      <label data-bind="i18n:&#39;suspend-platform-reason&#39;" class="lbl">suspend system reason:</label>
+      <textarea data-bind="value:$data.pauseReason, attr:{&#39;placeholder&#39;:$data.messagePlaceHoler}" class="txt"></textarea>
+      <button data-bind="click:$data.onClickPause,i18n:&#39;suspend-btn-create&#39;" class="btn is-primary">enable suspend</button>
+    <!-- /ko -->
+    <!-- ko if:$data.pausedDescription()!=="" --><!-- /ko -->
+  </section>
+</div>
+
+<!--
+  EMAIL
+-->
+<div data-bind="with:$root.email, css:{&#39;concealed&#39;:$root.email.concealed()===true, &#39;slideIn&#39;:$root.email.inAnim(), &#39;slideOut&#39;:$root.email.outAnim(), &#39;absolute&#39;:$root.email.absolute() }" name="email" class="screen screen-email concealed animated">
+  <section name="header" class="app-header email">
+    <!-- top row -->
+    <div data-bind="click:$data.onClickBack" class="svg svg-32 svg-back-inv"></div>
+    <p data-bind="click:$data.onClickBack, i18n:&#39;back-btn&#39;">back</p>
+    <p data-bind="click:$data.onClickSend, i18n:&#39;send-btn&#39;" class="align-right">send</p> --&gt;
+    <!-- <button data-bind="click:$data.onClickBack, i18n:'cancel-btn'" class="btn btn-link">###</button> -->
+    <!-- <button data-bind="click:$data.onClickSend, i18n:'send-btn'" class="btn btn-link align-right">###</button> -->
+    <!-- bottom row -->
+    <h2 data-bind="i18n:&#39;email-title&#39;">new email</h2>
+  </section>
+  <section name="content" class="app-content email">
+    <p class="is-muted"><span data-bind="i18n:&#39;email-msg-to&#39;">to</span>:&nbsp;<span data-bind="i18n:&#39;email-msg-to-value&#39;">local.office</span></p>
+    <p class="is-muted"><span data-bind="i18n:&#39;email-msg-subject&#39;">subject</span>:&nbsp;<span data-bind="i18n:&#39;email-msg-subject-value&#39;">client information query</span></p>
+    <textarea data-bind="value:$data.messageBody, attr:{&#39;placeholder&#39;:$data.messagePlaceHoler}" class="txt" placeholder="enter message to local office"></textarea>
+    <label data-bind="text:$data.messageStatus,css:{&#39;concealed&#39;:$data.messageStatus()===&#39;&#39;}" class="lbl is-success concealed"></label>
+    <!-- <button data-bind="click:$data.onClickSend" class="btn is-primary is-raised">send</button> -->
+  </section>
+</div>
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+			<!-- /ko -->
+
+		</div>
+
+		<div data-bind="place:$data" id="0499e8e74346247e00000001" class="place place-nopad concealed">
+
+			<!-- AMONIS: 21/08/2015: Removed old ( incorrect ) header references, as the purpose has moved to the header console -->
+
+			<!-- SPACES -->
+			<!-- ko foreach:$root.getSpaces( $data.id ) -->
+				<div data-bind="space:$data" id="04c600e643723c7d00000001" name="Iotaa.loginSpace" class="space flow">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="Iotaa.loginCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">
+
+div[name="Iotaa.loginCog"] .frm { background-color:transparent; border-width:0px; }
+
+div[name="Iotaa.loginCog"] h1 { font-size:64px; color:#fff; }
+
+div[name="Iotaa.loginCog"] .txt { min-height: 40px; normal; border-width:0; }
+
+div[name="Iotaa.loginCog"] .txt-email { border-top-left-radius:10px; border-top-right-radius:10px; border-bottom-left-radius:0px; border-bottom-right-radius:0px; margin-bottom: 0px; border-bottom: 1px solid #eee; }
+
+div[name="Iotaa.loginCog"] .txt-password { border-top-left-radius:0px; border-top-right-radius:0px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin-top: 0px; }
+
+div[name="Iotaa.loginCog"] .btn-signin { margin-top: 16px; background-color:transparent; border-bottom: 1px solid rgba(255,255,255,0.25); }
+
+div[name="Iotaa.loginCog"] .btn-forgotten { font-size:12px; }
+
+div[name="Iotaa.loginCog"] .login-home { display: flex; align-items: center; flex-direction: column; }
+
+div[name="Iotaa.loginCog"] .login-home > div {
+  max-width:480px;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
+  background-color: rgba(255,255,255,0.25);
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+</style><div id="0001095b66e53eb200000001" class="cog-body"><div name="home" data-bind="css:{ concealed:_ready() == false }" class="screen login-home align-center displayed">
+    <div>
+        <!-- WEB FORM used by Cordova App / PWA -->
+        <div data-bind="css:{&#39;concealed&#39;:$data.useForm===true}" class="frm concealed">
+            <!-- ko if:$data.useForm === false --><!-- /ko -->
+        </div>
+
+        <!-- ko if:$data.useForm === true -->
+            <!-- ko if:$data.platform==="Mobile" --><!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko if:$data.state === 2 --><!-- /ko -->
+    </div>
+</div>
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+
+				<div data-bind="space:$data" id="04c600e6876a02d800000001" name="System.LoginFormSpace" class="space fullOne concealed">
+
+					<!-- COGS -->
+					<!-- ko foreach:$root.getCogs( $data.id ) -->
+
+						<div data-bind="cog:$data" class="cog" name="System.LoginFormCog"><style type="text/css" rel="stylesheet" media="screen" scoped="">
+
+div[name="System.LoginFormCog"] .appflow {
+  height: 100%;
+  overflow-y: auto;
+}
+
+div[name="System.LoginFormCog"] .footer {
+    padding: 16px 0 48px 0;
+}
+
+div[name="System.LoginFormCog"] .footer .btn { min-width:150px; }
+
+div[name="System.LoginFormCog"] .action-cancel { height:48px; display:none; }
+
+/*
+ * override default styles to jazz up login
+ */
+
+div[name="System.LoginFormCog"] .lbl {
+    background-color:initial;
+	text-align: left;
+}
+
+div[name="System.LoginFormCog"] .txt-append>input {
+    border-radius:10px;
+}
+/*
+ * /override default styles to jazz up login
+ */
+
+div[name="System.LoginFormCog"] .width10.background.form-screen {
+	box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.05);
+	background-color:rgba(255,255,255,0.25);
+	margin: 5px;
+	padding: 5px;
+	width: 96% !important;
+	border-radius: 10px;
+}
+
+div[name="System.LoginFormCog"] .system-form-login-default {
+    flex-grow:1;
+}
+
+/* Enlarge next */
+
+div[name="System.LoginFormCog"] .appflow-controls button {
+	width: 100%;
+	margin-top: 16px;
+	border-radius:0 !important;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn {
+    border-width: 0;
+    background: transparent;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn-boolean{
+	background: white;
+	border-width: 1px !important;
+}
+
+div[name="System.LoginFormCog"] .appflow-panel .btn-boolean.active{
+	background: #5bb75b;
+}
+
+/* Restrict the form size to make cuter for login */
+
+div[name="System.LoginFormCog"] .form-screen {
+	max-width: 480px;`
+}
+
+div[name="System.LoginFormCog"] img { max-width:100% !important; }
+
+/*
+  AMONIS: 2018-05-07
+  Defining new Flex & Grid layouts for applfow
+ */
+
+div[name="System.LoginFormCog"] .tmpl {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+}
+
+div[name="System.LoginFormCog"] .tmpl > .lbl {
+  height: auto !important;
+  white-space: unset !important;
+  overflow: unset !important;
+  text-overflow: unset !important;
+  width: unset !important;
+}
+
+/*
+  CONTENTGROUP
+ */
+
+div[name="System.LoginFormCog"] .tmpl-contentGroup > .lbl {
+  text-align: left;
+  background-color: #eee;
+}
+
+/*
+  TEXTAREA
+ */
+
+div[name="System.LoginFormCog"] .tmpl-textArea {
+  grid-template-columns: 1fr;
+  text-align:left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-textArea > textarea {
+  min-height: 100px;
+}
+
+/*
+  BOOLEANVALUE
+ */
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue {
+  grid-template-columns: 1fr 32px;
+  padding-left: 5px;
+  text-align:left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .appflow-help {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .lbl {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  flex-grow: 12;
+  flex-basis: 90%;
+  text-align: left;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .btn {
+  flex-grow: 1;
+}
+
+div[name="System.LoginFormCog"] .tmpl-booleanValue .flex-row {
+  flex-grow:1;
+}
+</style><div id="0001095b5340dfcd00000001" class="cog-body">
+
+
+    <div id="appflow" data-bind="css:$data.cssname" class="screen appflow system-form-login-default">
+
+        <!-- TEMPLATES -->
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-original" type="text/html">
+            <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <div data-bind="foreach:$data" class="tr">
+                  <div class="td">
+                    <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </script>
+
+        <!--
+            FLOW-TABLE
+        -->
+        <script id="tmpl-flowTable-default" type="text/html">
+          <div class="scrollx">
+            <div data-bind="foreach:$data.rows" class="form-element tmpl-flowTable">
+                <!-- ko template:{ name:$root._getTmpl, data:$data } --><!-- /ko -->
+            </div>
+          </div>
+        </script>
+
+        <!--
+          FLOW-ROW
+        -->
+        <script id="tmpl-flowRow-default" type="text/html">
+          <div data-bind="foreach:$data.cols, css:{ 'is-error':$data.status()==='incomplete'}" class="tr">
+            <div class="td">
+              <div data-bind="template:{ name:$root._getTmpl, data:$data }">hello</div>
+            </div>
+          </div>
+          <label data-bind="html:$data.validation().label" class="lbl "></label>
+        </script>
+
+        <!--
+            BUTTON
+        -->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <!-- ko if:$data.img -->
+                    <button data-bind="click:$data.click" class="btn width10 heightauto">
+                        <img data-bind="attr:{ 'src':$data.img }" style="max-width:100%;"></img>
+                    </button>
+                <!-- /ko -->
+                <!-- ko if:!$data.img -->
+                    <button data-bind="html:$data.label, click:$data.click" class="btn width10"></button>
+                <!-- /ko -->
+            </div>
+        </script>
+
+        <!-- csvData -->
+        <!-- CSV Table for outputting tables in appflows -->
+        <script id="tmpl-csvData-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <csv-table params="data:data" class="appflow-full"></csv-table>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- TextValue -->
+        <script id="tmpl-textValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }" type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- ukPhoneNumber -->
+        <!-- UK specific telephone formatting 00000 123 456 -->
+        <script id="tmpl-ukPhoneNumber-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="grid-form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl lbl-important' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                <phone-number params="value:answer.value" ></phone-number>
+                <label data-bind="html:$data.validation().label" class="lbl is-error"></labal>
+            </div>
+        </script>
+
+        <!-- PasswordValue -->
+        <script id="tmpl-passwordValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, valueUpdate:['afterkeydown','propertychange','input'], event:{keyup:$data.onKeyUp}, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" type="password"  tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <script id="tmpl-dateValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+
+                    <div class="width6 inline-block ">
+                        <!-- ko with:$data.el -->
+                        <section data-bind="datepicker:$data" class="datepicker2">
+                            <div class="datepicker2-dd">
+                                <select data-bind="options:$data.dd,optionsText:'lbl',optionsValue:'val',value:$data.ddValue" class="datepicker2-dd-select"></select>
+                            </div>
+                            <div class="datepicker2-mm">
+                                <select data-bind="options:$data.mm,optionsText:'lbl',optionsValue:'val',value:$data.mmValue" class=datepicker2-mm-select></select>
+                            </div>
+                            <div class="datepicker2-yy">
+                                <select data-bind="options:$data.yy,optionsText:'lbl',optionsValue:'val',value:$data.yyValue" class="datepicker2-yy-select"></select>
+                            </div>
+                        </section>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- timeValue -->
+        <script id="tmpl-timeValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <!-- ko if:$root.isOs2===true -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" data-time-inline="true" type="text" tabindex="0">
+                    <!-- /ko -->
+                    <!-- ko if:!$root.isOs2 -->
+                    <input data-bind="time:$data.answer, attr:{ 'class': afterLabel === '' ? 'txt width6 height2' : 'txt width4 height2' }" class="txt" type="text">
+                    <!-- /ko -->
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                </div>
+            </div>
+        </script>
+
+        <!-- TextArea -->
+        <script id="tmpl-textArea-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-textArea">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                  <textarea data-bind="value:answer.value" class="txt"></textarea>
+                </div>
+            </div>
+        </script>
+
+        <!-- multiChoice -->
+        <script id="tmpl-multiChoice-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                        <option data-bind="html: label, attr:{ 'value': id }"></option>
+                    </select>
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip height2 spn width2 text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- numericValue -->
+        <script id="tmpl-numericValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl-numericValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="txt-append" data-type="txt-append">
+
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <input data-bind="value:answer.value, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }"  type="text" tabindex="0" />
+                    <span data-bind="html: afterLabel, attr:{ 'class': afterLabel === '' ? 'hidden' : 'text-clip spn text-left' }"></span>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- image -->
+        <script id="tmpl-image-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+
+                <img class="img inline-block" data-bind="attr:{ 'src': location }, style:{ maxWidth: '100%' }"></img>
+                <label class="lbl" data-bind="html:label"></label><br />
+            </div>
+        </script>
+
+        <!-- static -->
+        <script id="tmpl-static-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html: staticRender" class="text-info width10" style="white-space: normal; word-wrap: break-word; word-break: break-all;"></p>
+            </div>
+        </script>
+
+        <!-- contentGroup -->
+        <script id="tmpl-contentGroup-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-contentGroup">
+								<label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }"></label>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+						</div>
+        </script>
+
+        <!-- button - display nothing yet-->
+        <script id="tmpl-button-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            </div>
+        </script>
+
+        <!-- fileUpload -->
+        <script id="tmpl-fileUpload-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <form data-bind="fileUpload:{'property':answer.pulse}" action="/PumpHouse/uploads/uploadKeyDocument" method="POST">
+
+
+                    <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                    <span class="btn is-primary btn-file width2">
+                        <span data-bind="i18n:'upload'"class="inline-block"><!--upload--></span>
+                        <input data-bind="value: answer.file, event: {'mouseup': selectFile}" name = "file" type="file"  tabindex="0" />
+                    </span>
+                    <span class="lbl width4" data-bind="html:answer.status()">
+                    </span>
+                </form>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect default-->
+        <script id="tmpl-multiSelect-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0" />
+                        <button class="btn"><span class="ico ico-caron"></span></button>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect basic-->
+        <script id="tmpl-multiSelect-basic" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-multiSelect">
+            	<!--multiselect-default-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <!-- <p data-bind="text:ko.toJSON($data)"></p>
+                <p data-bind="text:ko.toJSON($data.answer.id)"></p> -->
+                <div class="tmpl-stack-control">
+                    <div class="txt-append inline-block align-top" data-type="txt-append">
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <!-- <select data-bind="value: answer.id, attr:{ 'class': afterLabel === '' ? 'txt' : 'txt' }, foreach: choice" tabindex="0">
+                            <option data-bind="html: label, attr:{ 'value': id }"></option>
+                        </select> -->
+                        <!-- <input data-bind="value:$data.answer.id"></input> -->
+                        <select data-bind="value:$data.selected,foreach:$data.options" class="txt" >
+                          <option data-bind="text:$data.label, attr:{'value':$data.id}"></option>
+                        </select>
+                    </div>
+                    <div class="tmpl-multiSelect-dropdown">
+                        <!-- ko foreach:answer.id -->
+                          <span class="lbl lbl-closing">
+                            <!-- <label data-bind="text:ko.toJSON($data)"></label> -->
+                            <label data-bind="text:key"></label>
+                            <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                          </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiSelect: Contacts -->
+        <script id="tmpl-multiSelect-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- MultiChoice: Contacts -->
+        <script id="tmpl-multiChoice-actor" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+              <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div style="padding-top: 2px;margin-bottom: 3px;">
+
+
+                    <label data-bind="html:$data.label,css:{'is-error':$data.status()==='incomplete'}" class="lbl"></label>
+                    <label data-bind="html:$data.validation().label" class="lbl "></label>
+                    <div data-bind="contactlist:$data.contacts" class="scrolly" style="border:1px solid #ccc;border-radius:5px;max-height:320px;"></div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- multiSelect system.tag-->
+        <script id="tmpl-multiSelect-system.tag" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+            	<!--multiselect-system.tag-->
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <div class="width10-nopad">
+                    <div class="txt-append width10-nopad inline-block align-top" data-type="txt-append">
+
+
+                        <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error width4 height2' : 'lbl width4 height2' }, css:{'is-required':$data.required===1}" style="padding-left: 5px;"></label>
+                        <!-- AMONIS: 08/07/2016: IMPORTANT Order dependent bindings -->
+                        <input class="txt width5 height2" data-bind="typeahead:options, internal:answer.id" data-phil="txtToken:true"  tabindex="0">
+                        <button class="btn width1 height2"><span class="ico ico-caron"></span></button>
+                    </div>
+
+                    <div class="width10-nopad" data-bind="css:{ 'hidden': answer.id().length === 0 }">
+                        <!-- ko foreach:answer.id -->
+                            <span class="lbl lbl-closing height2 widthauto">
+                                <label data-bind="text:key"></label>
+                                <button class="btn btn-link widthauto" data-bind="click:function(data, event){$parent.removeTag(data, event, $parent)}">X</button>
+                              </span>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- text -->
+        <script id="tmpl-text-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label, attr: {'class': success === false ? 'text-info is-error' : 'text-info'}" style="padding-top: 10px;"></p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- boolean -->
+        <script id="tmpl-booleanValue-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element tmpl tmpl-booleanValue">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="appflow-help concealed"></p>
+                <div class="flex-row">
+                  <label data-bind="html:label, attr:{ 'class': ($data.status() === 'invalid' || $data.status() === 'incomplete') ? 'lbl is-error' : 'lbl' }, css:{'is-required':$data.required===1}"></label>
+                  <div class="tmpl-booleanValue-button">
+                    <button data-bind="click:$data.click, css:{'active':$data.answer.value()==='true'}" class="btn btn-boolean"></button>
+                  </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- AppFlow UI Templates -->
+        <script id="tmpl-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p class="height2">default template</p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </script>
+
+        <!-- Comment -->
+        <script id="tmpl-comment-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:label" class="text-info text-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fRegistration
+        -->
+        <script id="tmpl-u2fRegistration-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!--
+            u2fAuthentication
+        -->
+        <script id="tmpl-u2fAuthentication-default" type="text/html">
+            <div data-bind="css:$data.cssname" class="form-element">
+                <p data-bind="html:$data.helpText, css:{'concealed':$root.showHelp()===false}" class="width10 appflow-help concealed"></p>
+                <img class="img" data-bind="attr:{ 'src':image }" style="width:100%;"></img>
+                <p data-bind="paragraph:$data.error" class="align-center"></p>
+            </div>
+        </script>
+
+        <!-- /TEMPLATES -->
+
+        <!-- Loading Screen -->
+        <div class="" style="padding-top: 200px" data-bind="css:{ &#39;hidden&#39;: !loading() || error() }">
+            <div class="progress progress-striped active height2">
+                <div class="bar height2" data-bind="style:{ &#39;width&#39;: (((100 / totalStep()) * currentStep()) + &#39;%&#39;) }" style="overflow: hidden; width:100%">
+                    <p style="color: white; font-weight: bold; white-space: nowrap;" data-bind="html: stepMessage()">loading</p>
+                </div>
+            </div>
+            <p style="color: black; font-weight: bold; text-align: center; padding-top: 10px; width: 100%;" data-bind="html:$data.statusMessage()"></p>
+        </div>
+
+        <!-- Error Screen -->
+        <div data-bind="css:{ &#39;hidden&#39;:!$data.error() }" class="width10 hidden background">
+            <p class="font-h3 is-error">an error occurred</p>
+            <p class="is-warning" data-bind="html: errorMessage()"></p>
+        </div>
+
+        <!-- Form-Screen -->
+        <div class="width10 background form-screen hidden" data-bind="css:{ &#39;hidden&#39;: loading() || error() }">
+
+    			<div class="section-header" style="padding:5px">
+    				<span class="span width5 align-left">
+    					<button data-bind="click:selectCancel, disable:!enableCancel() || finishState(), enable:enableCancel() &amp;&amp; !finishState()" class="action-cancel btn svg svg-16 svg-close" disabled=""></button>
+    				</span>
+    				<span class="span width5 align-right">
+                <!-- <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link widthauto">help</button> -->
+                <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="action-cancel btn svg svg-16 svg-help"></button>
+            </span>
+          </div>
+
+            <!-- Current Section -->
+            <div data-bind="with:currentSection">
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    &nbsp;
+                </div>-->
+
+                <!-- current section header -->
+                <div class="appflow-panel width10 heightauto align-top">
+                    <h3 data-bind="html:label" class="text-center width10"></h3>
+                </div>
+
+                <!--<div class="appflow-panel width2 heightauto align-top">
+                    <button data-bind="click:$root.flipHelp, css:{active:$root.showHelp}" class="btn btn-link">help</button>
+                </div>-->
+
+                <!-- AMONIS: 21/07/2015: Updated to show a summary -->
+                <div data-bind="css:{&#39;concealed&#39;:!$data.showSummary()}" class="appflow-summary width10">
+                    <h3 class="align-center">Summary</h3>
+                    <p data-bind="paragraph:$data.summaryText" class="align-center">completed <strong>1</strong> actions with <strong>1</strong> successes and <strong>0</strong> failures.</p>
+                    <button data-bind="button:$data.flipSummary" class="btn" value="show detail">show detail</button>
+                </div>
+
+                <!-- AMONIS: 21/07/2015: Updated to hide if a summary is present,
+                     AMONIS: 09/11/2015: also adds the summary class for styling-->
+                <div data-bind="template:{ name:$root._getTmpl, foreach:content }, css:{&#39;concealed&#39;:$data.showSummary(),&#39;summary&#39;:$data.isSummary()}" class="appflow-panel concealed summary">
+            <div data-bind="css:$data.cssname" class="form-element form-login form-text">
+                <p data-bind="html:label, attr: {&#39;class&#39;: success === false ? &#39;text-info is-error&#39; : &#39;text-info&#39;}" style="padding-top: 10px;" class="text-info">logged in successfully</p>
+                <label data-bind="html:$data.validation().label" class="lbl "></label>
+            </div>
+        </div>
+            </div>
+
+            <!-- Footer -->
+            <div data-bind="with:currentSection" class="footer btn-group">
+                <!-- ko if:$data.action().previous --><!-- /ko -->
+                <!-- ko if:$data.action().next -->
+                <button data-bind="click:$parent.finishState() ? $parent.selectFinish : $parent.selectNext, html:$parent.finishState() ? $parent.finishEndText : $parent.finishNextText" class="action-next btn btn-link widthauto">finish</button>
+                <!-- /ko -->
+            </div>
+
+        </div>
+        <!-- /Form-Screen -->
+    </div>
+
+
+</div></div>
+
+					<!-- /ko -->
+
+				</div>
+			<!-- /ko -->
+
+		</div>
+	<!-- /ko -->
+
+	<!-- SnackBar -->
+	<script type="text/html" id="snackbar-template">
+		<p data-bind="html:$data.msg"></p>
+	</script>
+	<div data-bind="snackbar:$data.snackBar" class="snackbar slideInUp animated">
+		<p data-bind="html:$data.msg"></p>
+	</div>
+</div>
+</body></html>

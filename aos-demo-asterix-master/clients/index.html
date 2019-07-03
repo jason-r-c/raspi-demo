@@ -1,0 +1,1017 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">        
+        <style>
+            body {
+                background-color: #efefef;
+            }
+
+            button {
+                background:transparent;
+                padding: 20px;                
+            }
+
+            /* table styles */
+            table {
+                /* font-family: arial, sans-serif; */
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }      
+            
+            /* Page re-design */
+            body {                
+                margin: 0px;
+            }
+
+            .title-heading {
+                text-align: left;
+                background-color: #f1f1f1;
+                margin: 0;
+                padding: 20px 0 5px 0;
+                padding-left: 20px;
+            }
+
+            .story-section {
+                background-color: white;
+                border-bottom: 1px solid gainsboro;
+                padding-top: 10px;                
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                margin-left: 20px;
+            }
+
+            .links-to-demo {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                /
+                /* background-color: #bfbfbf; */
+                margin-top: 30px;
+            }
+
+            .demo-link {
+                display: grid;
+                justify-items: center;
+                /* align-items: center; */
+                text-decoration: none;
+                text-align: center;
+                padding: 20px;
+                font-size: 18px;
+                border: 1px solid #bfbfbf;
+                color: black;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+            }
+
+            .story-counter-container {
+                padding-left: 40px;
+                padding-right: 20px;
+                margin-top: 50px;
+            }
+
+            .counter-button {
+                width: 100%;
+            }
+
+            .list-divider {
+                padding-bottom: 20px;
+                border-bottom: 1px solid grey;
+            }          
+
+            /* 1) Image for home page - background image approach */
+            /* .image-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr;
+                background-image: url(assets/Anthropos_app_demo.jpg);
+                height: 830px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: #efefef;
+            }
+
+            .link-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: end;
+            }            
+            .full-height {
+                padding: 30px;
+                border: 1px solid grey;
+                margin-left: 10px;
+                margin-right: 10px;
+                border-radius: 10px;
+            } */
+
+            /* 2) Image for home page - cut up image approach */ 
+            .cutup-container {
+                display: grid;                
+                grid-template-areas: 
+                    "header header header" 
+                    "person-one person-two person-three";
+                background-color: #efefef;
+                    
+            }
+            .cutup-container img {
+                width: 100%;
+            }
+            .cutup-people img {
+                margin-bottom: 20px;
+            }
+            .cutup-header {
+                grid-area: header;
+            }
+            .cutup-person-one {
+                display: grid;
+                grid-area: person-one;
+                grid-template-areas: 
+                    "person-one-space person-one-space"                     
+                    "person-one-dashboard person-one-dashboard"      
+                    "person-one-family-app person-one-family-app";
+            }
+            .cutup-person-two {
+                display: grid;
+                grid-area: person-two;
+                grid-template-areas: 
+                    "person-two-space person-two-space"                     
+                    "person-two-dashboard person-two-dashboard";
+                /* @JC 16/11/18: dispaly one 'chunky' button  */
+                /* grid-template-rows: 0fr;  */
+            }
+            .cutup-person-three {
+                display: grid;
+                grid-area: person-three;
+                grid-template-areas: 
+                    "person-three-space person-three-space" 
+                    "person-three-family-app person-three-family-app" 
+                    "person-three-dashboard person-three-dashboard"; 
+            }
+
+            /* people images */
+            .person-one-space {
+                grid-area: person-one-space;
+            }
+            .person-one-family-app {
+                grid-area: person-one-family-app
+            }
+            .person-one-dashboard {
+                grid-area: person-one-dashboard
+            }
+            /* person 2*/
+            .person-two-space {
+                grid-area: person-two-space;
+            }
+            .person-two-family-app {
+                grid-area: person-two-family-app
+            }
+            .person-two-dashboard {
+                grid-area: person-two-dashboard
+            }
+            /* person 3 */
+            .person-three-space {
+                grid-area: person-three-space;
+            }
+            .person-three-family-app {
+                grid-area: person-three-family-app
+            }
+            .person-three-dashboard {
+                grid-area: person-three-dashboard
+            }
+
+            .person-one-space, 
+            .person-two-space, 
+            .person-three-space {
+                max-width: 75%;
+                margin: 0 auto;
+            }        
+
+            /* .cutup-container .demo-link:nth-child(2) {
+                margin-right: 5px;
+            }    
+
+            .cutup-container .demo-link:nth-child(3) {
+                margin-left: 5px;
+            } */
+
+
+
+            @media (max-width: 880px) {
+                .cutup-container {
+                    grid-template-areas: 
+                        "header" 
+                        "person-one" 
+                        "person-two" 
+                        "person-three";
+                }
+                .cutup-person-one {
+                    grid-template-areas: 
+                        "person-one-space"                         
+                        "person-one-dashboard"
+                        "person-one-family-app" ;
+                }
+                .cutup-person-two {
+                    grid-template-areas: 
+                        "person-two-space"                         
+                        "person-two-dashboard";
+                }
+                #story-two-family-app {
+                    display: none;
+                }
+                .cutup-person-three {
+                    grid-template-areas: 
+                        "person-three-space" 
+                        "person-three-family-app" 
+                        "person-three-dashboard";
+                }
+            }
+
+
+            /* iphone: landscape */
+            @media only screen and (min-device-width: 176px) and (max-device-width: 667px) and (orientation:landscape) {
+            /* For landscape layouts only */
+                .cutup-person-one, 
+                .cutup-person-two,
+                .cutup-person-three
+                {
+                    max-width: 75%;
+                    margin: 0 auto;
+                }
+            }
+
+            /* @media (min-height: 1100px) {
+                .cutup-container {
+                    grid-template-rows: 1fr 1fr 1fr;
+                }
+            } */
+            
+            /* ipad: portrait */
+            @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation:portrait) {
+                .cutup-container {
+                    grid-template-rows: 1fr 2fr 1fr;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <!-- /* 1) Image for home page - background image approach */ -->
+        <!-- <div class="image-container">           
+            <div class="link-container">
+                <a href="/demo1/phone/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+                <a href="/demo1/tablet/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+            </div>
+            <div class="link-container">
+                <a href="/demo2/phone/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+                <a href="/demo2/tablet/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+            </div>
+            <div class="link-container">
+                <a href="/demo3/phone/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+                <a href="/demo3/tablet/page1.html" class="full-height" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+            </div>
+        </div> -->
+
+        <!-- /* 2) Image for home page - cut up image approach */ -->
+        <div>
+            <div class="cutup-container">
+                <div class="cutup-header" id="display-counter">
+                    <img src="assets/logo.jpg" />
+                </div>
+                <!--
+                    "person-one-space" "person-one-family-app person-one-dashboard"
+                -->
+                <div class="cutup-person-one cutup-people">
+                    <img src="assets/person-one.jpg" class="person-one-space" />
+                    <a href="/demo1/tablet/page1.html" class="btn natconf-story demo-link person-one-dashboard" id="story-one-dashboard">
+                        <span class="display-block">Dashboard</span>
+                    </a>
+                    <a href="/demo1/phone/page1.html" class="btn natconf-story demo-link person-one-family-app" id="story-one-family-app">
+                        <span class="display-block">Family App</span>                                    
+                    </a>
+                      
+                </div>
+                <div class="cutup-person-two cutup-people">
+                    <img src="assets/person-two.jpg" class="person-two-space" />
+                    <a href="/demo2/tablet/page1.html" class="btn natconf-story demo-link person-two-dashboard" id="story-two-dashboard">
+                        <span class="display-block">Dashboard</span>
+                    </a>  
+                    <a href="/demo2/phone/page1.html" class="btn natconf-story demo-link person-two-family-app-" id="story-two-family-app" style="visibility: hidden;">
+                        <span class="display-block">Family App</span>                                    
+                    </a>
+                    
+                </div>
+                <div class="cutup-person-three cutup-people" >
+                    <img src="assets/person-three.jpg" class="person-three-space" style="padding-top: 4px; margin-bottom: 16px;" />
+                    <a href="/demo3/phone/page1.html" class="btn natconf-story demo-link person-three-family-app" id="story-three-family-app">
+                        <span class="display-block">Family App</span>                                    
+                    </a>
+                    <a href="/demo3/tablet/page1.html" class="btn natconf-story demo-link person-three-dashboard" id="story-three-dashboard">
+                        <span class="display-block">Dashboard</span>
+                    </a>  
+                </div>
+            </div>
+        </div>
+        
+        <div class="hidden-old-ui" style="display: none;">
+        <h1 class="title-heading">Anthropos Demos</h1>
+
+        <!-- Disable counter button -->
+        <!-- <div id="story-one-counter-disabled" style="display: block;">                
+            <button id="story-one-counter-disabled-button">Disable counter</button>
+        </div> -->
+
+        <!-- Enable counter button -->
+        <!-- <div id="story-one-counter-enabled" style="display: block;">        
+            <button id="story-one-counter-enabled-button">Enable counter</button>
+        </div> -->
+
+        
+        <div class="story-section">           
+            <h3>Story 1 - Rose Smith</h3> 
+            <p class="links-to-demo">
+                <a href="/demo1/phone/page1.html" class="btn natconf-story demo-link" id="story-one-family-app">
+                    <span class="display-block">Family App</span>                                    
+                </a>
+                <a href="/demo1/tablet/page1.html" class="btn natconf-story demo-link" id="story-one-dashboard">
+                    <span class="display-block">Dashboard</span>
+                </a>                    
+            </p>
+
+            <!-- Display the total amount of clicks -->
+            <div id="story-one-counter-enabled" class="story-counter-container" style="display: block">
+                <p class="list-divider">Family App total clicks: <span id="family-app-story-one-total-clicks-"></span></p>
+                <p id="dashboard-story-one-total-clicks">Dashboard total clicks: <span id="story-one-dashboard-total-clicks-"></span></p>
+            </div>            
+        </div>
+
+        <div class="story-section">            
+            <h3>Story 2 - John Jenkins</h3>
+            <p class="links-to-demo">
+                <a href="/demo2/phone/page1.html" class="btn natconf-story demo-link" id="story-two-family-app">
+                    <span class="display-block">Family App</span>                    
+                    </a>
+                <a href="/demo2/tablet/page1.html" class="btn natconf-story demo-link" id="story-two-dashboard">
+                    <span class="display-block">Dashboard</span>
+                </a>
+            </p>
+
+            <!-- Display the total amount of clicks -->
+            <div id="story-two-counter-enabled" class="story-counter-container" style="display: block">
+                <p class="list-divider">Family App total clicks: <span id="family-app-story-two-total-clicks-"></span></p>
+                <!-- Subtract and add clicks for this demo -->
+                <!-- <button id="family-app-story-two-minus-click">Remove one click</button>
+                <button id="family-app-story-two-plus-click">Add one click</button> -->
+                <p id="dashboard-story-two-total-clicks">Dashboard total clicks: <span id="story-two-dashboard-total-clicks-"></span></p>
+            </div>
+        </div>
+
+        <div class="story-section">            
+            <h3>Story 3 - David Bell </h3>
+            <p class="links-to-demo">
+                <a href="/demo3/phone/page1.html" class="btn natconf-story demo-link" id="story-three-family-app">
+                    <span class="display-block"></span>Family App</span>                    
+                </a>
+                <a href="/demo3/tablet/page1.html" class="btn natconf-story demo-link" id="story-three-dashboard">
+                    <span class="display-block">Dashboard</span></a>
+            </p>
+
+            <!-- Display the total amount of clicks -->
+            <div id="story-three-counter-enabled" class="story-counter-container" style="display: block">
+                <p class="list-divider">Family App total clicks: <span id="family-app-story-three-total-clicks-"></span></p>
+                <!-- Subtract and add clicks for this demo -->
+                <!-- <button id="family-app-story-three-minus-click">Remove one click</button>
+                <button id="family-app-story-three-plus-click">Add one click</button> -->
+                <p id="dashboard-story-three-total-clicks">Dashboard total clicks: <span id="story-three-dashboard-total-clicks-"></span></p>
+            </div>
+        </div>
+
+        </div><!-- // hidden-old-ui  -->
+
+    <!-- @JC 16/11/18: hide the counter button as counter should be displayed by clicking somewhere else -->
+    <!-- <button id="display-counter" class="counter-button" style="width: 100%; margin-top: 30px">Display counter</button> -->
+    <div id="counter-ui" style="display: none; margin-top: 50px; border-top: 1px solid lightgrey;">
+        <h2>Clicks per story type</h2>
+        <!-- story 1 -->
+        <table>             
+            <tr>
+                <th>Story one - dashboard</th>                
+                <th>Story one - Family app</th>
+                
+            </tr>    
+            <tr>
+                <td id="story-one-dashboard-total-clicks"></td>                        
+                <td id="family-app-story-one-total-clicks"></td>                
+            </tr>                            
+        </table>
+        
+        <!-- story 2 -->
+        <table>             
+            <tr>
+                <th style="display: none;">Story two - Family app</th>
+                <th>Story two - dashboard</th>                
+            </tr>    
+            <tr>        
+                <td id="family-app-story-two-total-clicks" style="display: none;"></td>
+                <td id="story-two-dashboard-total-clicks"></td>                
+            </tr>                            
+        </table>
+       
+        <!-- story 3 -->
+        <table>             
+            <tr>
+                <th>Story three - Family app</th>
+                <th>Story three - dashboard</th>                
+            </tr>    
+            <tr>        
+                <td id="family-app-story-three-total-clicks"></td>
+                <td id="story-three-dashboard-total-clicks"></td>                
+            </tr>                            
+        </table>
+
+        <h2>Total clicks per story</h2>
+        <table>
+            <tr>
+                <th>Story one</th>
+                <th>Story two</th>
+                <th>Story three</th>
+            </tr>
+            <tr>
+                <td id="story-one-tally"></td>
+                <td id="story-two-tally"></td>
+                <td id="story-three-tally"></td>
+            </tr>        
+            <!-- <tr>                                
+                <th colspan="3" style="text-align: right;">Overall clicks</th>
+            </tr>        
+            <tr> 
+                <td id="overall-clicks" colspan="3" style="text-align: right;"></td>
+            </tr>         -->
+        </table>
+        
+        <h2>Overall clicks</h2>
+        <table>             
+            <tr style="background-color: #dddddd;"> 
+                <td id="overall-clicks" colspan="3"></td>
+            </tr>        
+        </table>
+        
+                      
+        <!-- Disable counter button -->
+        <div id="counter-disabled-container" style="display: block;">                
+            <button id="counter-disabled-button" class="counter-button">Disable counter</button>
+        </div>
+    
+        <!-- Enable counter button -->
+        <div id="counter-enabled-container" style="display: block;">        
+            <button id="counter-enabled-button" class="counter-button">Enable counter</button>
+        </div>
+
+        <h3>Reset counter</h3>
+        <button id="counter-reset" class="counter-button">Reset counter</button>   
+    </div>     
+
+<!--     
+        <h3>Demo 4 - Google Home</h3>
+        <p>
+            <a href="/demo4/phone/page.html" class="btn">App ( Phone )</a>
+            <a href="/demo5/tablet/page.html" class="btn">Dashboard ( Desktop )</a>
+        </p>
+
+        <h2>API</h2>
+        <h3>Demo 1</h3>
+        <p>
+            <a href="/api/prev?pathname=/demo1/" class="btn">&lt;&lt; Prev</a>
+            <a href="/api/next?pathname=/demo1/" class="btn">Next &gt;&gt;</a>
+            <a href="/api/reset?pathname=/demo1/" class="btn">- Reset -</a>
+        </p>
+        <h3>Demo 2</h3>
+        <p>
+            <a href="/api/prev?pathname=/demo2/" class="btn">&lt;&lt; Prev</a>
+            <a href="/api/next?pathname=/demo2/" class="btn">Next &gt;&gt;</a>
+            <a href="/api/reset?pathname=/demo2/" class="btn">- Reset -</a>
+        </p>
+        <h3>Demo 3</h3>
+        <p>
+            <a href="/api/prev?pathname=/demo3/" class="btn">&lt;&lt; Prev</a>
+            <a href="/api/next?pathname=/demo3/" class="btn">Next &gt;&gt;</a>
+            <a href="/api/reset?pathname=/demo3/" class="btn">- Reset -</a>
+        </p>
+        <h3>Demo 4</h3>
+        <p>
+            <a href="/api/prev?pathname=/demo4/" class="btn">&lt;&lt; Prev</a>
+            <a href="/api/next?pathname=/demo4/" class="btn">Next &gt;&gt;</a>
+            <a href="/api/reset?pathname=/demo4/" class="btn">- Reset -</a>
+        </p> -->
+    </body>
+    <script>
+        // Dont put variables & functions into global / window scrope
+        (function() {
+            //debugger
+            
+            /**
+             * NOTES
+             * -----
+             * 
+             * - When visiting the home page for the first time ( on a new device / browser ) the counters for each demo are disabled; it defaults to test mode.
+             * - When clicking the enable counter, the counter will begin to increment for each demo.
+             * - When clicking the disable counter, the counter will NOT increment for each demo.
+             * 
+             * TODO's
+             * ------            
+             */ 
+
+            /************************************************************
+             * // VARIABLES
+             *************************************************************/
+
+            /**
+             * Declare the counter variables, so we have them to work with for the rest of the program.
+             */ 
+            // story one
+            let storyOneFamilyAppCounter;
+            let storyOneDashboardCounter;
+
+            // story two
+            let storyTwoFamilyAppCounter;
+            let storyTwoDashboardCounter;
+
+            // story three
+            let storyThreeFamilyAppCounter;
+            let storyThreeDashboardCounter;
+
+            /**
+             * References to the UI displaying the amount of clicks for each demo.
+             */  
+            // story one
+            var storyOneFamilAppTotalClicks = document.getElementById('family-app-story-one-total-clicks');
+            storyOneFamilAppTotalClicks.innerText = localStorage.getItem('storyOneFamilyAppCounter');
+
+            var storyOneDashboardTotalClicks = document.getElementById('story-one-dashboard-total-clicks');
+            storyOneDashboardTotalClicks.innerText = localStorage.getItem('storyOneDashboardCounter');
+              
+            // story two
+            var storyTwoFamilAppTotalClicks = document.getElementById('family-app-story-two-total-clicks');
+            storyTwoFamilAppTotalClicks.innerText = localStorage.getItem('storyTwoFamilyAppCounter');
+
+            var storyTwoDashboardTotalClicks = document.getElementById('story-two-dashboard-total-clicks');
+            storyTwoDashboardTotalClicks.innerText = localStorage.getItem('storyTwoDashboardCounter');
+
+            // story three
+            var storyThreeFamilAppTotalClicks = document.getElementById('family-app-story-three-total-clicks');
+            storyThreeFamilAppTotalClicks.innerText = localStorage.getItem('storyThreeFamilyAppCounter');
+
+            var storyThreeDashboardTotalClicks = document.getElementById('story-three-dashboard-total-clicks');
+            storyThreeDashboardTotalClicks.innerText = localStorage.getItem('storyThreeDashboardCounter');            
+                  
+            /**
+             * References to the disabled counter UI
+             */  
+            var counterDisabledButton = document.getElementById('counter-disabled-button');        
+            var counterDisabledButtonContainer = document.getElementById('counter-disabled-container');
+            var disabledStatus = document.createElement("p");                  
+
+            /**
+             * References to the enabled counter UI
+             */  
+            var counterEnabledButton = document.getElementById('counter-enabled-button');
+            var counterEnabledButtonContainer = document.getElementById('counter-enabled-container');
+            var enabledStatus = document.createElement("p");
+
+            var counterEnabledStatus = localStorage.getItem('counterEnabled');
+
+            /**
+             * Reset counter
+             */  
+            var resetCounter = document.getElementById('counter-reset');
+            var reset = '';
+
+            /**
+             * References to the story tallys and overall clicks
+             */
+            // Reference to the 'tally' table cells
+            var storyOneTallyEl = document.getElementById('story-one-tally');
+            var storyTwoTallyEl = document.getElementById('story-two-tally');
+            var storyThreeTallyEl = document.getElementById('story-three-tally');
+            var overallClicksEl = document.getElementById('overall-clicks');
+            
+            // The tallys for each story
+            var storyOneTally;
+            var storyTwoTally;
+            var storyThreeTally;
+
+            // The overall tally
+            var overallClicks;      
+            
+            /**
+             * Reference the counter display button
+             */
+            var displayCounterButton = document.querySelector('#display-counter');
+            var counterUi = document.querySelector('#counter-ui');
+
+            /************************************************************
+             * // FUNCTIONS
+             *************************************************************/
+
+            /**
+             * Check if there is a stored records for each demo, if not, initialise them 0.        
+             */            
+            function getStorage() {
+                // story one
+                storyOneFamilyAppCounter = localStorage.getItem('storyOneFamilyAppCounter');
+                storyOneDashboardCounter = localStorage.getItem('storyOneDashboardCounter');
+
+                // story two
+                storyTwoFamilyAppCounter = localStorage.getItem('storyTwoFamilyAppCounter');
+                storyTwoDashboardCounter = localStorage.getItem('storyTwoDashboardCounter');
+
+                // story three
+                storyThreeFamilyAppCounter = localStorage.getItem('storyThreeFamilyAppCounter');
+                storyThreeDashboardCounter = localStorage.getItem('storyThreeDashboardCounter');
+
+                if( storyOneFamilyAppCounter === null ){
+                    localStorage.setItem('storyOneFamilyAppCounter', 0);
+                }   
+                if( storyOneDashboardCounter === null ){
+                    localStorage.setItem('storyOneDashboardCounter', 0);
+                }                 
+                if( storyTwoFamilyAppCounter === null ){
+                    localStorage.setItem('storyTwoFamilyAppCounter', 0);
+                }   
+                if( storyTwoDashboardCounter === null ){
+                    localStorage.setItem('storyTwoDashboardCounter', 0);
+                }               
+                if( storyThreeFamilyAppCounter === null ){
+                    localStorage.setItem('storyThreeFamilyAppCounter', 0)
+                }   
+                if( storyThreeDashboardCounter === null ){
+                    localStorage.setItem('storyThreeDashboardCounter', 0)
+                }  
+            }
+            getStorage();
+            
+            /**
+             * disable click counter
+             */            
+            counterDisabledButton.addEventListener('click', () => {
+                var confirmation = confirm("Are you sure you want to disable the counter?");
+                if( confirmation === true ){         
+                    // flag to signify the counter will not increase           
+                    localStorage.setItem('counterEnabled', false);             
+                    counterClickHandlersDisable();     
+                    
+                    // call enable button function
+                    updateDisabledCounterUi();
+
+                }
+            });
+
+            /**
+             * enable click counter
+             */            
+            counterEnabledButton.addEventListener('click', () => {
+                var confirmation = confirm("Are you sure you want to enable the counter?");
+                if( confirmation === true ){   
+                    // flag to signify the counter WILL increase                 
+                    localStorage.setItem('counterEnabled', true);   
+                    counterClickHandlers();                         
+
+                    // call disable button function
+                    updateEnabledCounterUi();
+                }
+            });            
+
+            /**
+             * Takes care of upating the enabled counter UI
+             */
+            function updateEnabledCounterUi() {
+                // disable the button so user cannot click
+                counterEnabledButton.disabled = true;
+
+                // set the container background to red so its more obvious the counter is disabled
+                counterEnabledButtonContainer.style.backgroundColor = 'green';   
+
+                // create a P tag with the text 'counter now disabled'                    
+                enabledStatus.innerText = 'Counter enabled';
+                enabledStatus.setAttribute('class', 'button-currently-enabled');
+                enabledStatus.style.color = '#fff';
+                enabledStatus.style.textAlign = 'center';
+                enabledStatus.style.padding = '10px';
+                enabledStatus.style.margin = '0px';
+                counterEnabledButtonContainer.appendChild( enabledStatus );
+
+                // ** normalise the disable button  ** //
+                // re-enable the enable button
+                counterDisabledButton.disabled = false;      
+
+                // remove the green enabled background
+                counterDisabledButtonContainer.style.backgroundColor = 'transparent';  
+
+                // remove the disabled message
+                disabledStatus.removeAttribute('class');                 
+            }      
+            
+            /**
+             * Takes care of upating the disabled counter UI
+             */            
+            function updateDisabledCounterUi() {
+                // disable the button so user cannot click
+                counterDisabledButton.disabled = true;              
+
+                // set the container background to red so its more obvious the counter is disabled
+                counterDisabledButtonContainer.style.backgroundColor = 'red';   
+                
+                // create a P tag with the text 'counter now disabled'                    
+                enabledStatus.innerText = 'Counter disabled';
+                // enabledStatus.style.display = 'inline';
+                enabledStatus.style.color = '#fff';
+                enabledStatus.style.textAlign = 'center';
+                enabledStatus.style.padding = '10px';
+                enabledStatus.style.margin = '0px';
+                enabledStatus.setAttribute('class', 'button-currently-disabled');
+                counterDisabledButtonContainer.appendChild( enabledStatus );
+
+                // ** normalise the enable button  ** //
+                // re-enable the enable button
+                counterEnabledButton.disabled = false;      
+
+                // remove the green enabled background
+                counterEnabledButtonContainer.style.backgroundColor = 'transparent';  
+
+                // remove the enabled message
+                enabledStatus.removeAttribute('class');                
+            }
+
+            /**
+             * Generic counter enable function
+             */
+            function counterClickHandlers() {
+                // story one
+                var storyOneFamilyApp = document.querySelector('#story-one-family-app')
+                storyOneFamilyApp.addEventListener('click', incrementStoryOneFamilyAppCounter, true); // remember to supply the 3rd argument 'userCapture' boolean so removeEventListener will work
+
+                var storyOneDashboard = document.querySelector('#story-one-dashboard')
+                storyOneDashboard.addEventListener('click', incrementStoryOneDashboardCounter, true);
+
+                // story two
+                var storyTwoFamilyApp = document.querySelector('#story-two-family-app')
+                storyTwoFamilyApp.addEventListener('click', incrementStoryTwoFamilyAppCounter, true); 
+
+                var storyTwoDashboard = document.querySelector('#story-two-dashboard')
+                storyTwoDashboard.addEventListener('click', incrementStoryTwoDashboardCounter, true); 
+
+                // story three
+                var storyThreeFamilyApp = document.querySelector('#story-three-family-app')
+                storyThreeFamilyApp.addEventListener('click', incrementStoryThreeFamilyAppCounter, true); 
+
+                var storyThreeDashboard = document.querySelector('#story-three-dashboard')
+                storyThreeDashboard.addEventListener('click', incrementStoryThreeDashboardCounter, true); 
+            }
+
+            /* // Increment counter callbacks // */
+
+            // story one
+            function incrementStoryOneFamilyAppCounter()  {                
+                storyOneFamilyAppCounter++;                
+                console.log('// storyOneFamilyAppCounter is:');
+                console.log(storyOneFamilyAppCounter);
+                localStorage.setItem('storyOneFamilyAppCounter', storyOneFamilyAppCounter);
+            }
+            function incrementStoryOneDashboardCounter() {                
+                storyOneDashboardCounter++;                
+                console.log('// storyOneDashboardCounter is:');
+                console.log(storyOneDashboardCounter);
+                localStorage.setItem('storyOneDashboardCounter', storyOneDashboardCounter)
+            }
+
+            // story two
+            function incrementStoryTwoFamilyAppCounter()  {                
+                storyTwoFamilyAppCounter++;                
+                console.log('// storyTwoFamilyAppCounter is:');
+                console.log(storyTwoFamilyAppCounter);
+                    localStorage.setItem('storyTwoFamilyAppCounter', storyTwoFamilyAppCounter);
+            }
+            function incrementStoryTwoDashboardCounter() {                
+                storyTwoDashboardCounter++;                
+                console.log('// storyTwoDashboardCounter is:');
+                console.log(storyTwoDashboardCounter);
+                localStorage.setItem('storyTwoDashboardCounter', storyTwoDashboardCounter)
+            }
+
+            // story three
+            function incrementStoryThreeFamilyAppCounter()  {                
+                storyThreeFamilyAppCounter++;                
+                console.log('// storyThreeFamilyAppCounter is:');
+                console.log(storyThreeFamilyAppCounter);
+                localStorage.setItem('storyThreeFamilyAppCounter', storyThreeFamilyAppCounter);
+            }
+            function incrementStoryThreeDashboardCounter() {                
+                storyThreeDashboardCounter++;                
+                console.log('// storyThreeDashboardCounter is:');
+                console.log(storyThreeDashboardCounter);
+                localStorage.setItem('storyThreeDashboardCounter', storyThreeDashboardCounter)
+            }
+
+            /**
+             * Disable the event listeners for the links.
+             * Clicking through to the family app / dashboard wont increment any counters. 
+             */
+            function counterClickHandlersDisable() {                
+                //  story one
+                var storyOneFamilyApp = document.querySelector('#story-one-family-app')
+                storyOneFamilyApp.removeEventListener("click", incrementStoryOneFamilyAppCounter, true); // remember to supply the user 3rd userCapture boolean so removeEventListener will work
+    
+                var storyOneDashboard = document.querySelector('#story-one-dashboard')
+                storyOneDashboard.removeEventListener("click", incrementStoryOneDashboardCounter, true); 
+
+                // story two
+                var storyTwoFamilyApp = document.querySelector('#story-two-family-app')
+                storyTwoFamilyApp.removeEventListener("click", incrementStoryTwoFamilyAppCounter, true); 
+    
+                var storyTwoDashboard = document.querySelector('#story-two-dashboard')
+                storyTwoDashboard.removeEventListener("click", incrementStoryTwoDashboardCounter, true); 
+
+                // story three
+                var storyThreeFamilyApp = document.querySelector('#story-three-family-app')
+                storyThreeFamilyApp.removeEventListener("click", incrementStoryThreeFamilyAppCounter, true); 
+    
+                var storyThreeDashboard = document.querySelector('#story-three-dashboard')
+                storyThreeDashboard.removeEventListener("click", incrementStoryThreeDashboardCounter, true); 
+            }
+
+            /************************************************************
+             * // ONLOAD
+             *************************************************************/
+
+            /**
+             * Each time the page loads we need to check if the user has enabled the counter.
+             * If the local storage record is true, then we enable the counter click handlers by invoking the generic 
+             *  counterClickHandlers function
+             */              
+             if( counterEnabledStatus === 'true' ) {
+                counterClickHandlers();
+                updateEnabledCounterUi();
+            } else {
+                updateDisabledCounterUi();            
+            }
+
+            /************************************************************
+             * // EVERY N SECONDS
+             *************************************************************/
+
+            /**
+             * Update the click counter for each demo every 1 second
+             * Works well for ipad / iphone.
+             */
+            function startInterval() {
+                reset = setInterval(() => {                                              
+                    // story one
+                    // storyOneFamilAppTotalClicks.innerText = localStorage.getItem( 'storyOneFamilyAppCounter' );
+                    // storyOneDashboardTotalClicks.innerText = localStorage.getItem( 'storyOneDashboardCounter' );
+                    
+                    //story two
+                    // storyTwoFamilAppTotalClicks.innerText = localStorage.getItem( 'storyTwoFamilyAppCounter' );              
+                    // storyTwoDashboardTotalClicks.innerText = storyTwoDashboardCounter;
+                    
+                    // story three
+                    // storyThreeFamilAppTotalClicks.innerText = localStorage.getItem( 'storyThreeFamilyAppCounter' );          
+                    // storyThreeDashboardTotalClicks.innerText = localStorage.getItem( 'storyThreeDashboardCounter' );
+                    
+                    // @JC 6/11/18: using the in-memory variable as opposed to always grabbing from local storage 
+                    // story one
+                    storyOneFamilAppTotalClicks.innerText = storyOneFamilyAppCounter;
+                    storyOneDashboardTotalClicks.innerText = storyOneDashboardCounter;
+
+                    // story two
+                    storyTwoFamilAppTotalClicks.innerText = storyTwoFamilyAppCounter;
+                    storyTwoDashboardTotalClicks.innerText = storyTwoDashboardCounter;
+
+                    // story three
+                    storyThreeFamilAppTotalClicks.innerText = storyThreeFamilyAppCounter;
+                    storyThreeDashboardTotalClicks.innerText = storyThreeDashboardCounter;
+
+                    // update the tallys table
+                    getStorage();
+                    addTallys();
+                }, 1000);
+            }
+
+            /************************************************************
+             * // RESTART THE COUNTER
+             *************************************************************/
+            /**             
+             * - Clear down the local storage
+             * - Set counter to disable
+             * - Initialise the storage to 0
+             * - Disable the event listeners for the links
+             * - Clear the current interval
+             * - Start a new interval
+             */
+            resetCounter.addEventListener('click', () => {
+                console.log('// resetCounter called');
+                var clearStorage = confirm('Are you sure you want to remove all counters?');
+                if( clearStorage === true ) {
+                    localStorage.clear();                    
+                    updateDisabledCounterUi();
+                    getStorage();
+                    counterClickHandlersDisable();
+                    clearInterval(reset);
+                    startInterval();                    
+                }                
+            });
+
+            // onload, start the interval
+            startInterval();         
+            
+            /************************************************************
+             * // ADD STORY TALLYS AND OVERALL CLICKS
+             *************************************************************/            
+            
+            /**
+             * JCARNEY 6/11/18
+             * - Add all story clicks together
+             * - Add all overall clicks together
+             */ 
+            function addTallys() {     
+                // Stories
+                storyOneTally = parseInt(storyOneFamilyAppCounter, 10) + parseInt(storyOneDashboardCounter, 10)
+                // @JC 16/11/18: we no longer have the family app for story 2, so we dont add it to it story 2 dashboard tally
+                // storyTwoTally = parseInt(storyTwoFamilyAppCounter, 10) + parseInt(storyTwoDashboardCounter, 10);
+                storyTwoTally = parseInt(storyTwoDashboardCounter, 10);
+                storyThreeTally = parseInt(storyThreeFamilyAppCounter, 10) + parseInt(storyThreeDashboardCounter, 10);
+                storyOneTallyEl.innerText = storyOneTally;
+                storyTwoTallyEl.innerText = storyTwoTally;
+                storyThreeTallyEl.innerText = storyThreeTally;
+
+                // Overall
+                overallClicks = storyOneTally + storyTwoTally + storyThreeTally;
+                overallClicksEl.innerText = overallClicks;
+            }
+            addTallys();
+
+            // the dispaly button
+            displayCounterButton.addEventListener('click', () => {
+                counterUi.style.display = 'block';
+            });
+
+
+            /************************************************************************
+             *  working, just needs the right area to be cut and pasted into
+             ***********************************************************************/
+
+            /**
+             * Click handlers for removing SINGLE clicks 
+             */
+            // family-app-story-one-minus-click
+            // var storyOneFamilyAppRemoveClick = document.querySelector('#family-app-story-one-minus-click');
+            // storyOneFamilyAppRemoveClick.addEventListener('click', () => {
+                
+            //     var confirmation = confirm("are you sure you want to remove a click?");
+            //     if( confirmation === true ) {
+            //         storyOneFamilyAppCounter--;
+            //         localStorage.setItem('storyOneFamilyAppCounter', storyOneFamilyAppCounter);
+                    
+            //         // Update the click count in the UI
+            //         storyOneFamilAppTotalClicks.innerText = storyOneFamilyAppCounter;
+            //     }
+            // });
+                
+            /**********************************************************************
+             * OLD 
+             **********************************************************************/
+            
+            })();
+
+        </script>
+</html>

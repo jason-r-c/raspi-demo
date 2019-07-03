@@ -1,0 +1,10 @@
+[Unit]
+Description=Hotspot Service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/etc/asterix/restart.sh
+
+[Install]
+WantedBy=multi-user.target

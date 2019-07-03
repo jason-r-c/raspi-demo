@@ -1,0 +1,25 @@
+[Unit]
+Description=asterix
+
+[Service]
+# Basic startup config
+ExecStart=/usr/bin/node /opt/aos-demo-asterix/server/index.js
+
+# Required on some systems
+WorkingDirectory=/opt/aos-demo-asterix
+
+# Restart service automatically after 10 seconds if node service crashes
+Restart=always
+RestartSec=10
+
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=aos-asterix-demo
+
+# User and Group configuration
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target

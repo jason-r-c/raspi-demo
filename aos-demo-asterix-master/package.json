@@ -1,0 +1,31 @@
+{
+  "name": "aos-demo-asterix",
+  "version": "1.0.0",
+  "description": "The Asterix ( using the Hurricane naming convention ) is the first Demo of the",
+  "main": "server/index.js",
+  "scripts": {
+    "//test": "== TEST ==",
+    "test.1": "echo 'run some tests'",
+    "test": "npm run test.1 && exit 0",
+    "//build": "== BUILD ==",
+    "build.clean": "rm -Rf deploy",
+    "build.deploy": "mkdir deploy; cp -R clients deploy; cp -R server deploy; cp package.json deploy; cp package-lock.json deploy; cp -R etc deploy;",
+    "build.tar": "tar -zcvf aos-demo-asterix.tar.gz -C deploy .",
+    "build": "npm run build.clean; npm run build.deploy; npm run build.tar; npm run build.clean;",
+    "//dev": "== DEV ==",
+    "dev": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.aws.anthropos.io/pumpco/aos-demo-asterix.git"
+  },
+  "author": "Andy Monis",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "reloadify": "^0.2.2"
+  }
+}
